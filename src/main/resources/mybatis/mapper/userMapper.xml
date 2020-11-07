@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+
+    <select id="queryUserList" resultType="com.pojo.User">
+      select *
+      from user_info
+    </select>
+
+    <insert id="creatUser" parameterType="com.pojo.User">
+        insert into
+        user_info(user_name,user_nickname,user_realname,user_password,user_type,user_phone,user_icon,user_info,user_city,user_mail,user_address,user_intro,user_creattime,user_updatetime)
+        values(#{user_name},#{user_nickname},#{user_realname},#{user_password},#{user_type},#{user_phone},#{user_icon},#{user_info},#{user_city},#{user_mail},#{user_address},#{user_intro},#{user_creattime},#{user_updatetime})
+    </insert>
+    <update id="updateUser" parameterType="com.pojo.User">
+        update user_info
+        <set>
+            user_name = #{user_name},
+
+        </set>
+        where user_id = #{user_id}
+    </update>
+</mapper>
