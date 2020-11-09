@@ -22,4 +22,12 @@
         </set>
         where user_id = #{user_id}
     </update>
+
+    <select id="login" resultType="com.pojo.User" parameterType="String" >
+      select *
+      from user_info
+      where user_name = #{user_name}
+    </select>
+
+
 </mapper>

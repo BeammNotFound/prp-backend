@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Api(tags = "UserController", description = "User管理接口")
+@Api(tags = "User管理接口")
 @RestController
 public class UserController {
 
