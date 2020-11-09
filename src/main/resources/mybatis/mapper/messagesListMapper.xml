@@ -7,8 +7,7 @@
         select *
         from messages
     </select>
-
-    <insert id="createMessages" parameterType="com.pojo.User">
+    <insert id="createMessage" parameterType="com.pojo.Messages">
         insert into
         messages(title,details,author,image,create_time,update_time)
         values(#{title},#{details},#{author},#{image},#{create_time},#{update_time})

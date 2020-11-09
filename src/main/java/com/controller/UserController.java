@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @ApiOperation("添加用户")
-    @RequestMapping("/creatUser")
+    @PostMapping("/creatUser")
     public CommonResult createUser(@ApiParam("添加用户数据") @RequestBody User user){
 
         user.setUser_creattime(TimeUtils.getNowTime());

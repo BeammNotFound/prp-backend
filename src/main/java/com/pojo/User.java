@@ -1,6 +1,7 @@
 package com.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,9 @@ public class User {
     private String user_mail;
     private String user_address;
     private String user_intro;
+    @JsonIgnore
     private Date user_creattime;
+    @JsonIgnore
     private Date user_updatetime;
 
 }
