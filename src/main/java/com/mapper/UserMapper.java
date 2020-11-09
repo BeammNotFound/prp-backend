@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     List<User> queryUserList();
-    void creatUser(User user);
+    void createUser(User user);
 }
 

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UserService{
     List<User> queryUserList();
-    String creatUser(User user);
+    void createUser(User user);
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MessagesListMapper">
+    <select id="allMessages" resultType="com.pojo.Messages">
+        select *
+        from messages
+    </select>
+
+    <insert id="createMessages" parameterType="com.pojo.User">
+        insert into
+        messages(title,details,author,image,create_time,update_time)
+        values(#{title},#{details},#{author},#{image},#{create_time},#{update_time})
+    </insert>
+</mapper>

@@ -24,22 +24,27 @@ public class UserController {
     @ApiOperation("查询全部用户信息")
     @GetMapping("/queryUserList")
     public CommonResult queryUserList() {
-        return CommonResult.success(service.queryUserList());
+        try {
+            return CommonResult.success(service.queryUserList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommonResult.failed("服务器错误");
+        }
     }
 
     @ApiOperation("添加用户")
     @RequestMapping("/creatUser")
-    public CommonResult creatUser(@ApiParam("添加用户数据") @RequestBody User user){
+    public CommonResult createUser(@ApiParam("添加用户数据") @RequestBody User user){
 
         user.setUser_creattime(TimeUtils.getNowTime());
         user.setUser_updatetime(TimeUtils.getNowTime());
 
         try {
-            service.creatUser(user);
+            service.createUser(user);
+            return CommonResult.success("添加用户成功,用户名为："+user.getUser_name());
         } catch (Exception e) {
             e.printStackTrace();
-            return CommonResult.failed("Service has been error");
+            return CommonResult.failed("服务器错误");
         }
-        return CommonResult.success("success");
     }
 }
