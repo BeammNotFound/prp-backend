@@ -6,6 +6,7 @@ import com.pojo.Messages;
 import com.service.MessagesListService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class MessagesListController {
     @Autowired
     MessagesListService messagesListService;
 
-    @ApiOperation("获取全部资讯接口")
+    @ApiOperation("获取全部资讯")
     @GetMapping("/allMessages")
     public CommonResult allMessages(){
         try {
@@ -27,8 +28,9 @@ public class MessagesListController {
         }
     }
 
+    @ApiOperation("创建资讯")
     @PostMapping("/createMessage")
-    public CommonResult createMessage(@RequestBody Messages messages) {
+    public CommonResult createMessage(@ApiParam("输入资讯") @RequestBody Messages messages){
         messages.setCreate_time(TimeUtils.getNowTime());
         messages.setUpdate_time(TimeUtils.getNowTime());
         try {
@@ -39,5 +41,16 @@ public class MessagesListController {
             return CommonResult.failed("服务器错误");
         }
 
+    }
+
+    @ApiOperation("通过标题或者文章内容模糊查询资讯")
+    @PostMapping("fuzzyQueryMessages")
+    public CommonResult fuzzyQueryMessages(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Messages messages) {
+        try {
+            return CommonResult.success(messagesListService.fuzzyQueryMessages(messages));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return CommonResult.failed("服务器错误");
+        }
     }
 }

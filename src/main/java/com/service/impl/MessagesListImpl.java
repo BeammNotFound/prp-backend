@@ -20,4 +20,9 @@ public class MessagesListImpl implements MessagesListService {
     public void createMessage(Messages messages) {
         messagesListMapper.createMessage(messages);
     }
+
+    @Override
+    public Messages fuzzyQueryMessages(Messages messages) {
+        return messagesListMapper.fuzzyQueryMessages(messages);
+    }
 }

@@ -5,11 +5,26 @@
 <mapper namespace="com.mapper.MessagesListMapper">
     <select id="allMessages" resultType="com.pojo.Messages">
         select *
-        from messages
+        from messages;
     </select>
     <insert id="createMessage" parameterType="com.pojo.Messages">
         insert into
         messages(title,details,author,image,create_time,update_time)
-        values(#{title},#{details},#{author},#{image},#{create_time},#{update_time})
+        values(#{title},#{details},#{author},#{image},#{create_time},#{update_time});
     </insert>
+
+    <select id="fuzzyQueryMessages" resultType="com.pojo.Messages" parameterType="com.pojo.Messages">
+        select *
+        from messages
+        where 1=1
+        <if test="title != null and title != ''">
+            and title like CONCAT('%',#{title},'%')
+        </if>
+        <if test="details != null and details != ''">
+            and details like CONCAT('%',#{details},'%')
+        </if>
+
+        order by create_time desc;
+    </select>
+
 </mapper>

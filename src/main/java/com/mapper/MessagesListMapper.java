@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface MessagesListMapper {
     Messages allMessages();
     void createMessage(Messages messages);
+    Messages fuzzyQueryMessages(Messages messages);
+
 }

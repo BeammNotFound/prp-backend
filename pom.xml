@@ -29,6 +29,13 @@
             <version>2.4</version>
         </dependency>
 
+<!--        配置druid-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.21</version>
+        </dependency>
+
         <!--MyBatis分页插件starter-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

@@ -1,21 +1,28 @@
 package com.common.api;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 通用返回对象
  * Created by macro on 2019/4/19.
  */
+@ApiModel("通用返回对象")
 public class CommonResult<T> {
     /**
      * 状态码
      */
+    @ApiModelProperty("状态码")
     private long code;
     /**
      * 提示信息
      */
+    @ApiModelProperty("提示信息")
     private String message;
     /**
      * 数据封装
      */
+    @ApiModelProperty("数据封装")
     private T data;
 
     protected CommonResult() {

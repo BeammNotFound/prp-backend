@@ -6,9 +6,6 @@ import com.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
-
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -21,7 +18,5 @@ public class LoginServiceImpl implements LoginService {
         return loginMapper.login(userName);
 
     }
-
-
 
 }

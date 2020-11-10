@@ -2,20 +2,24 @@ package com.pojo;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("用户实体类")
 public class User {
     private String user_name;
     private String user_nickname;
     private String user_realname;
     private String user_password;
+    @ApiModelProperty("user_type:1是普通用户，2是管理员；如果不传默认为用户")
     private Integer user_type;
     private String user_phone;
     private String user_icon;

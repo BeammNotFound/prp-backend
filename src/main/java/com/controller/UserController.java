@@ -34,10 +34,12 @@ public class UserController {
 
     @ApiOperation("添加用户")
     @PostMapping("/creatUser")
-    public CommonResult createUser(@ApiParam("添加用户数据") @RequestBody User user){
+    public CommonResult createUser(@ApiParam("输入用户数据") @RequestBody User user){
 
         user.setUser_creattime(TimeUtils.getNowTime());
         user.setUser_updatetime(TimeUtils.getNowTime());
+        if (user.getUser_type() == null)
+            user.setUser_type(1);
 
         try {
             service.createUser(user);
