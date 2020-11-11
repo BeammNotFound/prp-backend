@@ -10,7 +10,7 @@
 
     <insert id="createPopularization" parameterType="com.pojo.Popularizations">
         insert into
-        Popularizations(p_title,p_details,p_author,p_pv,p_createtime,p_updatetime)
-        values (#{p_title},#{p_details},#{p_author},#{p_pv},#{p_createtime},#{p_updatetime})
+        Popularizations(p_title,p_details,p_author,p_pv,p_createtime,p_updatetime,p_image)
+        values (#{p_title},#{p_details},#{p_author},#{p_pv},#{p_createtime},#{p_updatetime},#{p_image})
     </insert>
 </mapper>

@@ -32,3 +32,5 @@ spring:
 mybatis:
   type-aliases-package: com.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
+
+debug: false
