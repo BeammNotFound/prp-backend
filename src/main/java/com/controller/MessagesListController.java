@@ -18,14 +18,10 @@ public class MessagesListController {
     MessagesListService messagesListService;
 
     @ApiOperation("获取全部资讯列表")
-    @GetMapping("/queryAllMessages")
+    @GetMapping("/queryMessagesList")
     public CommonResult allMessages(){
-        try {
-            return CommonResult.success(messagesListService.allMessages());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+
+        return CommonResult.success(messagesListService.allMessages());
     }
 
     @ApiOperation("创建资讯")
@@ -34,24 +30,13 @@ public class MessagesListController {
         messages.setM_createtime(TimeUtils.getNowTime());
         messages.setM_updatetime(TimeUtils.getNowTime());
         messages.setM_pv(1);
-        try {
-            messagesListService.createMessage(messages);
-            return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getM_title());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
-
+        messagesListService.createMessage(messages);
+        return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getM_title());
     }
 
     @ApiOperation("通过标题或者文章内容模糊查询资讯")
     @PostMapping("fuzzyQueryMessages")
     public CommonResult fuzzyQueryMessages(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Messages messages) {
-        try {
-            return CommonResult.success(messagesListService.fuzzyQueryMessages(messages));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+        return CommonResult.success(messagesListService.fuzzyQueryMessages(messages));
     }
 }

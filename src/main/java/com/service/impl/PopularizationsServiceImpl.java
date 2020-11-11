@@ -6,6 +6,8 @@ import com.service.PopularizationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PopularizationsServiceImpl implements PopularizationsService {
 
@@ -13,7 +15,7 @@ public class PopularizationsServiceImpl implements PopularizationsService {
     PopularizationsMapper mapper;
 
     @Override
-    public Popularizations queryPopularizations() {
+    public List<Popularizations> queryPopularizations() {
         return mapper.queryPopularizationsList();
     }
 

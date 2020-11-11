@@ -2,7 +2,7 @@
 
 ### 	技术规划
 
-后台技术：Spring boot + Mybatis
+后台技术：SpringBoot + Mybatis
 
 前台：HTML+CSS+JS
 
@@ -10,15 +10,13 @@
 
 ### 	开发人员
 
-####		后台
-
-​	
+####		后台开发​：	
 
 | Name | Mail                 | Phone       |
 | ---- | -------------------- | ----------- |
 | Beam | BeammStark@gmail.com | 15838365368 |
 
-#### 		前台
+#### 		前台开发：
 
 | Name   | Mail              | Phone       |
 | ------ | ----------------- | ----------- |

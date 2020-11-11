@@ -2,9 +2,12 @@ package com.service.impl;
 
 import com.mapper.MessagesListMapper;
 import com.pojo.Messages;
+import com.pojo.Popularizations;
 import com.service.MessagesListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MessagesListImpl implements MessagesListService {
@@ -12,7 +15,7 @@ public class MessagesListImpl implements MessagesListService {
     MessagesListMapper messagesListMapper;
 
     @Override
-    public Messages allMessages() {
+    public List<Messages> allMessages() {
         return messagesListMapper.allMessages();
     }
 
@@ -22,7 +25,7 @@ public class MessagesListImpl implements MessagesListService {
     }
 
     @Override
-    public Messages fuzzyQueryMessages(Messages messages) {
+    public List<Messages> fuzzyQueryMessages(Messages messages) {
         return messagesListMapper.fuzzyQueryMessages(messages);
     }
 }

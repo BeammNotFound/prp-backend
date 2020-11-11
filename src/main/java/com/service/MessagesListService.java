@@ -2,8 +2,10 @@ package com.service;
 
 import com.pojo.Messages;
 
+import java.util.List;
+
 public interface MessagesListService {
-    Messages allMessages();
+    List<Messages> allMessages();
     void createMessage(Messages messages);
-    Messages fuzzyQueryMessages(Messages messages);
+    List<Messages> fuzzyQueryMessages(Messages messages);
 }

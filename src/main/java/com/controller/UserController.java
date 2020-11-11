@@ -24,12 +24,7 @@ public class UserController {
     @ApiOperation("查询全部用户信息")
     @GetMapping("/queryUserList")
     public CommonResult queryUserList() {
-        try {
-            return CommonResult.success(service.queryUserList());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+        return CommonResult.success(service.queryUserList());
     }
 
     @ApiOperation("添加用户")
@@ -41,12 +36,7 @@ public class UserController {
         if (user.getUser_type() == null)
             user.setUser_type(1);
 
-        try {
-            service.createUser(user);
-            return CommonResult.success("添加用户成功,用户名为："+user.getUser_name());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+        service.createUser(user);
+        return CommonResult.success("添加用户成功,用户名为："+user.getUser_name());
     }
 }

@@ -24,13 +24,7 @@ public class PopularizationsController {
     @ApiOperation("查询科普列表")
     @GetMapping("/queryPopularizationsList")
     public CommonResult queryPopularizations(){
-
-        try {
-            return CommonResult.success(service.queryPopularizations());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+        return CommonResult.success(service.queryPopularizations());
     }
 
     @ApiOperation("创建科普信息")
@@ -41,12 +35,8 @@ public class PopularizationsController {
         popularizations.setP_updatetime(TimeUtils.getNowTime());
         popularizations.setP_pv(1);
 
-        try {
-            service.createPopularization(popularizations);
-            return CommonResult.success("创建成功，标题为："+popularizations.getP_title());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return CommonResult.failed("服务器错误");
-        }
+        service.createPopularization(popularizations);
+        return CommonResult.success("创建成功，标题为："+popularizations.getP_title());
+
     }
 }

@@ -33,4 +33,5 @@ mybatis:
   type-aliases-package: com.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
 
+#取消显示控制台的DEBUG
 debug: false
