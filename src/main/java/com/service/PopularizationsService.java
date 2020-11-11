@@ -6,4 +6,5 @@ import java.util.List;
 public interface PopularizationsService {
     List<Popularizations> queryPopularizations();
     void createPopularization(Popularizations popularizations);
+    List<Popularizations> fuzzyQueryPopularizations(Popularizations popularizations);
 }

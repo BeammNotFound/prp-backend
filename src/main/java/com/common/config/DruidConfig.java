@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
+//配置德鲁伊
 @Configuration
 public class DruidConfig {
 

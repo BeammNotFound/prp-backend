@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Api(tags = "资讯列表接口")
 public class MessagesListController {
@@ -37,6 +39,10 @@ public class MessagesListController {
     @ApiOperation("通过标题或者文章内容模糊查询资讯")
     @PostMapping("fuzzyQueryMessages")
     public CommonResult fuzzyQueryMessages(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Messages messages) {
-        return CommonResult.success(messagesListService.fuzzyQueryMessages(messages));
+        List<Messages> list = messagesListService.fuzzyQueryMessages(messages);
+        if (null == list || list.size() == 0) {
+            return CommonResult.success("查不到内容呢 QAQ ,检查一下搜索内容~");
+        }
+        return CommonResult.success(list);
     }
 }

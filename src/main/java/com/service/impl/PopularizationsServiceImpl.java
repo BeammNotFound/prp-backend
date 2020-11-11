@@ -23,4 +23,9 @@ public class PopularizationsServiceImpl implements PopularizationsService {
     public void createPopularization(Popularizations popularizations) {
         mapper.createPopularization(popularizations);
     }
+
+    @Override
+    public List<Popularizations> fuzzyQueryPopularizations(Popularizations popularizations) {
+        return mapper.fuzzyQueryPopularizations(popularizations);
+    }
 }

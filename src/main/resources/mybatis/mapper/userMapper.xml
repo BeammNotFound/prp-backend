@@ -7,6 +7,7 @@
     <select id="queryUserList" resultType="com.pojo.User">
       select *
       from user_info
+      order by user_createtime desc;
     </select>
 
     <insert id="createUser" parameterType="com.pojo.User">
@@ -14,6 +15,7 @@
         user_info(user_name,user_nickname,user_realname,user_password,user_type,user_phone,user_icon,user_info,user_city,user_mail,user_address,user_intro,user_createtime,user_updatetime)
         values(#{user_name},#{user_nickname},#{user_realname},#{user_password},#{user_type},#{user_phone},#{user_icon},#{user_info},#{user_city},#{user_mail},#{user_address},#{user_intro},#{user_createtime},#{user_updatetime})
     </insert>
+
     <update id="updateUser" parameterType="com.pojo.User">
         update user_info
         <set>

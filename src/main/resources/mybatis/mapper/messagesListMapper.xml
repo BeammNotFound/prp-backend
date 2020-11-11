@@ -7,6 +7,7 @@
     <select id="allMessages" resultType="com.pojo.Messages">
         select *
         from messages
+        order by m_createtime desc;
     </select>
 
     <insert id="createMessage" parameterType="com.pojo.Messages">
