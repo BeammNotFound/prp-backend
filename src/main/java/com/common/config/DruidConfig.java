@@ -31,15 +31,14 @@ public class DruidConfig {
         //增加配置
         //登录的key是固定的(loginUsername和loginPassword）
         hashMap.put("loginUsername", "admin");
-        hashMap.put("loginPassword", "123456");
+        hashMap.put("loginPassword", "lianghao");
 
         //允许谁可以访问
         hashMap.put("allow", "localhost");
+        //初始化参数
+        bean.setInitParameters(hashMap);
 
-        bean.setInitParameters(hashMap);   //初始化参数
         return bean;
     }
-
-
 
 }

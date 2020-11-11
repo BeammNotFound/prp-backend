@@ -17,8 +17,8 @@ public class MessagesListController {
     @Autowired
     MessagesListService messagesListService;
 
-    @ApiOperation("获取全部资讯")
-    @GetMapping("/allMessages")
+    @ApiOperation("获取全部资讯列表")
+    @GetMapping("/queryAllMessages")
     public CommonResult allMessages(){
         try {
             return CommonResult.success(messagesListService.allMessages());
@@ -31,11 +31,12 @@ public class MessagesListController {
     @ApiOperation("创建资讯")
     @PostMapping("/createMessage")
     public CommonResult createMessage(@ApiParam("输入资讯") @RequestBody Messages messages){
-        messages.setCreate_time(TimeUtils.getNowTime());
-        messages.setUpdate_time(TimeUtils.getNowTime());
+        messages.setM_createtime(TimeUtils.getNowTime());
+        messages.setM_updatetime(TimeUtils.getNowTime());
+        messages.setM_pv(1);
         try {
             messagesListService.createMessage(messages);
-            return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getTitle());
+            return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getM_title());
         } catch (Exception e) {
             e.printStackTrace();
             return CommonResult.failed("服务器错误");

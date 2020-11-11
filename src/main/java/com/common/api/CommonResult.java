@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
  * 通用返回对象
  * Created by macro on 2019/4/19.
  */
-@ApiModel("通用返回对象")
+@ApiModel("通用返回对象类")
 public class CommonResult<T> {
     /**
      * 状态码

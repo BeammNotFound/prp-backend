@@ -36,8 +36,8 @@ public class UserController {
     @PostMapping("/creatUser")
     public CommonResult createUser(@ApiParam("输入用户数据") @RequestBody User user){
 
-        user.setUser_creattime(TimeUtils.getNowTime());
         user.setUser_updatetime(TimeUtils.getNowTime());
+        user.setUser_createtime(TimeUtils.getNowTime());
         if (user.getUser_type() == null)
             user.setUser_type(1);
 

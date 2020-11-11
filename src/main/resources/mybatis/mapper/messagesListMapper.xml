@@ -9,8 +9,8 @@
     </select>
     <insert id="createMessage" parameterType="com.pojo.Messages">
         insert into
-        messages(title,details,author,image,create_time,update_time)
-        values(#{title},#{details},#{author},#{image},#{create_time},#{update_time});
+        messages(m_title,m_details,m_author,m_image,m_createtime,m_updatetime,m_pv)
+        values(#{m_title},#{m_details},#{m_author},#{m_image},#{m_createtime},#{m_updatetime},#{m_pv});
     </insert>
 
     <select id="fuzzyQueryMessages" resultType="com.pojo.Messages" parameterType="com.pojo.Messages">
@@ -18,13 +18,13 @@
         from messages
         where 1=1
         <if test="title != null and title != ''">
-            and title like CONCAT('%',#{title},'%')
+            and m_title like CONCAT('%',#{m_title},'%')
         </if>
         <if test="details != null and details != ''">
-            and details like CONCAT('%',#{details},'%')
+            and m_details like CONCAT('%',#{m_details},'%')
         </if>
 
-        order by create_time desc;
+        order by m_createtime desc;
     </select>
 
 </mapper>

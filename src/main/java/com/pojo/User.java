@@ -19,7 +19,7 @@ public class User {
     private String user_nickname;
     private String user_realname;
     private String user_password;
-    @ApiModelProperty("user_type:1是普通用户，2是管理员；如果不传默认为用户")
+    @ApiModelProperty("user_type:1是普通用户，2是管理员；如果不传默认为用户权限")
     private Integer user_type;
     private String user_phone;
     private String user_icon;
@@ -29,7 +29,7 @@ public class User {
     private String user_address;
     private String user_intro;
     @JsonIgnore
-    private Date user_creattime;
+    private Date user_createtime;
     @JsonIgnore
     private Date user_updatetime;
 
