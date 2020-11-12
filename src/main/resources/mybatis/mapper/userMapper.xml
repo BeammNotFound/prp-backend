@@ -16,13 +16,41 @@
         values(#{user_name},#{user_nickname},#{user_realname},#{user_password},#{user_type},#{user_phone},#{user_icon},#{user_info},#{user_city},#{user_mail},#{user_address},#{user_intro},#{user_createtime},#{user_updatetime})
     </insert>
 
-    <update id="updateUser" parameterType="com.pojo.User">
+    <update id="updateUserByUserName" parameterType="com.pojo.User">
         update user_info
         <set>
-            user_name = #{user_name},
-
+            <if test="user_nickname != null">
+                user_nickname = #{user_nickname},
+            </if>
+            <if test="user_password != null">
+                user_password = #{user_password},
+            </if>
+            <if test="user_phone != null">
+                user_phone = #{user_phone},
+            </if>
+            <if test="user_icon != null">
+                user_icon = #{user_icon},
+            </if>
+            <if test="user_info != null">
+                user_info = #{user_info},
+            </if>
+            <if test="user_city != null">
+                user_city = #{user_city},
+            </if>
+            <if test="user_mail != null">
+                user_mail = #{user_mail},
+            </if>
+             <if test="user_address != null">
+                 user_address = #{user_address},
+            </if>
+            <if test="user_intro != null">
+                user_intro = #{user_intro},
+            </if>
+            <if test="user_updatetime != null">
+                user_updatetime = #{user_updatetime}
+            </if>
         </set>
-        where user_id = #{user_id}
+        where user_name = #{user_name}
     </update>
 
 </mapper>

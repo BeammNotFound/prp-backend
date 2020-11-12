@@ -20,7 +20,7 @@ public class MessagesListController {
     MessagesListService messagesListService;
 
     @ApiOperation("获取全部资讯列表")
-    @GetMapping("/queryMessagesList")
+    @GetMapping("/queryMessages")
     public CommonResult allMessages(){
 
         return CommonResult.success(messagesListService.allMessages());

@@ -11,5 +11,6 @@ import java.util.List;
 public interface UserMapper {
     List<User> queryUserList();
     void createUser(User user);
+    void updateUserByUserName(User user);
 }
 

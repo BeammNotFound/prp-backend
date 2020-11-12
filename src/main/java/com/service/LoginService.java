@@ -2,7 +2,9 @@ package com.service;
 
 import com.pojo.User;
 
+import java.util.Map;
+
 
 public interface LoginService {
-    User login(String userName);
+    Map<String, Object> login(User user);
 }

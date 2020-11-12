@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface LoginMapper {
-    User login(String userName);
+    User login(User user);
 }
