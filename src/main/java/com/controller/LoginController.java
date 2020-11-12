@@ -11,12 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Api(tags = "登录接口")
 @RestController
@@ -28,7 +32,13 @@ public class LoginController {
 
     @ApiOperation("验证用户登录信息")
     @PostMapping("/login")
-    public CommonResult login(@ApiParam("输入用户凭据") @RequestBody User user){
+    public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody User user,BindingResult result){
+
+        if (result.hasErrors()) {
+            for (ObjectError error : result.getAllErrors()) {
+                return CommonResult.validateFailed(error.getDefaultMessage());
+            }
+        }
 
         Map<String, Object> loginMap = loginService.login(user);
 

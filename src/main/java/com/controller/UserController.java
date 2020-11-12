@@ -11,6 +11,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -30,7 +33,13 @@ public class UserController {
 
     @ApiOperation("添加用户")
     @PostMapping("/creatUser")
-    public CommonResult createUser(@ApiParam("输入用户数据") @RequestBody User user) {
+    public CommonResult createUser(@ApiParam("输入用户数据") @Validated @RequestBody User user, BindingResult result) {
+
+        if (result.hasErrors()) {
+            for (ObjectError error : result.getAllErrors()) {
+                return CommonResult.validateFailed(error.getDefaultMessage());
+            }
+        }
 
         user.setUser_updatetime(TimeUtils.getNowTime());
         user.setUser_createtime(TimeUtils.getNowTime());
@@ -74,5 +83,15 @@ public class UserController {
         user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
         service.updateUserByUserName(user);
         return CommonResult.success("修改密码成功");
+    }
+
+    private CommonResult NotNullVerify(User user) {
+        if (user.getUser_name().equals("") && user.getUser_name() == null) {
+            return CommonResult.success("用户名不能为空");
+        } else if (user.getUser_password().equals("") && user.getUser_password() == null) {
+            return CommonResult.success("密码不能为空");
+        }else {
+            return CommonResult.success("请检验输入的数据");
+        }
     }
 }
