@@ -22,6 +22,11 @@ public class LoginServiceImpl implements LoginService {
         Map<String, Object> map = new HashMap<>();
         User login = loginMapper.login(user);
 
+        if (login == null) {
+            map.put("flag", false);
+            return map;
+        }
+
         if ((login.getUser_type()).equals(2)) {
             map.put("user_type", "管理员用户");
         }else {
@@ -35,6 +40,11 @@ public class LoginServiceImpl implements LoginService {
         }else
             map.put("flag", false);
         return map;
+
+
+
+
+
 
     }
 

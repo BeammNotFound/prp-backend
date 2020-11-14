@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.common.api.CommonResult;
+import com.common.api.IErrorCode;
 import com.pojo.User;
 import com.service.LoginService;
 import io.swagger.annotations.Api;
@@ -42,7 +43,7 @@ public class LoginController {
             return CommonResult.success("登录成功!Welcome," + loginMap.get("user_name") + ",您的权限为：" + loginMap.get("user_type"));
         }
         model.addAttribute("msg", "用户名或者密码错误");
-        return CommonResult.success("用户名密码错误", "登录失败");
+        return CommonResult.validateFailed("用户名密码错误");
 
     }
 

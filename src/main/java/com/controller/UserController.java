@@ -73,7 +73,7 @@ public class UserController {
             service.updateUserByUserName(user);
             return CommonResult.success("修改密码成功！");
         }
-        return CommonResult.success("原密码不正确！");
+        return CommonResult.validateFailed("原密码不正确！");
     }
 
     @ApiOperation("忘记密码")
@@ -87,11 +87,11 @@ public class UserController {
 
     private CommonResult NotNullVerify(User user) {
         if (user.getUser_name().equals("") && user.getUser_name() == null) {
-            return CommonResult.success("用户名不能为空");
+            return CommonResult.validateFailed("用户名不能为空");
         } else if (user.getUser_password().equals("") && user.getUser_password() == null) {
             return CommonResult.success("密码不能为空");
         }else {
-            return CommonResult.success("请检验输入的数据");
+            return CommonResult.validateFailed("请检验输入的数据");
         }
     }
 }
