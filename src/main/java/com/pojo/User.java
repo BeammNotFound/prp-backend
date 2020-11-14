@@ -25,6 +25,7 @@ public class User {
     private String user_password;
 //    @NotBlank(message = "真实姓名不能为空")
     private String user_realname;
+    @NotBlank(message = "邮箱不能为空")
     @Email(message = "邮箱格式不正确")
     private String user_mail;
     private String user_nickname;
@@ -43,5 +44,7 @@ public class User {
     private Integer user_type;
     @ApiModelProperty("只用于修改密码输入原密码接口，其他接口无需传参")
     private String enter_password;
+
+    private String mail_code;
 
 }

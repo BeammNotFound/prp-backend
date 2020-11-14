@@ -28,6 +28,18 @@ spring:
     useGlobalDataSourceStat: true
     connectionoProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+
+    #配置邮箱
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 742919609@qq.com
+    password: dxrmojyvnjumbfbd
+  redis:
+    host: localhost
+    port: 6379
+    password: root
+
 #    整合mybatis
 mybatis:
   type-aliases-package: com.pojo

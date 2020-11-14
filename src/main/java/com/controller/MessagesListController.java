@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.common.api.CommonResult;
-import com.common.api.TimeUtils;
+import com.common.tools.TimeUtils;
 import com.pojo.Messages;
 import com.service.MessagesListService;
 import io.swagger.annotations.Api;

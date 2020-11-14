@@ -2,15 +2,13 @@ package com.controller;
 
 
 import com.common.api.CommonResult;
-import com.common.api.TimeUtils;
+import com.common.tools.TimeUtils;
 import com.pojo.Popularizations;
 import com.service.PopularizationsService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
