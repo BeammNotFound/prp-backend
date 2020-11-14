@@ -3,9 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.PopularizationsMapper">
-    <select id="queryPopularizationsList" resultType="com.pojo.Popularizations">
+    <select id="queryPopularizationsList" parameterType="com.pojo.Popularizations" resultType="com.pojo.Popularizations">
         select *
-        from Popularizations;
+        from Popularizations
+        where p_type = #{p_type}
         order by p_createtime desc;
 
     </select>

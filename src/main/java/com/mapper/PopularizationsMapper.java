@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface PopularizationsMapper {
-    List<Popularizations> queryPopularizationsList();
+    List<Popularizations> queryPopularizationsList(Popularizations popularizations);
     void createPopularization(Popularizations popularizations);
     List<Popularizations> fuzzyQueryPopularizations(Popularizations popularizations);
 }

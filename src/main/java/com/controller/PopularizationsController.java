@@ -6,6 +6,7 @@ import com.common.api.TimeUtils;
 import com.pojo.Popularizations;
 import com.service.PopularizationsService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class PopularizationsController {
     PopularizationsService service;
 
     @ApiOperation("查询科普列表")
-    @GetMapping("/queryPopularizationsList")
-    public CommonResult queryPopularizations() {
-        return CommonResult.success(service.queryPopularizations());
+    @PostMapping("/queryPopularizationsList")
+    public CommonResult queryPopularizations(@ApiParam("输入科普类型") @RequestBody Popularizations popularizations) {
+        return CommonResult.success(service.queryPopularizations(popularizations));
     }
 
     @ApiOperation("创建科普信息")

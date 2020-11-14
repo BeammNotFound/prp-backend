@@ -32,7 +32,8 @@ public class LoginServiceImpl implements LoginService {
 
         if (login.getUser_password().equals(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()))) {
             map.put("flag", true);
-        }
+        }else
+            map.put("flag", false);
         return map;
 
     }

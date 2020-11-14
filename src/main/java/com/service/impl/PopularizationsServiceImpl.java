@@ -15,8 +15,8 @@ public class PopularizationsServiceImpl implements PopularizationsService {
     PopularizationsMapper mapper;
 
     @Override
-    public List<Popularizations> queryPopularizations() {
-        return mapper.queryPopularizationsList();
+    public List<Popularizations> queryPopularizations(Popularizations popularizations) {
+        return mapper.queryPopularizationsList(popularizations);
     }
 
     @Override

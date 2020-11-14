@@ -17,6 +17,8 @@ public class Popularizations {
     private String p_title;
     private String p_details;
     private String p_author;
+    @ApiModelProperty("科普类型： 1 品种科普; 2 动物常患疾病; 3 动物冷知识")
+    private Integer p_type;
     @JsonIgnore
     private Integer p_pv;
     @JsonIgnore
