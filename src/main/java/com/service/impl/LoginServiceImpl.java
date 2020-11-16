@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.mapper.LoginMapper;
 import com.pojo.User;
+import com.pojo.vo.LoginVo;
 import com.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
     LoginMapper loginMapper;
 
     @Override
-    public Map<String, Object> login(User user) {
+    public Map<String, Object> login(LoginVo user) {
 
         Map<String, Object> map = new HashMap<>();
         User login = loginMapper.login(user);
@@ -32,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
         }else {
             map.put("user_type","普通用户");
         }
-        map.put("user_name", login.getUser_name());
+        map.put("user_nickname", login.getUser_nickname());
 
 
         if (login.getUser_password().equals(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()))) {
@@ -40,11 +41,6 @@ public class LoginServiceImpl implements LoginService {
         }else
             map.put("flag", false);
         return map;
-
-
-
-
-
 
     }
 

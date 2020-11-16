@@ -3,9 +3,12 @@ package com.controller;
 
 import com.common.api.CommonResult;
 import com.common.config.RedisUtil;
-import com.common.tools.TimeUtils;
-import com.common.tools.SetMail;
+import com.common.utils.TimeUtils;
+import com.common.utils.SetMail;
 import com.pojo.User;
+import com.pojo.vo.CreateUserVo;
+import com.pojo.vo.ForgetPasswordVo;
+import com.pojo.vo.VerifyMailVo;
 import com.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,6 @@ public class UserController {
 
     @Autowired
     private JavaMailSender javaMailSender;
-
 
     @Autowired
     private UserService service;
@@ -40,17 +41,17 @@ public class UserController {
 
     @ApiOperation("添加用户")
     @PostMapping("/creatUser")
-    public CommonResult createUser(@ApiParam("输入用户数据") @Validated @RequestBody User user, BindingResult result) {
+    public CommonResult createUser(@ApiParam("输入用户数据") @Validated @RequestBody CreateUserVo user, BindingResult result) {
 
 //        判断是否为空
         if (result.hasErrors()) {
-            for (ObjectError error : result.getAllErrors()) {
-                return CommonResult.validateFailed(error.getDefaultMessage());
-            }
+           return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        String code = redisUtil.get(user.getUser_mail());
+        String mail = user.getUser_mail();
+        user.setUser_name(mail);
 
-        if (user.getMail_code().equals(code)) {
+        //判断验证码
+        if (user.getMail_code().equals(redisUtil.get(mail))) {
             user.setUser_updatetime(TimeUtils.getNowTime());
             user.setUser_createtime(TimeUtils.getNowTime());
             user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
@@ -60,7 +61,7 @@ public class UserController {
             }
 
             service.createUser(user);
-            return CommonResult.success("添加用户成功,用户名为：" + user.getUser_name());
+            return CommonResult.success("添加用户成功,昵称为：" + user.getUser_nickname());
         }
         return CommonResult.validateFailed("邮箱验证失败");
 
@@ -90,35 +91,32 @@ public class UserController {
 
     @ApiOperation("忘记密码")
     @PostMapping("/forgetPassword")
-    public CommonResult forgetPassword(@RequestBody User user) {
-        user.setUser_updatetime(TimeUtils.getNowTime());
-        user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
-        service.updateUserByUserName(user);
-        return CommonResult.success("修改密码成功");
+    public CommonResult forgetPassword(@RequestBody ForgetPasswordVo user, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+
+        if (user.getMail_code().equals(redisUtil.get(user.getUser_mail()))) {
+            user.setUser_updatetime(TimeUtils.getNowTime());
+            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
+
+            service.forgetPassword(user);
+            return CommonResult.success("修改密码成功");
+        }
+        return CommonResult.validateFailed("修改密码失败，请输入正确的验证码");
+
     }
 
     @ApiOperation("邮箱校验")
     @PostMapping("verifyMail")
-    public CommonResult verifyMail(@RequestBody User user){
-        if (user.getUser_mail().equals(null)) {
-            return CommonResult.validateFailed("请输入邮箱");
+    public CommonResult verifyMail(@RequestBody @Validated VerifyMailVo user, BindingResult result){
+
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
         SetMail setMail = new SetMail(javaMailSender, redisUtil);
         setMail.sendMail(user.getUser_mail());
         return CommonResult.success("邮箱发送成功");
     }
 
-
-
-
-    private CommonResult NotNullVerify(User user) {
-
-        if (user.getUser_name().equals("") && user.getUser_name() == null) {
-            return CommonResult.validateFailed("用户名不能为空");
-        } else if (user.getUser_password().equals("") && user.getUser_password() == null) {
-            return CommonResult.success("密码不能为空");
-        } else {
-            return CommonResult.validateFailed("请检验输入的数据");
-        }
-    }
 }

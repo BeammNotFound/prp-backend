@@ -1,9 +1,10 @@
-package com.common.tools;
+package com.common.utils;
 
 import com.common.config.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
@@ -28,7 +29,7 @@ public class SetMail {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         SimpleMailMessage message = new SimpleMailMessage();
         try {
-            redisUtil.set(mail,checkCode,5*60);
+            redisUtil.set(mail, checkCode, 5 * 60);
             message.setFrom("742919609@qq.com");
             message.setTo(mail);
             message.setSubject("欢迎成为宠物救助平台的用户");
@@ -36,9 +37,11 @@ public class SetMail {
 
             javaMailSender.send(message);
             logger.info("邮件发送成功");
+        } catch (MailSendException e) {
+            logger.error("目标邮箱不存在");
         } catch (Exception e) {
             e.printStackTrace();
-            return "error";
+            logger.error("文本邮件发送异常");
         }
         return checkCode;
 

@@ -10,10 +10,10 @@
       order by user_createtime desc;
     </select>
 
-    <insert id="createUser" parameterType="com.pojo.User">
+    <insert id="createUser" parameterType="com.pojo.vo.CreateUser">
         insert into
-        user_info(user_name,user_nickname,user_realname,user_password,user_type,user_phone,user_icon,user_info,user_city,user_mail,user_address,user_intro,user_createtime,user_updatetime)
-        values(#{user_name},#{user_nickname},#{user_realname},#{user_password},#{user_type},#{user_phone},#{user_icon},#{user_info},#{user_city},#{user_mail},#{user_address},#{user_intro},#{user_createtime},#{user_updatetime})
+        user_info(user_name,user_nickname,user_password,user_type,user_mail,user_createtime,user_updatetime)
+        values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime})
     </insert>
 
     <update id="updateUserByUserName" parameterType="com.pojo.User">
@@ -50,7 +50,7 @@
                 user_updatetime = #{user_updatetime}
             </if>
         </set>
-        where user_name = #{user_name}
+        where user_mail = #{user_mail}
     </update>
 
 </mapper>

@@ -1,4 +1,4 @@
-package com.common.tools;
+package com.common.utils;
 
 
 import com.opensymphony.oscache.util.StringUtil;

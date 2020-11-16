@@ -3,6 +3,7 @@ package com.controller;
 import com.common.api.CommonResult;
 import com.common.api.IErrorCode;
 import com.pojo.User;
+import com.pojo.vo.LoginVo;
 import com.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,20 +28,18 @@ public class LoginController {
 
     @ApiOperation("验证用户登录信息")
     @PostMapping("/login")
-    public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody User user, BindingResult result, Model model, HttpSession session){
+    public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody LoginVo user, BindingResult result, Model model, HttpSession session){
 
         //判断是否为空
         if (result.hasErrors()) {
-            for (ObjectError error : result.getAllErrors()) {
-                return CommonResult.validateFailed(error.getDefaultMessage());
-            }
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
 
         Map<String, Object> loginMap = loginService.login(user);
 
         if ((Boolean) loginMap.get("flag")) {
             session.setAttribute("loginUser",user.getUser_name());
-            return CommonResult.success("登录成功!Welcome," + loginMap.get("user_name") + ",您的权限为：" + loginMap.get("user_type"));
+            return CommonResult.success("登录成功!Welcome," + loginMap.get("user_nickname") + ",您的权限为：" + loginMap.get("user_type"));
         }
         model.addAttribute("msg", "用户名或者密码错误");
         return CommonResult.validateFailed("用户名密码错误");
