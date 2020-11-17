@@ -91,11 +91,10 @@ public class UserController {
 
     @ApiOperation("忘记密码")
     @PostMapping("/forgetPassword")
-    public CommonResult forgetPassword(@RequestBody ForgetPasswordVo user, BindingResult result) {
+    public CommonResult forgetPassword(@Validated @RequestBody ForgetPasswordVo user, BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-
         if (user.getMail_code().equals(redisUtil.get(user.getUser_mail()))) {
             user.setUser_updatetime(TimeUtils.getNowTime());
             user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
@@ -103,13 +102,14 @@ public class UserController {
             service.forgetPassword(user);
             return CommonResult.success("修改密码成功");
         }
+
         return CommonResult.validateFailed("修改密码失败，请输入正确的验证码");
 
     }
 
     @ApiOperation("邮箱校验")
     @PostMapping("verifyMail")
-    public CommonResult verifyMail(@RequestBody @Validated VerifyMailVo user, BindingResult result){
+    public CommonResult verifyMail(@Validated @RequestBody VerifyMailVo user, BindingResult result){
 
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());

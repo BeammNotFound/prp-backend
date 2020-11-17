@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -14,8 +15,11 @@ import java.util.Date;
 @ApiModel("资讯实体类")
 public class Messages {
     private int m_id;
+    @NotBlank(message = "标题不能为空")
     private String m_title;
+    @NotBlank(message = "内容不能为空")
     private String m_details;
+    @NotBlank(message = "作者不能为空")
     private String m_author;
     private String m_image;
     @JsonIgnore

@@ -13,7 +13,6 @@ import java.util.Random;
 @Configuration
 public class SetMail {
 
-
     private RedisUtil redisUtil;
 
     private JavaMailSender javaMailSender;
@@ -29,7 +28,7 @@ public class SetMail {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         SimpleMailMessage message = new SimpleMailMessage();
         try {
-            redisUtil.set(mail, checkCode, 5 * 60);
+            redisUtil.set(mail, checkCode, 59);
             message.setFrom("742919609@qq.com");
             message.setTo(mail);
             message.setSubject("欢迎成为宠物救助平台的用户");

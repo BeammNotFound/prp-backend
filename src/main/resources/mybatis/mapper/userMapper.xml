@@ -10,7 +10,7 @@
       order by user_createtime desc;
     </select>
 
-    <insert id="createUser" parameterType="com.pojo.vo.CreateUser">
+    <insert id="createUser" parameterType="com.pojo.vo.CreateUserVo">
         insert into
         user_info(user_name,user_nickname,user_password,user_type,user_mail,user_createtime,user_updatetime)
         values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime})
@@ -50,6 +50,14 @@
                 user_updatetime = #{user_updatetime}
             </if>
         </set>
+        where user_mail = #{user_mail}
+    </update>
+
+    <update id="forgetPassword" parameterType="com.pojo.vo.ForgetPasswordVo">
+        update user_info
+        <if test="user_password != null">
+            user_password = #{user_password},
+        </if>
         where user_mail = #{user_mail}
     </update>
 
