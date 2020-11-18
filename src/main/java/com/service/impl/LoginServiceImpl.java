@@ -32,7 +32,6 @@ public class LoginServiceImpl implements LoginService {
         }else {
             map.put("user_type","普通用户");
         }
-
         //用户密码对比
         if (login.getUser_password().equals(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()))) {
             map.put("flag", true);

@@ -2,7 +2,7 @@ package com.controller;
 
 
 import com.common.api.CommonResult;
-import com.common.config.RedisUtil;
+import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
 import com.common.utils.SetMail;
 import com.pojo.User;
@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
@@ -25,13 +26,16 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private SetMail setMail;
 
     @Autowired
     private UserService service;
 
     @Autowired
-    private RedisUtil redisUtil;
+    RedisTemplate redisTemplate;
+
+    @Autowired
+    RedisUtil redisUtil;
 
     @ApiOperation("查询全部用户信息")
     @GetMapping("/queryUserList")
@@ -59,8 +63,8 @@ public class UserController {
             if (user.getUser_type() == null){
                 user.setUser_type(1);
             }
-
             service.createUser(user);
+            redisUtil.del(mail);
             return CommonResult.success("添加用户成功,昵称为：" + user.getUser_nickname());
         }
         return CommonResult.validateFailed("邮箱验证失败");
@@ -114,7 +118,6 @@ public class UserController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        SetMail setMail = new SetMail(javaMailSender, redisUtil);
         setMail.sendMail(user.getUser_mail());
         return CommonResult.success("邮箱发送成功");
     }

@@ -1,9 +1,10 @@
 package com.common.utils;
 
-import com.common.config.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,14 +14,14 @@ import java.util.Random;
 @Configuration
 public class SetMail {
 
-    private RedisUtil redisUtil;
+    @Autowired
+    RedisTemplate redisTemplate;
 
+    @Autowired
+    RedisUtil redisUtil;
+
+    @Autowired
     private JavaMailSender javaMailSender;
-
-    public SetMail(JavaMailSender javaMailSender, RedisUtil redisUtil) {
-        this.javaMailSender = javaMailSender;
-        this.redisUtil = redisUtil;
-    }
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -28,7 +29,7 @@ public class SetMail {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         SimpleMailMessage message = new SimpleMailMessage();
         try {
-            redisUtil.set(mail, checkCode, 59);
+            redisUtil.set(mail, checkCode, 1);
             message.setFrom("742919609@qq.com");
             message.setTo(mail);
             message.setSubject("欢迎成为宠物救助平台的用户");
