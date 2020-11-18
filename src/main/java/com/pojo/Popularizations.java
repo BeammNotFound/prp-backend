@@ -21,6 +21,7 @@ public class Popularizations {
     private String p_details;
     @NotBlank(message = "作者不能为空")
     private String p_author;
+    @NotBlank()
     @ApiModelProperty("科普类型： 1 品种科普; 2 动物常患疾病; 3 动物冷知识")
     private Integer p_type;
     @JsonIgnore

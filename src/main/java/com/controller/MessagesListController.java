@@ -30,11 +30,11 @@ public class MessagesListController {
     @Autowired
     RedisUtil redisUtil;
 
-
     @ApiOperation("获取全部资讯列表")
     @GetMapping("/queryMessages")
     public CommonResult allMessages(){
 
+        //存入redis
         if (redisUtil.hasKey("allMessages")) {
             return CommonResult.success(redisUtil.get("allMessages"));
         }else {
