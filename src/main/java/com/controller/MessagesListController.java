@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @RestController
 @Api(tags = "资讯列表接口")
@@ -31,8 +33,9 @@ public class MessagesListController {
     RedisUtil redisUtil;
 
     @ApiOperation("获取全部资讯列表")
+    @Action()
     @GetMapping("/queryMessages")
-    public CommonResult allMessages(){
+    public CommonResult allMessages() {
 
         //存入redis
         if (redisUtil.hasKey("allMessages")) {
