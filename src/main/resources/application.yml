@@ -7,7 +7,6 @@ spring:
     url: jdbc:mysql://localhost:3306/prp?useUnicode=true&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
 
-
     #配置邮箱
   mail:
     default-encoding: UTF-8

@@ -1,6 +1,7 @@
 package com.common.config;
 
 import com.common.api.Action;
+import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -54,7 +55,8 @@ public class MyAspect {
             return object;
         } catch (Throwable e) {
             System.out.println("执行方法异常:" + e.getClass().getName());
-            return null;
+            e.printStackTrace();
+            return CommonResult.failed("服务器错误");
         }
     }
 

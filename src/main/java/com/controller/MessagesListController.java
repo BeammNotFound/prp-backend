@@ -16,8 +16,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 @RestController
 @Api(tags = "资讯列表接口")
@@ -48,6 +46,7 @@ public class MessagesListController {
 
 
     @ApiOperation("创建资讯")
+    @Action()
     @PostMapping("/createMessage")
     public CommonResult createMessage(@Validated @RequestBody Messages messages, BindingResult result) {
         if (result.hasErrors()) {
@@ -62,6 +61,7 @@ public class MessagesListController {
     }
 
     @ApiOperation("通过标题或者文章内容模糊查询资讯")
+    @Action()
     @PostMapping("fuzzyQueryMessages")
     public CommonResult fuzzyQueryMessages(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Messages messages) {
         List<Messages> list = messagesListService.fuzzyQueryMessages(messages);

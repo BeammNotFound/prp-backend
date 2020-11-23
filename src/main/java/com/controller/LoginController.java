@@ -1,12 +1,16 @@
 package com.controller;
 
+import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.common.utils.RedisUtil;
+import com.pojo.User;
 import com.pojo.vo.LoginVo;
 import com.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +24,15 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
+    @Autowired
+    RedisUtil redisUtil;
+
 
     @ApiOperation("验证用户登录信息")
+    @Action()
     @PostMapping("/login")
     public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody LoginVo user, BindingResult result){
 
@@ -34,7 +45,9 @@ public class LoginController {
 
         //如果用户密码对比成功
         if ((Boolean) loginMap.get("flag")) {
-            return CommonResult.success(loginMap.get("user_cookie"));
+            User user_cookie = (User) loginMap.get("user_cookie");
+            redisUtil.set("user_tooken", user_cookie.getUser_tooken());
+            return CommonResult.success(user_cookie);
         }
         return CommonResult.validateFailed("用户名密码错误");
 

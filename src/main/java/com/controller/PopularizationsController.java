@@ -1,6 +1,7 @@
 package com.controller;
 
 
+import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
@@ -33,6 +34,7 @@ public class PopularizationsController {
     PopularizationsService service;
 
     @ApiOperation("查询科普列表")
+    @Action()
     @PostMapping("/queryPopularizationsList")
     public CommonResult queryPopularizations(@RequestBody Popularizations popularizations) {
 
@@ -45,6 +47,7 @@ public class PopularizationsController {
     }
 
     @ApiOperation("创建科普信息")
+    @Action()
     @PostMapping("/createPopularization")
     public CommonResult createPopularization(@Validated @ApiParam("输入科普内容") @RequestBody Popularizations popularizations, BindingResult result) {
 
@@ -63,6 +66,7 @@ public class PopularizationsController {
     }
 
     @ApiOperation("通过标题或者文章内容模糊查询科普内容")
+    @Action()
     @PostMapping("/fuzzyQueryPopularizations")
     public CommonResult fuzzyQueryPopularizations(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Popularizations popularizations) {
 

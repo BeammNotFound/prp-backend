@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.utils.AddLoginTooken;
 import com.mapper.LoginMapper;
 import com.pojo.User;
 import com.pojo.vo.LoginVo;
@@ -35,6 +36,8 @@ public class LoginServiceImpl implements LoginService {
         //用户密码对比
         if (login.getUser_password().equals(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()))) {
             map.put("flag", true);
+            new AddLoginTooken().addLoginTicket(login);
+
         }else
             map.put("flag", false);
         login.setUser_password("**********");

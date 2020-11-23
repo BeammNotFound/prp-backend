@@ -48,4 +48,6 @@ public class User {
 
     private String mail_code;
 
+    private String user_tooken;
+
 }
