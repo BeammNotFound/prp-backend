@@ -31,7 +31,7 @@ public class MessagesListController {
     RedisUtil redisUtil;
 
     @ApiOperation("获取全部资讯列表")
-    @Action()
+    @Action(description = "获取全部资讯列表")
     @GetMapping("/queryMessages")
     public CommonResult allMessages() {
 
@@ -46,7 +46,7 @@ public class MessagesListController {
 
 
     @ApiOperation("创建资讯")
-    @Action()
+    @Action(description = "创建资讯")
     @PostMapping("/createMessage")
     public CommonResult createMessage(@Validated @RequestBody Messages messages, BindingResult result) {
         if (result.hasErrors()) {
@@ -61,7 +61,7 @@ public class MessagesListController {
     }
 
     @ApiOperation("通过标题或者文章内容模糊查询资讯")
-    @Action()
+    @Action(description = "通过标题或者文章内容模糊查询资讯")
     @PostMapping("fuzzyQueryMessages")
     public CommonResult fuzzyQueryMessages(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Messages messages) {
         List<Messages> list = messagesListService.fuzzyQueryMessages(messages);

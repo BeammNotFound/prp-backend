@@ -34,7 +34,7 @@ public class PopularizationsController {
     PopularizationsService service;
 
     @ApiOperation("查询科普列表")
-    @Action()
+    @Action(description = "查询科普列表")
     @PostMapping("/queryPopularizationsList")
     public CommonResult queryPopularizations(@RequestBody Popularizations popularizations) {
 
@@ -47,7 +47,7 @@ public class PopularizationsController {
     }
 
     @ApiOperation("创建科普信息")
-    @Action()
+    @Action(description = "创建科普信息")
     @PostMapping("/createPopularization")
     public CommonResult createPopularization(@Validated @ApiParam("输入科普内容") @RequestBody Popularizations popularizations, BindingResult result) {
 
@@ -66,7 +66,7 @@ public class PopularizationsController {
     }
 
     @ApiOperation("通过标题或者文章内容模糊查询科普内容")
-    @Action()
+    @Action(description = "通过标题或者文章内容模糊查询科普内容")
     @PostMapping("/fuzzyQueryPopularizations")
     public CommonResult fuzzyQueryPopularizations(@ApiParam("输入要查询的标题或者资讯内容") @RequestBody Popularizations popularizations) {
 

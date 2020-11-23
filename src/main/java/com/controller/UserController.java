@@ -39,14 +39,14 @@ public class UserController {
     RedisUtil redisUtil;
 
     @ApiOperation("查询全部用户信息")
-    @Action()
+    @Action(description = "查询全部用户信息")
     @GetMapping("/queryUserList")
     public CommonResult queryUserList() {
         return CommonResult.success(service.queryUserList());
     }
 
     @ApiOperation("添加用户")
-    @Action()
+    @Action(description = "添加用户")
     @PostMapping("/creatUser")
     public CommonResult createUser(@ApiParam("输入用户数据") @Validated @RequestBody CreateUserVo user, BindingResult result) {
 
@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @ApiOperation("根据用户名修改用户信息")
-    @Action()
+    @Action(description = "根据用户名修改用户信息")
     @PostMapping("/updateUserByUserName")
     public CommonResult updateUserByUserName(@ApiParam("输入用户名") @RequestBody User user) {
 
@@ -85,7 +85,7 @@ public class UserController {
     }
 
     @ApiOperation("修改密码")
-    @Action()
+    @Action(description = "修改密码")
     @PostMapping("/updatePassword")
     public CommonResult updatePassword(@ApiParam("输入用户名、原密码和新密码") @RequestBody User user) {
         user.setUser_updatetime(TimeUtils.getNowTime());
@@ -99,7 +99,7 @@ public class UserController {
     }
 
     @ApiOperation("忘记密码")
-//    @Action()
+    @Action(description = "忘记密码")
     @PostMapping("/forgetPassword")
     public CommonResult forgetPassword(@Validated @RequestBody ForgetPasswordVo user, BindingResult result) {
         if (result.hasErrors()) {
@@ -117,8 +117,8 @@ public class UserController {
 
     }
 
-    @ApiOperation("邮箱校验")
-    @Action()
+    @ApiOperation("发送邮箱验证码")
+    @Action(description = "发送邮箱验证码")
     @PostMapping("verifyMail")
     public CommonResult verifyMail(@Validated @RequestBody VerifyMailVo user, BindingResult result){
 

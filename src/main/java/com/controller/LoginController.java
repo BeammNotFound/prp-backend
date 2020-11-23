@@ -32,7 +32,7 @@ public class LoginController {
 
 
     @ApiOperation("验证用户登录信息")
-    @Action()
+    @Action(description = "验证用户登录信息")
     @PostMapping("/login")
     public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody LoginVo user, BindingResult result){
 

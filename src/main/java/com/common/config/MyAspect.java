@@ -43,11 +43,13 @@ public class MyAspect {
     public Object around(ProceedingJoinPoint proceedingJoinPoint) {
 //        System.out.println("环绕通知开始");
         try {
-            System.out.println(TimeUtils.getNowTime()+  "  执行方法:   " + proceedingJoinPoint.getSignature().getName());
 
-//            MethodSignature signature =(MethodSignature) proceedingJoinPoint.getSignature();
-//            Action action = signature.getMethod().getAnnotation(Action.class);
-//
+            MethodSignature signature =(MethodSignature) proceedingJoinPoint.getSignature();
+            Action action = signature.getMethod().getAnnotation(Action.class);
+
+            System.out.println(TimeUtils.getNowTime()+  "  执行方法:   " + proceedingJoinPoint.getSignature().getName()+"("+action.description()+")");
+
+
 //            System.out.println("菜单="+action.description());
 
             Object object =  proceedingJoinPoint.proceed();
