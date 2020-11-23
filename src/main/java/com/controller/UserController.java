@@ -42,7 +42,14 @@ public class UserController {
     @Action(description = "查询全部用户信息")
     @GetMapping("/queryUserList")
     public CommonResult queryUserList() {
-        return CommonResult.success(service.queryUserList());
+
+        //存入redis
+        if (redisUtil.hasKey("allUsers")) {
+            return CommonResult.success(redisUtil.get("allUsers"));
+        }else {
+            redisUtil.set("allUsers", service.queryUserList(),30);
+        }
+        return CommonResult.success(redisUtil.get("allUsers"));
     }
 
     @ApiOperation("添加用户")

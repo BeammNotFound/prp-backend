@@ -2,7 +2,9 @@ package com.service;
 
 import com.pojo.Bases;
 
+import java.util.List;
+
 public interface BasesService {
-    Bases queryBases();
+    List<Bases> queryBases();
 
 }

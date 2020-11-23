@@ -34,7 +34,7 @@ public class BasesController {
         if (redisUtil.hasKey("allBases")) {
             return CommonResult.success(redisUtil.get("allBases"));
         }else {
-            redisUtil.set("allBases", service.queryBases(),0);
+            redisUtil.set("allBases", service.queryBases(),30);
         }
         return CommonResult.success(redisUtil.get("allBases"));
     }

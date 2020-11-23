@@ -6,6 +6,8 @@ import com.service.BasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BasesServiceImpl implements BasesService {
 
@@ -13,7 +15,7 @@ public class BasesServiceImpl implements BasesService {
     BasesMapper basesMapper;
 
     @Override
-    public Bases queryBases() {
+    public List<Bases> queryBases() {
         return basesMapper.queryBases();
     }
 }
