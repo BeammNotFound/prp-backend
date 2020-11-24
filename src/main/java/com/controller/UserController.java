@@ -22,7 +22,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "User管理接口")
+@Api(tags = "用户管理接口")
 @RestController
 public class UserController {
 

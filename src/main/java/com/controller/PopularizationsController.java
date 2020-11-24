@@ -44,7 +44,7 @@ public class PopularizationsController {
     @ApiOperation("创建科普信息")
     @Action(description = "创建科普信息")
     @PostMapping("/createPopularization")
-    public CommonResult createPopularization(@Validated @ApiParam("输入科普内容") @RequestBody Popularizations popularizations, BindingResult result) {
+    public CommonResult createPopularization(@Validated @RequestBody Popularizations popularizations, BindingResult result) {
 
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
