@@ -9,4 +9,13 @@
       from bases
     </select>
 
+    <select id="fuzzyQueryBases" resultType="com.pojo.Bases" parameterType="com.pojo.vo.QueryBasesVo">
+        select *
+        from bases
+        where 1=1
+        <if test="b_name != null and b_name != ''">
+            and b_name like CONCAT('%',#{b_name},'%')
+        </if>
+    </select>
+
 </mapper>

@@ -12,5 +12,5 @@ public interface MessagesListMapper {
     List<Messages> allMessages();
     void createMessage(Messages messages);
     List<Messages> fuzzyQueryMessages(Messages messages);
-
+    void deleteMessageById(Messages messages);
 }

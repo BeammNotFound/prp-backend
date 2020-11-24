@@ -24,10 +24,17 @@ public class Bases {
     private String b_address;
     @NotBlank(message = "基地简介不能为空")
     private String b_intro;
-    @ApiModelProperty("基地状态：1为可报名，2为不可报名")
+    @ApiModelProperty("基地状态：1为可报名，2为不可报名（已满）")
     private Integer b_status;
 
     private String b_image;
+
+    @ApiModelProperty("参加人数")
+    private Integer b_joinPopulation;
+
+    @NotBlank(message = "报名人数不能为空")
+    @ApiModelProperty("报名人数")
+    private Integer b_population;
 
     @JsonIgnore
     private Date b_createtime;

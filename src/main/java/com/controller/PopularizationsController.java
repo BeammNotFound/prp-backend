@@ -37,13 +37,8 @@ public class PopularizationsController {
     @Action(description = "查询科普列表")
     @PostMapping("/queryPopularizationsList")
     public CommonResult queryPopularizations(@RequestBody Popularizations popularizations) {
+        return CommonResult.success(service.queryPopularizations(popularizations));
 
-        if (redisUtil.hasKey("allPopularizations")) {
-            return CommonResult.success(redisUtil.get("allPopularizations"));
-        } else {
-            redisUtil.set("allPopularizations", service.queryPopularizations(popularizations));
-            return CommonResult.success(redisUtil.get("allPopularizations"));
-        }
     }
 
     @ApiOperation("创建科普信息")

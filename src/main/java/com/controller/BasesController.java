@@ -3,12 +3,17 @@ package com.controller;
 import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.RedisUtil;
+import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -37,5 +42,16 @@ public class BasesController {
             redisUtil.set("allBases", service.queryBases(),30);
         }
         return CommonResult.success(redisUtil.get("allBases"));
+    }
+
+    @ApiOperation("根据基地名模糊搜索基地信息")
+    @Action(description = "根据基地名模糊搜索基地信息")
+    @PostMapping("fuzzyQueryBases")
+    public CommonResult fuzzyQueryBases(@Validated @RequestBody QueryBasesVo basesVo, BindingResult result){
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        return CommonResult.success(service.fuzzyQueryBases(basesVo));
+
     }
 }

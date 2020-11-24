@@ -81,11 +81,14 @@ public class UserController {
 
     }
 
-    @ApiOperation("根据用户名修改用户信息")
-    @Action(description = "根据用户名修改用户信息")
-    @PostMapping("/updateUserByUserName")
-    public CommonResult updateUserByUserName(@ApiParam("输入用户名") @RequestBody User user) {
+    @ApiOperation("修改用户信息")
+    @Action(description = "修改用户信息")
+    @PostMapping("/updateUserInfo")
+    public CommonResult updateUserByUserName(@Validated @RequestBody User user, BindingResult result) {
 
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
         user.setUser_updatetime(TimeUtils.getNowTime());
         service.updateUserByUserName(user);
         return CommonResult.success("修改成功");
@@ -126,8 +129,8 @@ public class UserController {
 
     @ApiOperation("发送邮箱验证码")
     @Action(description = "发送邮箱验证码")
-    @PostMapping("verifyMail")
-    public CommonResult verifyMail(@Validated @RequestBody VerifyMailVo user, BindingResult result){
+    @PostMapping("/verifyMail")
+    public CommonResult verifyMail(@Validated @RequestBody VerifyMailVo user, BindingResult result) {
 
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());

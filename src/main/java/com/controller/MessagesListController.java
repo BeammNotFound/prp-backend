@@ -38,8 +38,8 @@ public class MessagesListController {
         //存入redis
         if (redisUtil.hasKey("allMessages")) {
             return CommonResult.success(redisUtil.get("allMessages"));
-        }else {
-            redisUtil.set("allMessages", messagesListService.allMessages(),0);
+        } else {
+            redisUtil.set("allMessages", messagesListService.allMessages(), 0);
         }
         return CommonResult.success(redisUtil.get("allMessages"));
     }
@@ -56,7 +56,7 @@ public class MessagesListController {
         messages.setM_updatetime(TimeUtils.getNowTime());
         messages.setM_pv(1);
         messagesListService.createMessage(messages);
-        redisUtil.set("allMessages",messagesListService.allMessages());
+        redisUtil.set("allMessages", messagesListService.allMessages());
         return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getM_title());
     }
 
@@ -69,5 +69,21 @@ public class MessagesListController {
             return CommonResult.success("查不到内容呢 QAQ ,检查一下搜索内容~");
         }
         return CommonResult.success(list);
+    }
+
+    @ApiOperation("删除资讯")
+    @Action(description = "删除资讯")
+    @PostMapping("deleteMessageById")
+    public CommonResult deleteMessageById(@RequestBody Messages messages) {
+
+        Integer id = messages.getM_id();
+
+        if ("null".equals(id) || "0".equals(id) || id <= 0) {
+
+            return CommonResult.validateFailed("请输入资讯id");
+        }
+        redisUtil.del("allMessages");
+        messagesListService.deleteMessageById(messages);
+        return CommonResult.success("删除成功，删除标题为：" + messages.getM_title());
     }
 }

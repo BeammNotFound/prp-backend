@@ -30,4 +30,10 @@
         order by m_createtime desc;
     </select>
 
+    <delete id="deleteMessageById" parameterType="com.pojo.Messages">
+		delete
+		from messages
+		where m_id=#{m_id}
+	</delete>
+
 </mapper>

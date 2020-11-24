@@ -28,4 +28,9 @@ public class MessagesListImpl implements MessagesListService {
     public List<Messages> fuzzyQueryMessages(Messages messages) {
         return messagesListMapper.fuzzyQueryMessages(messages);
     }
+
+    @Override
+    public void deleteMessageById(Messages messages) {
+        messagesListMapper.deleteMessageById(messages);
+    }
 }
