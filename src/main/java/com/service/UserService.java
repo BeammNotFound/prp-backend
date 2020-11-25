@@ -3,6 +3,7 @@ package com.service;
 import com.pojo.User;
 import com.pojo.vo.CreateUserVo;
 import com.pojo.vo.ForgetPasswordVo;
+import com.pojo.vo.UserApplicationVo;
 
 import java.util.List;
 
@@ -12,5 +13,6 @@ public interface UserService{
     void forgetPassword(ForgetPasswordVo user);
     boolean verifyPassword(User user);
     void updateUserByUserName(User user);
+    Boolean userApplication(UserApplicationVo applicationVo);
 
 }

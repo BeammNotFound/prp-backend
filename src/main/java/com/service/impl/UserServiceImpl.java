@@ -4,6 +4,7 @@ import com.mapper.UserMapper;
 import com.pojo.User;
 import com.pojo.vo.CreateUserVo;
 import com.pojo.vo.ForgetPasswordVo;
+import com.pojo.vo.UserApplicationVo;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserByUserName(User user) {
         mapper.updateUserByUserName(user);
+    }
+
+    @Override
+    public Boolean userApplication(UserApplicationVo applicationVo) {
+        if (applicationVo.getB_population() - applicationVo.getB_joinPopulation() <= 0 || applicationVo.getB_status() != 1) {
+            return false;
+        }
+        mapper.userApplication(applicationVo);
+        return true;
     }
 
     @Override

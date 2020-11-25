@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
@@ -35,6 +37,13 @@ public class Bases {
     @NotBlank(message = "报名人数不能为空")
     @ApiModelProperty("报名人数")
     private Integer b_population;
+
+    @ApiModelProperty("基地的联系人姓名")
+    private String b_contacts;
+    @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$",message = "手机号格式不正确")
+    private String b_phone;
+    @Email(message = "邮箱格式不正确")
+    private String b_mail;
 
     @JsonIgnore
     private Date b_createtime;

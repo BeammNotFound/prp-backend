@@ -3,6 +3,7 @@ package com.mapper;
 import com.pojo.User;
 import com.pojo.vo.CreateUserVo;
 import com.pojo.vo.ForgetPasswordVo;
+import com.pojo.vo.UserApplicationVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,6 @@ public interface UserMapper {
     void createUser(CreateUserVo user);
     void forgetPassword(ForgetPasswordVo user);
     void updateUserByUserName(User user);
+    void userApplication(UserApplicationVo applicationVo);
 }
 

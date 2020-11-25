@@ -18,4 +18,16 @@
         </if>
     </select>
 
+    <delete id="delBases" parameterType="com.pojo.vo.DelBasesVo">
+        delete
+		from bases
+		where b_id = #{b_id}
+    </delete>
+
+    <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="Integer">
+        select *
+        from bases
+        where b_id = #{b_id}
+    </select>
+
 </mapper>
