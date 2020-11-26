@@ -2,9 +2,7 @@ package com.service.impl;
 
 import com.mapper.UserMapper;
 import com.pojo.User;
-import com.pojo.vo.CreateUserVo;
-import com.pojo.vo.ForgetPasswordVo;
-import com.pojo.vo.UserApplicationVo;
+import com.pojo.vo.*;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +43,16 @@ public class UserServiceImpl implements UserService {
         }
         mapper.userApplication(applicationVo);
         return true;
+    }
+
+    @Override
+    public User queryUserByName(String user_name) {
+        return mapper.queryUserByName(user_name);
+    }
+
+    @Override
+    public QueryUserApplication queryUserApplication(QueryUserApplication queryUserApplication) {
+        return mapper.queryUserApplication(queryUserApplication);
     }
 
     @Override

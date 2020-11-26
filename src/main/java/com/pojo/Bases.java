@@ -1,6 +1,7 @@
 package com.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
@@ -47,4 +48,7 @@ public class Bases {
 
     @JsonIgnore
     private Date b_createtime;
+
+    private Date b_endtime;
+
 }

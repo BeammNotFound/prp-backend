@@ -1,9 +1,7 @@
 package com.service;
 
 import com.pojo.User;
-import com.pojo.vo.CreateUserVo;
-import com.pojo.vo.ForgetPasswordVo;
-import com.pojo.vo.UserApplicationVo;
+import com.pojo.vo.*;
 
 import java.util.List;
 
@@ -14,5 +12,10 @@ public interface UserService{
     boolean verifyPassword(User user);
     void updateUserByUserName(User user);
     Boolean userApplication(UserApplicationVo applicationVo);
+
+    User queryUserByName(String user_name);
+
+    QueryUserApplication queryUserApplication(QueryUserApplication queryUserApplication);
+
 
 }

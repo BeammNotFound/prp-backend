@@ -72,4 +72,18 @@
 
     </update>
 
+    <select id="queryUserByName" parameterType="String" resultType="com.pojo.User">
+        select *
+        from user_info
+        where user_name = #{user_name}
+    </select>
+
+
+    <select id="queryUserApplication" resultType="com.pojo.vo.QueryUserApplication"
+            parameterType="com.pojo.vo.QueryUserApplication">
+        select *
+        from user_info,bases
+        where user_name = #{user_name} and b_id = user_application
+    </select>
+
 </mapper>
