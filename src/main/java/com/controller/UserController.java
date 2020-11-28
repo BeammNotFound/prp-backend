@@ -36,10 +36,10 @@ public class UserController {
     private BasesService basesService;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
-    RedisUtil redisUtil;
+    private RedisUtil redisUtil;
 
     @ApiOperation("查询全部用户信息")
     @Action(description = "查询全部用户信息")

@@ -12,7 +12,7 @@ import java.util.List;
 public class PopularizationsServiceImpl implements PopularizationsService {
 
     @Autowired
-    PopularizationsMapper mapper;
+    private PopularizationsMapper mapper;
 
     @Override
     public List<Popularizations> queryPopularizations(Popularizations popularizations) {

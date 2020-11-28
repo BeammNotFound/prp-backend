@@ -25,13 +25,13 @@ import java.util.List;
 public class PopularizationsController {
 
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
-    RedisUtil redisUtil;
+    private RedisUtil redisUtil;
 
     @Autowired
-    PopularizationsService service;
+    private PopularizationsService service;
 
     @ApiOperation("查询科普列表")
     @Action(description = "查询科普列表")

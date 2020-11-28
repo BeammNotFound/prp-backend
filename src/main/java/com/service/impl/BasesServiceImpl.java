@@ -14,7 +14,7 @@ import java.util.List;
 public class BasesServiceImpl implements BasesService {
 
     @Autowired
-    BasesMapper basesMapper;
+    private BasesMapper basesMapper;
 
     @Override
     public List<Bases> queryBases() {

@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class MessagesListImpl implements MessagesListService {
     @Autowired
-    MessagesListMapper messagesListMapper;
+    private MessagesListMapper messagesListMapper;
 
     @Override
     public List<Messages> allMessages() {

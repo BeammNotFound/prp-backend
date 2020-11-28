@@ -16,7 +16,7 @@ import java.util.Map;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    LoginMapper loginMapper;
+    private LoginMapper loginMapper;
 
     @Override
     public Map<String, Object> login(LoginVo user) {

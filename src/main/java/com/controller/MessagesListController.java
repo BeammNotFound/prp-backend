@@ -22,13 +22,13 @@ import java.util.List;
 public class MessagesListController {
 
     @Autowired
-    MessagesListService messagesListService;
+    private MessagesListService messagesListService;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
-    RedisUtil redisUtil;
+    private RedisUtil redisUtil;
 
     @ApiOperation("获取全部资讯列表")
     @Action(description = "获取全部资讯列表")

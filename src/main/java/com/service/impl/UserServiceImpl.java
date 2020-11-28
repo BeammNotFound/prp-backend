@@ -14,7 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserMapper mapper;
+    private UserMapper mapper;
 
     @Override
     public List<User> queryUserList() {

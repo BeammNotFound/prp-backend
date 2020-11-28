@@ -25,10 +25,10 @@ public class LoginController {
     private LoginService loginService;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
-    RedisUtil redisUtil;
+    private RedisUtil redisUtil;
 
 
     @ApiOperation("验证用户登录信息")

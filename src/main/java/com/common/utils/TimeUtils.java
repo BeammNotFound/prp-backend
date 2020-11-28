@@ -1,7 +1,7 @@
 package com.common.utils;
 
 
-import com.opensymphony.oscache.util.StringUtil;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -216,10 +216,10 @@ public class TimeUtils {
      */
     public static boolean isValidDate(String dateString, String dateFormatPattern) {
 
-        // 长度校验追加 窦彬 2015/3/17 begin
-        if (StringUtil.isEmpty(dateString) || StringUtil.isEmpty(dateFormatPattern)) {
-            return false;
-        }
+//        // 长度校验追加 窦彬 2015/3/17 begin
+//        if (StringUtil.isEmpty(dateString) || StringUtil.isEmpty(dateFormatPattern)) {
+//            return false;
+//        }
 
         if (dateString.length() != dateFormatPattern.length()) {
             return false;
