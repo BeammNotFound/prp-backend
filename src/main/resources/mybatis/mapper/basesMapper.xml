@@ -30,5 +30,23 @@
         where b_id = #{b_id}
     </select>
 
+    <select id="queryAPList" resultType="com.pojo.vo.AdoptionPets" parameterType="Integer">
+        select *
+        from adoption_pets
+        where ap_base = #{ap_base}
+    </select>
+
+
+
+
+
+
+    <select id="queryBasesImagesById" resultType="com.pojo.BasesImages" parameterType="java.lang.Integer">
+        select *
+        from bases_images
+        where bi_base = #{bi_base}
+    </select>
+
+
 
 </mapper>

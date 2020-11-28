@@ -31,7 +31,6 @@ public class BackgroundServiceImpl implements BackgroundService {
             size = allBackground.size();
         }
         int i_id = new Random().nextInt(size) + 1;
-        System.out.println("id为:" + i_id);
         return backgroundMapper.queryImageById(i_id);
     }
 

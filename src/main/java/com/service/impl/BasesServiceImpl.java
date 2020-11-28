@@ -2,6 +2,8 @@ package com.service.impl;
 
 import com.mapper.BasesMapper;
 import com.pojo.Bases;
+import com.pojo.BasesImages;
+import com.pojo.vo.AdoptionPets;
 import com.pojo.vo.DelBasesVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
@@ -34,5 +36,15 @@ public class BasesServiceImpl implements BasesService {
     @Override
     public Bases queryBasesById(Integer b_id) {
         return basesMapper.queryBasesById(b_id);
+    }
+
+    @Override
+    public List<AdoptionPets> queryAPList(Integer ap_base) {
+        return basesMapper.queryAPList(ap_base);
+    }
+
+    @Override
+    public List<BasesImages> queryBasesImagesById(Integer bi_base) {
+        return basesMapper.queryBasesImagesById(bi_base);
     }
 }

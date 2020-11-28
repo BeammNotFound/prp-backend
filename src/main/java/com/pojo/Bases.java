@@ -30,7 +30,7 @@ public class Bases {
     @ApiModelProperty("基地状态：1为可报名，2为不可报名（已满）")
     private Integer b_status;
 
-    private String b_image;
+    private String b_icon;
 
     @ApiModelProperty("参加人数")
     private Integer b_joinPopulation;

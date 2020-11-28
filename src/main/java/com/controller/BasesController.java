@@ -8,7 +8,9 @@ import com.pojo.vo.DelBasesVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.BindingResult;
@@ -70,5 +72,29 @@ public class BasesController {
         service.delBases(delBasesVo);
         redisUtil.del("allBases");
         return CommonResult.success("删除成功");
+    }
+
+    @ApiOperation("根据基地id查询领养宠物")
+    @Action(description = "根据基地id查询领养宠物")
+    @PostMapping("queryAPList")
+    public CommonResult queryAPList(@ApiParam("基地id") @RequestBody Integer ap_base) {
+
+        if (ap_base == null) {
+            return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
+        }
+        return CommonResult.success(service.queryAPList(ap_base));
+
+    }
+
+
+    @ApiOperation("根据基地id查询基地图片")
+    @Action(description = "根据基地id查询基地图片")
+    @PostMapping("queryBasesImagesById")
+    public CommonResult queryBasesImagesById(@ApiParam("基地id") @RequestBody Integer bi_base){
+        if (bi_base == null) {
+            return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
+        }
+        return CommonResult.success(service.queryBasesImagesById(bi_base));
+
     }
 }

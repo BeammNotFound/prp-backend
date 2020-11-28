@@ -80,7 +80,7 @@
 
 
     <select id="queryUserApplication" resultType="com.pojo.vo.QueryUserApplication"
-            parameterType="com.pojo.vo.QueryUserApplication">
+            parameterType="java.lang.String">
         select *
         from user_info,bases
         where user_name = #{user_name} and b_id = user_application

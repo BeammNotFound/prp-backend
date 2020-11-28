@@ -20,7 +20,7 @@ public class QueryUserApplication {
     private String user_phone;
 
 
-    private String b_image;
+    private String b_icon;
     private String b_id;
     private String b_name;
     private Date b_createtime;
