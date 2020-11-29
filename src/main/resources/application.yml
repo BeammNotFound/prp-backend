@@ -24,4 +24,4 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 
 server:
-  port: 8081
+  port: 8080

@@ -2,7 +2,7 @@
 
 ### 	技术规划
 
-后台技术：SpringBoot + Mybatis
+后台技术：SpringBoot + Mybatis集成Swagger2，Redis，Validated，SpringBootAOP环绕通知，日志审计
 
 前台：HTML+CSS+JS
 
