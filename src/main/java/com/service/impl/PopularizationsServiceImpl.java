@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.utils.RedisUtil;
 import com.mapper.PopularizationsMapper;
 import com.pojo.Popularizations;
 import com.service.PopularizationsService;
@@ -14,6 +15,9 @@ public class PopularizationsServiceImpl implements PopularizationsService {
     @Autowired
     private PopularizationsMapper mapper;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
     public List<Popularizations> queryPopularizations(Popularizations popularizations) {
         return mapper.queryPopularizationsList(popularizations);
@@ -21,7 +25,9 @@ public class PopularizationsServiceImpl implements PopularizationsService {
 
     @Override
     public void createPopularization(Popularizations popularizations) {
+
         mapper.createPopularization(popularizations);
+        redisUtil.set("allPopularizations", mapper.queryPopularizationsList(popularizations));
     }
 
     @Override

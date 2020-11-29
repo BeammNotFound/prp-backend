@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import com.common.utils.RedisUtil;
+import com.common.utils.TimeUtils;
 import com.mapper.UserMapper;
 import com.pojo.User;
 import com.pojo.vo.*;
@@ -16,19 +18,45 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper mapper;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
-    public List<User> queryUserList() {
-        return mapper.queryUserList();
+    public Object queryUserList() {
+        if (redisUtil.hasKey("allUsers"))
+            return redisUtil.get("allUsers");
+        else
+            redisUtil.set("allUsers", mapper.queryUserList(), 30);
+            return redisUtil.get("allUsers");
     }
 
     @Override
-    public void createUser(CreateUserVo user) {
-        mapper.createUser(user);
+    public Boolean createUser(CreateUserVo user) {
+        String mail = user.getUser_mail();
+
+        if (user.getMail_code().equals(redisUtil.get(mail))) {
+            user.setUser_updatetime(TimeUtils.getNowTime());
+            user.setUser_createtime(TimeUtils.getNowTime());
+            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
+            user.setUser_name(mail);
+            user.setUser_type(1);
+
+            redisUtil.del(mail);
+            mapper.createUser(user);
+            return true;
+        }
+        return false;
+
     }
 
     @Override
-    public void forgetPassword(ForgetPasswordVo user) {
-        mapper.forgetPassword(user);
+    public Boolean forgetPassword(ForgetPasswordVo user) {
+        if (user.getMail_code().equals(redisUtil.get(user.getUser_mail()))) {
+            user.setUser_updatetime(TimeUtils.getNowTime());
+            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
+            return true;
+        }
+        return false;
     }
 
     @Override

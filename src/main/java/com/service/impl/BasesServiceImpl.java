@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.utils.RedisUtil;
 import com.mapper.BasesMapper;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
@@ -18,9 +19,16 @@ public class BasesServiceImpl implements BasesService {
     @Autowired
     private BasesMapper basesMapper;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
-    public List<Bases> queryBases() {
-        return basesMapper.queryBases();
+    public Object queryBases() {
+        if (redisUtil.hasKey("allBases"))
+            return redisUtil.get("allBases");
+        else
+            redisUtil.set("allBases", basesMapper.queryBases(),30);
+            return redisUtil.get("allBases");
     }
 
     @Override
@@ -30,6 +38,8 @@ public class BasesServiceImpl implements BasesService {
 
     @Override
     public void delBases(DelBasesVo basesVo) {
+        if (redisUtil.hasKey("allBases"))
+            redisUtil.del("allBases");
         basesMapper.delBases(basesVo);
     }
 

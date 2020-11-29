@@ -24,24 +24,11 @@ public class MessagesListController {
     @Autowired
     private MessagesListService messagesListService;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedisUtil redisUtil;
-
     @ApiOperation("获取全部资讯列表")
     @Action(description = "获取全部资讯列表")
     @GetMapping("/queryMessages")
     public CommonResult allMessages() {
-
-        //存入redis
-        if (redisUtil.hasKey("allMessages")) {
-            return CommonResult.success(redisUtil.get("allMessages"));
-        } else {
-            redisUtil.set("allMessages", messagesListService.allMessages(), 0);
-        }
-        return CommonResult.success(redisUtil.get("allMessages"));
+        return CommonResult.success(messagesListService.allMessages());
     }
 
 
@@ -56,7 +43,7 @@ public class MessagesListController {
         messages.setM_updatetime(TimeUtils.getNowTime());
         messages.setM_pv(1);
         messagesListService.createMessage(messages);
-        redisUtil.set("allMessages", messagesListService.allMessages());
+
         return CommonResult.success("添加资讯成功！资讯标题为：" + messages.getM_title());
     }
 
@@ -82,7 +69,6 @@ public class MessagesListController {
 
             return CommonResult.validateFailed("请输入资讯id");
         }
-        redisUtil.del("allMessages");
         messagesListService.deleteMessageById(messages);
         return CommonResult.success("删除成功，删除标题为：" + messages.getM_title());
     }

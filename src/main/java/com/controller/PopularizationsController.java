@@ -25,12 +25,6 @@ import java.util.List;
 public class PopularizationsController {
 
     @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedisUtil redisUtil;
-
-    @Autowired
     private PopularizationsService service;
 
     @ApiOperation("查询科普列表")
@@ -55,7 +49,7 @@ public class PopularizationsController {
         popularizations.setP_pv(1);
 
         service.createPopularization(popularizations);
-        redisUtil.set("allPopularizations", service.queryPopularizations(popularizations));
+
         return CommonResult.success("创建成功，标题为：" + popularizations.getP_title());
 
     }

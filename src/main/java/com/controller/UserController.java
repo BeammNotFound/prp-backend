@@ -35,24 +35,12 @@ public class UserController {
     @Autowired
     private BasesService basesService;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedisUtil redisUtil;
-
     @ApiOperation("查询全部用户信息")
     @Action(description = "查询全部用户信息")
     @GetMapping("/queryUserList")
     public CommonResult queryUserList() {
 
-        //存入redis
-        if (redisUtil.hasKey("allUsers")) {
-            return CommonResult.success(redisUtil.get("allUsers"));
-        }else {
-            redisUtil.set("allUsers", userService.queryUserList(),30);
-        }
-        return CommonResult.success(redisUtil.get("allUsers"));
+        return CommonResult.success(userService.queryUserList());
     }
 
     @ApiOperation("添加用户")
@@ -64,20 +52,11 @@ public class UserController {
         if (result.hasErrors()) {
            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        String mail = user.getUser_mail();
-        user.setUser_name(mail);
 
-        //判断验证码
-        if (user.getMail_code().equals(redisUtil.get(mail))) {
-            user.setUser_updatetime(TimeUtils.getNowTime());
-            user.setUser_createtime(TimeUtils.getNowTime());
-            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
+        if (userService.queryUserByName(user.getUser_name()).equals(user.getUser_mail()))
+            return CommonResult.validateFailed("您已经注册过了，请直接登陆");
 
-            if (user.getUser_type() == null){
-                user.setUser_type(1);
-            }
-            userService.createUser(user);
-            redisUtil.del(mail);
+        if (userService.createUser(user)) {
             return CommonResult.success("添加用户成功,昵称为：" + user.getUser_nickname());
         }
         return CommonResult.validateFailed("邮箱验证失败");
@@ -118,13 +97,10 @@ public class UserController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        if (user.getMail_code().equals(redisUtil.get(user.getUser_mail()))) {
-            user.setUser_updatetime(TimeUtils.getNowTime());
-            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
-
-            userService.forgetPassword(user);
+        if (userService.forgetPassword(user)) {
             return CommonResult.success("修改密码成功");
         }
+
 
         return CommonResult.validateFailed("修改密码失败，请输入正确的验证码");
 

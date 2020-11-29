@@ -17,8 +17,6 @@ public class LoginVo {
 
     private String user_nickname;
 
-    private String user_type;
-
     private String tooken;
 
 }

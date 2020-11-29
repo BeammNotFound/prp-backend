@@ -24,13 +24,6 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedisUtil redisUtil;
-
-
     @ApiOperation("验证用户登录信息")
     @Action(description = "验证用户登录信息")
     @PostMapping("/login")
@@ -45,9 +38,7 @@ public class LoginController {
 
         //如果用户密码对比成功
         if ((Boolean) loginMap.get("flag")) {
-            User user_cookie = (User) loginMap.get("user_cookie");
-            redisUtil.set("user_tooken", user_cookie.getUser_tooken());
-            return CommonResult.success(user_cookie);
+            return CommonResult.success(loginMap.get("user_cookie"));
         }
         return CommonResult.validateFailed("用户名密码错误");
 
