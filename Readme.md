@@ -2,10 +2,7 @@
 
 ### 	技术规划
 
-后台技术：SpringBoot + Mybatis集成Swagger2，Redis，Validated，SpringBootAOP环绕通知，日志审计
-
-前台：HTML+CSS+JS
-
+后台：SpringBoot + Mybatis集成Swagger2，Redis，Validated，SpringBootAOP环绕通知，日志审计
 
 
 ### 	开发人员
@@ -22,9 +19,3 @@
 | ------ | ----------------- | ----------- |
 | Weirdo | 1223697311@qq.com | 18568275991 |
 | HaHa   | 604520242@qq.com  | 15838310695 |
-
-### 组织
-
-郑州西亚斯大学
-
-​	Nice工作室
