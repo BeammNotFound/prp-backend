@@ -2,7 +2,9 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.pojo.AdoptionPets;
 import com.pojo.Bases;
+import com.pojo.BasesImages;
 import com.pojo.vo.DelBasesVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
@@ -61,7 +63,9 @@ public class BasesController {
     @ApiOperation("根据基地id查询领养宠物")
     @Action(description = "根据基地id查询领养宠物")
     @PostMapping("queryAPList")
-    public CommonResult queryAPList(@ApiParam("基地id") @RequestBody Integer ap_base) {
+    public CommonResult queryAPList(@ApiParam("基地id") @RequestBody AdoptionPets adoptionPets) {
+
+        Integer ap_base = adoptionPets.getAp_base();
 
         if (ap_base == null) {
             return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
@@ -74,7 +78,9 @@ public class BasesController {
     @ApiOperation("根据基地id查询基地图片")
     @Action(description = "根据基地id查询基地图片")
     @PostMapping("queryBasesImagesById")
-    public CommonResult queryBasesImagesById(@ApiParam("基地id") @RequestBody Integer bi_base){
+    public CommonResult queryBasesImagesById(@ApiParam("基地id") @RequestBody BasesImages basesImages){
+
+        Integer bi_base = basesImages.getBi_base();
         if (bi_base == null) {
             return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
         }

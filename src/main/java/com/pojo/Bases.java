@@ -31,6 +31,7 @@ public class Bases {
     private Integer b_status;
 
     private String b_icon;
+    private String b_image;
 
     @ApiModelProperty("参加人数")
     private Integer b_joinPopulation;

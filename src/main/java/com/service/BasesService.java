@@ -2,7 +2,7 @@ package com.service;
 
 import com.pojo.Bases;
 import com.pojo.BasesImages;
-import com.pojo.vo.AdoptionPets;
+import com.pojo.AdoptionPets;
 import com.pojo.vo.DelBasesVo;
 import com.pojo.vo.QueryBasesVo;
 

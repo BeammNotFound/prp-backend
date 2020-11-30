@@ -30,10 +30,16 @@
         where b_id = #{b_id}
     </select>
 
-    <select id="queryAPList" resultType="com.pojo.vo.AdoptionPets" parameterType="Integer">
+    <select id="queryAPList" resultType="com.pojo.AdoptionPets" parameterType="Integer">
         select *
         from adoption_pets
         where ap_base = #{ap_base}
+    </select>
+
+    <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="Integer">
+        select *
+        from base_messages
+        where bm_base_id = #{bm_base_id}
     </select>
 
 

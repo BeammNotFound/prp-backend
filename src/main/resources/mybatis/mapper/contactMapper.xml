@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.ContactMapper">
+    <insert id="createContact" parameterType="com.pojo.Contact">
+        insert into
+        contact(t_user_id,t_words,t_createtime)
+        values(#{t_user_id},#{t_words},#{t_createtime});
+    </insert>
+</mapper>

@@ -12,7 +12,6 @@ import java.util.Date;
 public class BasesImages {
     private Integer bi_id;
     private Integer bi_base;
-    private String b_image;
+    private String bi_image;
     private Date bi_createtime;
-
 }
