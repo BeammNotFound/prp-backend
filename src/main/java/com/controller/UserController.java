@@ -3,9 +3,8 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.RedisUtil;
-import com.common.utils.TimeUtils;
 import com.common.utils.SetMail;
+import com.common.utils.TimeUtils;
 import com.pojo.Bases;
 import com.pojo.User;
 import com.pojo.vo.*;
@@ -15,12 +14,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "用户管理接口")
 @RestController
@@ -76,15 +76,20 @@ public class UserController {
         return CommonResult.success("修改成功");
     }
 
-    @ApiOperation("修改密码")
-    @Action(description = "修改密码")
-    @PostMapping("/updatePassword")
-    public CommonResult updatePassword(@ApiParam("输入用户名、原密码和新密码") @RequestBody User user) {
-        user.setUser_updatetime(TimeUtils.getNowTime());
-        Boolean flag = userService.verifyPassword(user);
-        if (flag) {
-            user.setUser_password(DigestUtils.md5DigestAsHex(user.getUser_password().getBytes()));
-            userService.updateUserByUserName(user);
+    @ApiOperation("根据用户名修改密码")
+    @Action(description = "根据用户名修改密码")
+    @PostMapping("/updatePasswordByUserName")
+    public CommonResult updatePassword(@Validated @RequestBody UpdatePasswordVo updatePasswordVo,BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        if (userService.verifyPassword(updatePasswordVo)) {
+            if (updatePasswordVo.getEnter_password().equals(updatePasswordVo.getUser_password())) {
+                return CommonResult.validateFailed("原密码和新密码不能相同");
+            }
+            updatePasswordVo.setUser_password(DigestUtils.md5DigestAsHex(updatePasswordVo.getUser_password().getBytes()));
+            updatePasswordVo.setUser_updatetime(TimeUtils.getNowTime());
+            userService.updatePasswordByUserName(updatePasswordVo);
             return CommonResult.success("修改密码成功！");
         }
         return CommonResult.validateFailed("原密码不正确！");
@@ -100,8 +105,6 @@ public class UserController {
         if (userService.forgetPassword(user)) {
             return CommonResult.success("修改密码成功");
         }
-
-
         return CommonResult.validateFailed("修改密码失败，请输入正确的验证码");
 
     }
@@ -119,7 +122,7 @@ public class UserController {
             return CommonResult.validateFailed("您已经报过名啦");
         }
 
-        Bases bases = basesService.queryBasesById(userApplicationVo.getB_id());
+        Bases bases = basesService.queryBasesById(userApplicationVo.getBase_id());
         userApplicationVo.setB_joinPopulation(bases.getB_joinPopulation());
         userApplicationVo.setB_population(bases.getB_population());
         userApplicationVo.setB_status(bases.getB_status());
@@ -134,15 +137,15 @@ public class UserController {
     }
 
     @ApiOperation("查询用户报名志愿者接口")
-    @Action(description = "查询用户报名志愿者接口")
+    @Action(description = "根据用户id查询用户报名志愿者接口")
     @PostMapping("queryUserApplication")
-    public CommonResult queryUserApplication(@Validated @RequestBody QueryUserApplication queryUserApplication,BindingResult result) {
+    public CommonResult queryUserApplication(@Validated @RequestBody UserIdVo userIdVo,BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        QueryUserApplication application = userService.queryUserApplication(queryUserApplication);
+        QueryUserApplication application = userService.queryUserApplication(userIdVo.getUser_id());
         if (application == null) {
-            return CommonResult.validateFailed("你没有参加任何活动呢");
+            return CommonResult.validateFailed("你没有参加任何志愿者活动呢");
         }
         return CommonResult.success(application);
     }
@@ -158,5 +161,6 @@ public class UserController {
         setMail.sendMail(user.getUser_mail());
         return CommonResult.success("邮箱发送成功");
     }
+
 
 }

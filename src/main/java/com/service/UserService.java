@@ -7,13 +7,16 @@ public interface UserService{
     Object queryUserList();
     Boolean createUser(CreateUserVo user);
     Boolean forgetPassword(ForgetPasswordVo user);
-    boolean verifyPassword(User user);
+    boolean verifyPassword(UpdatePasswordVo updatePasswordVo);
     void updateUserByUserName(User user);
+
+    void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
+
     Boolean userApplication(UserApplicationVo applicationVo);
 
     User queryUserByName(String user_name);
 
-    QueryUserApplication queryUserApplication(QueryUserApplication queryUserApplication);
+    QueryUserApplication queryUserApplication(Integer user_id);
 
 
 }

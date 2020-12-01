@@ -2,10 +2,11 @@ package com.service.impl;
 
 import com.common.utils.RedisUtil;
 import com.mapper.BasesMapper;
+import com.pojo.AdoptionPets;
+import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
-import com.pojo.AdoptionPets;
-import com.pojo.vo.DelBasesVo;
+import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,24 +38,29 @@ public class BasesServiceImpl implements BasesService {
     }
 
     @Override
-    public void delBases(DelBasesVo basesVo) {
+    public void delBases(BaseIdVo baseIdVo) {
         if (redisUtil.hasKey("allBases"))
             redisUtil.del("allBases");
-        basesMapper.delBases(basesVo);
+        basesMapper.delBases(baseIdVo);
     }
 
     @Override
-    public Bases queryBasesById(Integer b_id) {
-        return basesMapper.queryBasesById(b_id);
+    public Bases queryBasesById(Integer base_id) {
+        return basesMapper.queryBasesById(base_id);
     }
 
     @Override
-    public List<AdoptionPets> queryAPList(Integer ap_base) {
-        return basesMapper.queryAPList(ap_base);
+    public List<AdoptionPets> queryAPList(BaseIdVo baseIdVo) {
+        return basesMapper.queryAPList(baseIdVo);
     }
 
     @Override
-    public List<BasesImages> queryBasesImagesById(Integer bi_base) {
-        return basesMapper.queryBasesImagesById(bi_base);
+    public List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo) {
+        return basesMapper.queryBasesImagesById(baseIdVo);
+    }
+
+    @Override
+    public List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo) {
+        return basesMapper.queryBaseMessages(baseIdVo);
     }
 }

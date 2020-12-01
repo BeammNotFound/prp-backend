@@ -2,19 +2,19 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.pojo.AdoptionPets;
 import com.pojo.Bases;
-import com.pojo.BasesImages;
-import com.pojo.vo.DelBasesVo;
+import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -52,25 +52,23 @@ public class BasesController {
     @ApiOperation("删除基地")
     @Action(description = "删除基地")
     @PostMapping("delBases")
-    public CommonResult delBases(@Validated @RequestBody DelBasesVo delBasesVo, BindingResult result) {
+    public CommonResult delBases(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        service.delBases(delBasesVo);
+        service.delBases(baseIdVo);
         return CommonResult.success("删除成功");
     }
 
     @ApiOperation("根据基地id查询领养宠物")
     @Action(description = "根据基地id查询领养宠物")
     @PostMapping("queryAPList")
-    public CommonResult queryAPList(@ApiParam("基地id") @RequestBody AdoptionPets adoptionPets) {
+    public CommonResult queryAPList(@Validated @RequestBody BaseIdVo baseIdVo,BindingResult result) {
 
-        Integer ap_base = adoptionPets.getAp_base();
-
-        if (ap_base == null) {
-            return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
+        if (result.hasErrors()) {
+            CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        return CommonResult.success(service.queryAPList(ap_base));
+        return CommonResult.success(service.queryAPList(baseIdVo));
 
     }
 
@@ -78,13 +76,23 @@ public class BasesController {
     @ApiOperation("根据基地id查询基地图片")
     @Action(description = "根据基地id查询基地图片")
     @PostMapping("queryBasesImagesById")
-    public CommonResult queryBasesImagesById(@ApiParam("基地id") @RequestBody BasesImages basesImages){
-
-        Integer bi_base = basesImages.getBi_base();
-        if (bi_base == null) {
-            return CommonResult.validateFailed("能不能告诉我你点了拿个基地？");
+    public CommonResult queryBasesImagesById(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        return CommonResult.success(service.queryBasesImagesById(bi_base));
 
+        return CommonResult.success(service.queryBasesImagesById(baseIdVo));
+
+    }
+
+    @ApiOperation("根据基地id查询基地动态")
+    @Action(description = "根据基地id查询基地动态")
+    @PostMapping("queryBaseMessagesById")
+    public CommonResult queryBaseMessagesById(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+
+        return CommonResult.success(service.queryBaseMessages(baseIdVo));
     }
 }

@@ -18,39 +18,34 @@
         </if>
     </select>
 
-    <delete id="delBases" parameterType="com.pojo.vo.DelBasesVo">
+    <delete id="delBases" parameterType="com.pojo.vo.BaseIdVo">
         delete
 		from bases
-		where b_id = #{b_id}
+		where base_id = #{base_id}
     </delete>
 
-    <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="Integer">
+    <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="java.lang.Integer">
         select *
         from bases
-        where b_id = #{b_id}
+        where base_id = #{base_id}
     </select>
 
-    <select id="queryAPList" resultType="com.pojo.AdoptionPets" parameterType="Integer">
+    <select id="queryAPList" resultType="com.pojo.AdoptionPets" parameterType="com.pojo.vo.BaseIdVo">
         select *
         from adoption_pets
-        where ap_base = #{ap_base}
+        where base_id = #{base_id}
     </select>
 
-    <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="Integer">
+    <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="com.pojo.vo.BaseIdVo">
         select *
         from base_messages
-        where bm_base_id = #{bm_base_id}
+        where base_id = #{base_id}
     </select>
 
-
-
-
-
-
-    <select id="queryBasesImagesById" resultType="com.pojo.BasesImages" parameterType="java.lang.Integer">
+    <select id="queryBasesImagesById" resultType="com.pojo.BasesImages" parameterType="com.pojo.vo.BaseIdVo">
         select *
         from bases_images
-        where bi_base = #{bi_base}
+        where base_id = #{base_id}
     </select>
 
 

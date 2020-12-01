@@ -3,7 +3,7 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.pojo.Contact;
+import com.pojo.vo.CreateContactVo;
 import com.service.ContactService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,11 +24,11 @@ public class ContactController {
     @ApiOperation("创建留言")
     @Action(description = "创建留言")
     @PostMapping("CreateContact")
-    public CommonResult CreateContact(@Validated @RequestBody Contact contact, BindingResult result){
+    public CommonResult CreateContact(@Validated @RequestBody CreateContactVo contactVo, BindingResult result){
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        service.createContact(contact);
+        service.createContact(contactVo);
         return CommonResult.success("创建成功");
     }
 }

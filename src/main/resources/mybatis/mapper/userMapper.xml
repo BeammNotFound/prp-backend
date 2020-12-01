@@ -22,9 +22,9 @@
             <if test="user_nickname != null">
                 set user_nickname = #{user_nickname}
             </if>
-            <if test="user_password != null">
-                set user_password = #{user_password}
-            </if>
+<!--            <if test="user_password != null">-->
+<!--                set user_password = #{user_password}-->
+<!--            </if>-->
             <if test="user_phone != null">
                 set user_phone = #{user_phone}
             </if>
@@ -53,6 +53,14 @@
         where user_mail = #{user_mail}
     </update>
 
+    <update id="updatePasswordByUserName" parameterType="com.pojo.vo.UpdatePasswordVo">
+            update user_info
+            <if test="user_password != null">
+                set user_password = #{user_password}
+            </if>
+            where user_name = #{user_name}
+    </update>
+
     <update id="forgetPassword" parameterType="com.pojo.vo.ForgetPasswordVo">
         update user_info
         <if test="user_password != null">
@@ -72,7 +80,7 @@
 
     </update>
 
-    <select id="queryUserByName" parameterType="String" resultType="com.pojo.User">
+    <select id="queryUserByName" parameterType="java.lang.String" resultType="com.pojo.User">
         select *
         from user_info
         where user_name = #{user_name}
@@ -80,10 +88,10 @@
 
 
     <select id="queryUserApplication" resultType="com.pojo.vo.QueryUserApplication"
-            parameterType="java.lang.String">
+            parameterType="java.lang.Integer">
         select *
         from user_info,bases
-        where user_name = #{user_name} and b_id = user_application
+        where user_id = #{user_id} and base_id = user_application
     </select>
 
 </mapper>

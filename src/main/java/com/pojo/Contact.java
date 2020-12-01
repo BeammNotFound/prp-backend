@@ -15,7 +15,7 @@ import java.util.Date;
 public class Contact {
     private Integer t_id;
     @NotNull(message = "用户名不能为空")
-    private Integer t_user_id;
+    private Integer user_id;
     @NotNull(message = "留言内容不能为空")
     private String t_words;
     private Date t_createtime;

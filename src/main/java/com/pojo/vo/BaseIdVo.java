@@ -6,10 +6,14 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author BeamStark
+ * @Version 0.1 2020/12
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DelBasesVo{
-    @NotNull(message = "要删除的基地id不能为空")
-    private Integer b_id;
+public class BaseIdVo {
+    @NotNull(message = "基地id不能为空")
+    private Integer base_id;
 }

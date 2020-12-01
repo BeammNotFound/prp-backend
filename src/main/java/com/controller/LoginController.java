@@ -2,25 +2,23 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.RedisUtil;
-import com.pojo.User;
 import com.pojo.vo.LoginVo;
 import com.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.Map;
 
 @Api(tags = "登录接口")
 @RestController
 public class LoginController {
-
     @Autowired
     private LoginService loginService;
 

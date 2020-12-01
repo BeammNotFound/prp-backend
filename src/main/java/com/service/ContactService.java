@@ -1,8 +1,8 @@
 package com.service;
 
-import com.pojo.Contact;
+import com.pojo.vo.CreateContactVo;
 
 public interface ContactService {
-    void createContact(Contact contact);
+    void createContact(CreateContactVo contactVo);
 
 }

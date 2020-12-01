@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -65,6 +63,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo) {
+        mapper.updatePasswordByUserName(updatePasswordVo);
+    }
+
+    @Override
     public Boolean userApplication(UserApplicationVo applicationVo) {
         if (applicationVo.getB_population() - applicationVo.getB_joinPopulation() <= 0 || applicationVo.getB_status() != 1) {
             return false;
@@ -79,19 +82,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public QueryUserApplication queryUserApplication(QueryUserApplication queryUserApplication) {
-        return mapper.queryUserApplication(queryUserApplication);
+    public QueryUserApplication queryUserApplication(Integer user_id) {
+        return mapper.queryUserApplication(user_id);
     }
 
     @Override
-    public boolean verifyPassword(User user) {
-        List<User> list = mapper.queryUserList();
+    public boolean verifyPassword(UpdatePasswordVo updatePasswordVo) {
 
         //密码效验
-        for (User u: list) {
-            if (DigestUtils.md5DigestAsHex(u.getUser_password().getBytes()).equals(DigestUtils.md5DigestAsHex(user.getEnter_password().getBytes()))) {
-                return true;
-            }
+        if (mapper.queryUserByName(updatePasswordVo.getUser_name()).getUser_password().equals(DigestUtils.md5DigestAsHex(updatePasswordVo.getEnter_password().getBytes()))) {
+            return true;
         }
         return false;
 

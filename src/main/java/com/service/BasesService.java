@@ -1,9 +1,10 @@
 package com.service;
 
+import com.pojo.AdoptionPets;
+import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
-import com.pojo.AdoptionPets;
-import com.pojo.vo.DelBasesVo;
+import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.QueryBasesVo;
 
 import java.util.List;
@@ -13,14 +14,15 @@ public interface BasesService {
 
     List<Bases> fuzzyQueryBases(QueryBasesVo bases);
 
-    void delBases(DelBasesVo basesVo);
+    void delBases(BaseIdVo baseIdVo);
 
-    Bases queryBasesById(Integer b_id);
+    Bases queryBasesById(Integer base_id);
 
-    List<AdoptionPets> queryAPList(Integer ap_base);
+    List<AdoptionPets> queryAPList(BaseIdVo baseIdVo);
 
-    List<BasesImages> queryBasesImagesById(Integer bi_base);
+    List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
 
+    List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
 
 
 }

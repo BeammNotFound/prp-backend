@@ -1,6 +1,5 @@
 package com.pojo.vo;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QueryUserApplication {
-    @NotBlank(message = "用户名不能为空")
-    private String user_name;
+    @NotBlank(message = "用户id不能为空")
+    private Integer user_id;
 
     private String user_realname;
     private Integer user_application;

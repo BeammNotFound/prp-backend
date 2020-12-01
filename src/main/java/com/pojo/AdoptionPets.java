@@ -2,7 +2,6 @@ package com.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import java.util.Date;
 @ApiModel("领养宠物实体类")
 public class AdoptionPets {
     private Integer ap_id;
-    private Integer ap_base;
+    private Integer base_id;
     private String ap_name;
     private String ap_age;
     private String ap_breed;

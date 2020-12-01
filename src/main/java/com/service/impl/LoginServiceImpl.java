@@ -2,7 +2,7 @@ package com.service.impl;
 
 import com.common.utils.AddLoginTooken;
 import com.common.utils.RedisUtil;
-import com.mapper.LoginMapper;
+import com.mapper.UserMapper;
 import com.pojo.User;
 import com.pojo.vo.LoginVo;
 import com.service.LoginService;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    private LoginMapper loginMapper;
+    private UserMapper userMapper;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
     public Map<String, Object> login(LoginVo user) {
 
         Map<String, Object> map = new HashMap<>();
-        User login = loginMapper.login(user);
+        User login = userMapper.queryUserByName(user.getUser_name());
 
         if (login == null) {
             map.put("flag", false);

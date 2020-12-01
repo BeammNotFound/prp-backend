@@ -1,10 +1,8 @@
 package com.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ApiModel("基地实体类")
 public class Bases {
-    private Integer b_id;
+    private Integer base_id;
 
     @NotBlank(message = "基地名不能为空")
     private String b_name;

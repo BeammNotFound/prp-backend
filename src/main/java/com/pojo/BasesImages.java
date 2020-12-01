@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class BasesImages {
     private Integer bi_id;
-    private Integer bi_base;
+    private Integer base_id;
     private String bi_image;
     private Date bi_createtime;
 }
