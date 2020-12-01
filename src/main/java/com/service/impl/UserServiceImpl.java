@@ -68,23 +68,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean userApplication(UserApplicationVo applicationVo) {
-        if (applicationVo.getB_population() - applicationVo.getB_joinPopulation() <= 0 || applicationVo.getB_status() != 1) {
-            return false;
-        }
-        mapper.userApplication(applicationVo);
-        return true;
-    }
-
-    @Override
     public User queryUserByName(String user_name) {
         return mapper.queryUserByName(user_name);
     }
 
-    @Override
-    public QueryUserApplication queryUserApplication(Integer user_id) {
-        return mapper.queryUserApplication(user_id);
-    }
 
     @Override
     public boolean verifyPassword(UpdatePasswordVo updatePasswordVo) {

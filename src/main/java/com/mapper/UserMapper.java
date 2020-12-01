@@ -14,10 +14,9 @@ public interface UserMapper {
     void createUser(CreateUserVo user);
     void forgetPassword(ForgetPasswordVo user);
     void updateUserByUserName(User user);
-    void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
-    void userApplication(UserApplicationVo applicationVo);
     User queryUserByName(String user_name);
-    QueryUserApplication queryUserApplication(Integer user_id);
+    void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
+
 
 }
 

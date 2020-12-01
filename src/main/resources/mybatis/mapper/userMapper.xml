@@ -72,11 +72,11 @@
     <update id="userApplication" parameterType="com.pojo.vo.UserApplicationVo">
 
         update bases,user_info
-        <if test="b_id != null || b_joinPopulation != null">
+        <if test="base_id != null || b_joinPopulation != null">
             set b_joinPopulation = b_joinPopulation + 1 ,
-                user_application = #{b_id}
+                user_application = #{base_id}
         </if>
-        where user_name = #{user_name} and b_id = #{b_id}
+        where user_name = #{user_name} and bases.base_id = #{base_id}
 
     </update>
 

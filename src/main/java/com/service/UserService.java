@@ -12,11 +12,6 @@ public interface UserService{
 
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
 
-    Boolean userApplication(UserApplicationVo applicationVo);
-
     User queryUserByName(String user_name);
-
-    QueryUserApplication queryUserApplication(Integer user_id);
-
 
 }
