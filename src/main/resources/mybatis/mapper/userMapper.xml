@@ -69,7 +69,7 @@
         where user_mail = #{user_mail}
     </update>
 
-    <update id="userApplication" parameterType="com.pojo.vo.UserApplicationVo">
+    <update id="userApplication" parameterType="com.pojo.Volunteer">
 
         update bases,user_info
         <if test="base_id != null || b_joinPopulation != null">
@@ -87,7 +87,7 @@
     </select>
 
 
-    <select id="queryUserApplication" resultType="com.pojo.vo.QueryUserApplication"
+    <select id="queryUserApplication" resultType="com.pojo.vo.QueryVolunteerByIdVo"
             parameterType="java.lang.Integer">
         select *
         from user_info,bases

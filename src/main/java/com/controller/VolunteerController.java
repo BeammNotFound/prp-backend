@@ -2,14 +2,10 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.TimeUtils;
-import com.pojo.Bases;
-import com.pojo.vo.QueryUserApplication;
-import com.pojo.vo.UserApplicationVo;
+import com.pojo.vo.QueryVolunteerByIdVo;
+import com.pojo.Volunteer;
 import com.pojo.vo.UserIdVo;
-import com.service.ApplicationsService;
-import com.service.BasesService;
-import com.service.UserService;
+import com.service.VolunteerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,45 +19,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author BeamStark
  * @Version 0.1 2020/12
  */
-@Api(tags = "志愿者/宠物领养 接口")
+@Api(tags = "志愿者接口")
 @RestController
-public class ApplicationsController {
+public class VolunteerController {
 
     @Autowired
-    private ApplicationsService applicationsService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private BasesService basesService;
-
+    private VolunteerService volunteerService;
 
     @ApiOperation("用户报名志愿者")
     @Action(description = "用户报名志愿者")
     @PostMapping("userApplication")
-    public CommonResult userApplication(@Validated @RequestBody UserApplicationVo userApplicationVo, BindingResult result) {
+    public CommonResult userApplication(@Validated @RequestBody Volunteer volunteer, BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-
         }
 
-        if (userService.queryUserByName(userApplicationVo.getUser_name()).getUser_application() != null) {
+        Integer flag = volunteerService.userApplication(volunteer);
+
+        if(flag == 2) {
+            return CommonResult.validateFailed("报名失败,当前报名基地志愿者报名人数已满");
+        }else if(flag == 3) {
+            return CommonResult.validateFailed("报名失败，志愿者报名已截止");
+        } else if (flag == 4) {
+            return CommonResult.validateFailed("报名失败，志愿者报名未开始");
+        } else if (flag == 5) {
+            return CommonResult.validateFailed("报名失败,当前报名基地未开启志愿者报名");
+        } else if (flag == 6) {
             return CommonResult.validateFailed("您已经报过名啦");
         }
 
-        Bases bases = basesService.queryBasesById(userApplicationVo.getBase_id());
-        userApplicationVo.setB_joinPopulation(bases.getB_joinPopulation());
-        userApplicationVo.setB_population(bases.getB_population());
-        userApplicationVo.setB_status(bases.getB_status());
+        return CommonResult.success("报名成功！");
 
-        if((bases.getB_endtime()).before(TimeUtils.getNowTime())) {
-            return CommonResult.validateFailed("活动已截止");
-        }else if(applicationsService.userApplication(userApplicationVo)) {
-            return CommonResult.success("报名成功！");
-        }
-
-        return CommonResult.validateFailed("报名失败,当前报名基地报名人数已满或不开启报名");
     }
 
     @ApiOperation("查询用户报名志愿者接口")
@@ -71,12 +59,11 @@ public class ApplicationsController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        QueryUserApplication application = applicationsService.queryUserApplication(userIdVo.getUser_id());
+        QueryVolunteerByIdVo application = volunteerService.queryVolunteerById(userIdVo.getUser_id());
         if (application == null) {
             return CommonResult.validateFailed("你没有参加任何志愿者活动呢");
         }
         return CommonResult.success(application);
     }
-
 
 }

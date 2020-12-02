@@ -1,6 +1,5 @@
 package com.mapper;
 
-import com.pojo.AdoptionPets;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
@@ -18,7 +17,6 @@ public interface BasesMapper {
     List<Bases> fuzzyQueryBases(QueryBasesVo bases);
     void delBases(BaseIdVo baseIdVo);
     Bases queryBasesById(Integer base_id);
-    List<AdoptionPets> queryAPList(BaseIdVo baseIdVo);
     List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
 }

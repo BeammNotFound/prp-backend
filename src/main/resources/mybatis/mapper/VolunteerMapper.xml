@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.VolunteerMapper">
+
+    <update id="userApplication" parameterType="com.pojo.Volunteer">
+
+        update volunteer
+        <if test="base_id != null || user_id != null">
+            set v_joinPopulation = v_joinPopulation + 1 ,
+                user_id = #{user_id},
+                base_id = #{base_id}
+        </if>
+    </update>
+
+    <select id="queryVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
+            parameterType="java.lang.Integer">
+        select *
+        from user_info,volunteer
+        where user_info.user_id = #{user_id} and volunteer.user_id = #{user_id}
+    </select>
+
+    <select id="queryVolunteerByBaseId" resultType="com.pojo.Volunteer"
+            parameterType="java.lang.Integer">
+        select *
+        from volunteer,bases
+        where volunteer.base_id = #{base_id} and bases.base_id = #{base_id};
+    </select>
+</mapper>

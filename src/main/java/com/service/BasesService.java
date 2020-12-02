@@ -1,6 +1,5 @@
 package com.service;
 
-import com.pojo.AdoptionPets;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
@@ -17,8 +16,6 @@ public interface BasesService {
     void delBases(BaseIdVo baseIdVo);
 
     Bases queryBasesById(Integer base_id);
-
-    List<AdoptionPets> queryAPList(BaseIdVo baseIdVo);
 
     List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
 

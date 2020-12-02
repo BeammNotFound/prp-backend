@@ -5,10 +5,11 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.SetMail;
 import com.common.utils.TimeUtils;
-import com.pojo.Bases;
 import com.pojo.User;
-import com.pojo.vo.*;
-import com.service.BasesService;
+import com.pojo.vo.CreateUserVo;
+import com.pojo.vo.ForgetPasswordVo;
+import com.pojo.vo.UpdatePasswordVo;
+import com.pojo.vo.VerifyMailVo;
 import com.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "用户管理接口")
+@Api(tags = "用户接口")
 @RestController
 public class UserController {
 
@@ -32,8 +33,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private BasesService basesService;
 
     @ApiOperation("查询全部用户信息")
     @Action(description = "查询全部用户信息")
@@ -43,8 +42,8 @@ public class UserController {
         return CommonResult.success(userService.queryUserList());
     }
 
-    @ApiOperation("添加用户")
-    @Action(description = "添加用户")
+    @ApiOperation("新增用户")
+    @Action(description = "新增用户")
     @PostMapping("/creatUser")
     public CommonResult createUser(@ApiParam("输入用户数据") @Validated @RequestBody CreateUserVo user, BindingResult result) {
 

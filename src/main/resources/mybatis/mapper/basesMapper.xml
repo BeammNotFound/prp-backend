@@ -30,12 +30,6 @@
         where base_id = #{base_id}
     </select>
 
-    <select id="queryAPList" resultType="com.pojo.AdoptionPets" parameterType="com.pojo.vo.BaseIdVo">
-        select *
-        from adoption_pets
-        where base_id = #{base_id}
-    </select>
-
     <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="com.pojo.vo.BaseIdVo">
         select *
         from base_messages

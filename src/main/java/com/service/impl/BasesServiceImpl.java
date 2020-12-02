@@ -2,7 +2,6 @@ package com.service.impl;
 
 import com.common.utils.RedisUtil;
 import com.mapper.BasesMapper;
-import com.pojo.AdoptionPets;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
@@ -47,11 +46,6 @@ public class BasesServiceImpl implements BasesService {
     @Override
     public Bases queryBasesById(Integer base_id) {
         return basesMapper.queryBasesById(base_id);
-    }
-
-    @Override
-    public List<AdoptionPets> queryAPList(BaseIdVo baseIdVo) {
-        return basesMapper.queryAPList(baseIdVo);
     }
 
     @Override

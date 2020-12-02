@@ -60,18 +60,6 @@ public class BasesController {
         return CommonResult.success("删除成功");
     }
 
-    @ApiOperation("根据基地id查询领养宠物")
-    @Action(description = "根据基地id查询领养宠物")
-    @PostMapping("queryAPList")
-    public CommonResult queryAPList(@Validated @RequestBody BaseIdVo baseIdVo,BindingResult result) {
-
-        if (result.hasErrors()) {
-            CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-        return CommonResult.success(service.queryAPList(baseIdVo));
-
-    }
-
 
     @ApiOperation("根据基地id查询基地图片")
     @Action(description = "根据基地id查询基地图片")
