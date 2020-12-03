@@ -16,6 +16,7 @@ public interface UserMapper {
     void updateUserByUserName(User user);
     User queryUserByName(String user_name);
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
+    User queryUserById(Integer user_id);
 
 
 }

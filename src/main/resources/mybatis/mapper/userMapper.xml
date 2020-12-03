@@ -86,6 +86,12 @@
         where user_name = #{user_name}
     </select>
 
+    <select id="queryUserById" parameterType="java.lang.Integer" resultType="com.pojo.User">
+        select *
+        from user_info
+        where user_id = #{user_id}
+    </select>
+
 
     <select id="queryUserApplication" resultType="com.pojo.vo.QueryVolunteerByIdVo"
             parameterType="java.lang.Integer">

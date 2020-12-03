@@ -1,6 +1,5 @@
 package com.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -31,13 +30,6 @@ public class Bases {
     private String b_icon;
     private String b_image;
 
-    @ApiModelProperty("参加人数")
-    private Integer b_joinPopulation;
-
-    @NotBlank(message = "报名人数不能为空")
-    @ApiModelProperty("报名人数")
-    private Integer b_population;
-
     @ApiModelProperty("基地的联系人姓名")
     private String b_contacts;
     @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$",message = "手机号格式不正确")
@@ -45,9 +37,18 @@ public class Bases {
     @Email(message = "邮箱格式不正确")
     private String b_mail;
 
-    @JsonIgnore
-    private Date b_createtime;
+    @ApiModelProperty("参加人数")
+    private Integer v_joinPopulation;
 
-    private Date b_endtime;
+    @NotBlank(message = "报名人数不能为空")
+    @ApiModelProperty("报名人数")
+    private Integer v_population;
+
+    private Integer v_status;
+
+    private Date b_createtime;
+    private Date v_end_time;
+    private Date v_start_time;
+    private Date v_application_time;
 
 }

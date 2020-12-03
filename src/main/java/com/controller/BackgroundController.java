@@ -3,21 +3,15 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.RedisUtil;
-import com.pojo.Background;
 import com.service.BackgroundService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Random;
-
 @RestController
-@Api(tags = "背景图片接口")
+@Api(tags = "用户界面背景图片接口")
 public class BackgroundController {
 
     @Autowired

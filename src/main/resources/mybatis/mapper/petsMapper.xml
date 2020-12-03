@@ -10,4 +10,11 @@
         from pets_info
         where base_id = #{base_id}
     </select>
+
+
+    <insert id="adoptPet" parameterType="com.pojo.AdoptionPats">
+        insert into
+        adoption_pets(ap_id,base_id,user_id,pet_id,ap_status,ap_application_time,ap_pass_time)
+        values (#{ap_id},#{base_id},#{user_id},#{pet_id},#{ap_status},#{ap_application_time},#{ap_pass_time})
+    </insert>
 </mapper>

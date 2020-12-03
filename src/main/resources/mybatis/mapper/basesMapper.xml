@@ -5,8 +5,9 @@
 <mapper namespace="com.mapper.BasesMapper">
 
     <select id="queryBases" resultType="com.pojo.Bases">
-      select *
-      from bases
+        select *
+        from bases left join volunteer
+        on bases.base_id = volunteer.base_id
     </select>
 
     <select id="fuzzyQueryBases" resultType="com.pojo.Bases" parameterType="com.pojo.vo.QueryBasesVo">

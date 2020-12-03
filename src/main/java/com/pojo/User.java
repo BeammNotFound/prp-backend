@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -37,6 +38,10 @@ public class User {
     private String user_city;
     private String user_address;
     private String user_intro;
+
+    private String user_sex;
+
+    private Integer user_age;
     private Date user_createtime;
     private Date user_updatetime;
 
