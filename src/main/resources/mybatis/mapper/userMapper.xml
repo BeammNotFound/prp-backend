@@ -16,41 +16,41 @@
         values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime})
     </insert>
 
-    <update id="updateUserByUserName" parameterType="com.pojo.User">
+    <update id="updateUserById" parameterType="com.pojo.vo.UpdateUserInfoVo">
         update user_info
         <set>
             <if test="user_nickname != null">
-                set user_nickname = #{user_nickname}
+                user_nickname = #{user_nickname},
             </if>
-<!--            <if test="user_password != null">-->
-<!--                set user_password = #{user_password}-->
-<!--            </if>-->
             <if test="user_phone != null">
-                set user_phone = #{user_phone}
+                user_phone = #{user_phone},
             </if>
             <if test="user_icon != null">
-                set user_icon = #{user_icon}
+                user_icon = #{user_icon},
             </if>
             <if test="user_info != null">
-                set user_info = #{user_info}
+                user_info = #{user_info},
             </if>
             <if test="user_city != null">
-                set user_city = #{user_city}
-            </if>
-            <if test="user_mail != null">
-                set user_mail = #{user_mail}
+                user_city = #{user_city},
             </if>
              <if test="user_address != null">
-                 set user_address = #{user_address}
+                 user_address = #{user_address},
             </if>
             <if test="user_intro != null">
-                set user_intro = #{user_intro}
+                user_intro = #{user_intro},
             </if>
             <if test="user_updatetime != null">
-                set user_updatetime = #{user_updatetime}
+                user_updatetime = #{user_updatetime},
+            </if>
+            <if test="user_sex != null">
+                user_sex = #{user_sex},
+            </if>
+            <if test="user_realname != null">
+                user_realname = #{user_realname},
             </if>
         </set>
-        where user_mail = #{user_mail}
+        where user_id = #{user_id}
     </update>
 
     <update id="updatePasswordByUserName" parameterType="com.pojo.vo.UpdatePasswordVo">

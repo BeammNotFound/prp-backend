@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserByUserName(User user) {
-        mapper.updateUserByUserName(user);
+    public void updateUserByUserId(UpdateUserInfoVo vo) {
+        mapper.updateUserById(vo);
     }
 
     @Override
@@ -70,6 +70,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User queryUserByName(String user_name) {
         return mapper.queryUserByName(user_name);
+    }
+
+    @Override
+    public User queryUserById(Integer user_id) {
+        return mapper.queryUserById(user_id);
     }
 
 

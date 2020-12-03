@@ -6,11 +6,7 @@ import com.common.api.CommonResult;
 import com.common.utils.SetMail;
 import com.common.utils.TimeUtils;
 import com.common.utils.UpLoadImages;
-import com.pojo.User;
-import com.pojo.vo.CreateUserVo;
-import com.pojo.vo.ForgetPasswordVo;
-import com.pojo.vo.UpdatePasswordVo;
-import com.pojo.vo.VerifyMailVo;
+import com.pojo.vo.*;
 import com.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -68,19 +64,22 @@ public class UserController {
     @ApiOperation("修改用户信息")
     @Action(description = "修改用户信息")
     @PostMapping("/updateUserInfo")
-    public CommonResult updateUserByUserName(@Validated @RequestBody User user, BindingResult result) {
+    public CommonResult updateUserByUserName(@Validated @RequestBody UpdateUserInfoVo vo, BindingResult result) {
 
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        try {
-            user.setUser_icon(new UpLoadImages().uploadImage(user.getFile()));
-        } catch (IOException e) {
-            CommonResult.validateFailed("头像上传失败");
-            e.printStackTrace();
+        if (vo.getIcon_file() != null) {
+            try {
+                vo.setUser_icon(new UpLoadImages().uploadImage(vo.getIcon_file()));
+            } catch (IOException e) {
+                CommonResult.validateFailed("头像上传失败");
+                e.printStackTrace();
+            }
         }
-        user.setUser_updatetime(TimeUtils.getNowTime());
-        userService.updateUserByUserName(user);
+
+        vo.setUser_updatetime(TimeUtils.getNowTime());
+        userService.updateUserByUserId(vo);
         return CommonResult.success("修改成功");
     }
 

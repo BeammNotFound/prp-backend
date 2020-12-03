@@ -13,7 +13,7 @@ public interface UserMapper {
     List<User> queryUserList();
     void createUser(CreateUserVo user);
     void forgetPassword(ForgetPasswordVo user);
-    void updateUserByUserName(User user);
+    void updateUserById(UpdateUserInfoVo vo);
     User queryUserByName(String user_name);
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
     User queryUserById(Integer user_id);

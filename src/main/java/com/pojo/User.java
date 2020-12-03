@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 
@@ -20,7 +19,7 @@ public class User {
 
     private Integer user_id;
 
-    @NotBlank(message = "请输入用户名")
+//    @NotBlank(message = "请输入用户名")
     private String user_name;
 
     private String user_password;
