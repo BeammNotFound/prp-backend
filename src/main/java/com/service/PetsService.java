@@ -8,4 +8,5 @@ import java.util.List;
 public interface PetsService {
     List<PetsInfo> queryPetsInfoByBaseId(Integer base_id);
     Boolean adoptPet(AdoptionPats adoptionPats);
+    List<PetsInfo> queryAdoptPet(Integer user_id);
 }

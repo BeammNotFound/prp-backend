@@ -12,6 +12,11 @@ import java.util.List;
 @Repository
 public interface PetsMapper {
     List<PetsInfo> queryPetsInfoByBaseId(Integer base_id);
+
+    List<PetsInfo> queryAdoptPet(Integer base_id);
+
     void adoptPet(AdoptionPats adoptionPats);
+
+
 
 }

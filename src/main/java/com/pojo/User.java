@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -51,6 +52,8 @@ public class User {
     private String enter_password;
 
     private String user_tooken;
+
+    private MultipartFile file;
 
     @ApiModelProperty("用户申请的基地id")
     private Integer user_application;

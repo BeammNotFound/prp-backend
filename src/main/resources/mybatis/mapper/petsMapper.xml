@@ -17,4 +17,12 @@
         adoption_pets(ap_id,base_id,user_id,pet_id,ap_status,ap_application_time,ap_pass_time)
         values (#{ap_id},#{base_id},#{user_id},#{pet_id},#{ap_status},#{ap_application_time},#{ap_pass_time})
     </insert>
+
+    <select id="queryAdoptPet" resultType="com.pojo.PetsInfo" parameterType="java.lang.Integer">
+        select *
+        from adoption_pets left join pets_info
+        on pet_id = pi_id
+        where user_id = #{user_id}
+    </select>
+
 </mapper>

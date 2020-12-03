@@ -5,6 +5,7 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.pojo.AdoptionPats;
 import com.pojo.vo.BaseIdVo;
+import com.pojo.vo.UserIdVo;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,5 +46,15 @@ public class PetsController {
             return CommonResult.success("申请领养成功");
         }
         return CommonResult.validateFailed("用户效验失败，请重新登录");
+    }
+
+    @ApiOperation("查看用户申请领养宠物接口")
+    @Action(description = "查看用户申请领养宠物接口")
+    @PostMapping("queryAdoptPetById")
+    public CommonResult queryAdoptPet(@Validated @RequestBody UserIdVo vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        return CommonResult.success(service.queryAdoptPet(vo.getUser_id()));
     }
 }

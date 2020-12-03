@@ -35,4 +35,9 @@ public class PetsServiceImpl implements PetsService {
         petsMapper.adoptPet(adoptionPats);
         return true;
     }
+
+    @Override
+    public List<PetsInfo> queryAdoptPet(Integer user_id) {
+        return petsMapper.queryAdoptPet(user_id);
+    }
 }
