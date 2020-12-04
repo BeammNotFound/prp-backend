@@ -2,6 +2,7 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.pojo.VolunteerFrom;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.Volunteer;
 import com.pojo.vo.UserIdVo;
@@ -64,6 +65,17 @@ public class VolunteerController {
             return CommonResult.validateFailed("你没有参加任何志愿者活动呢");
         }
         return CommonResult.success(application);
+    }
+
+    @ApiOperation("创建志愿者申请表单")
+    @Action(description = "创建志愿者申请表单")
+    @PostMapping("createVolunteerForm")
+    public CommonResult createVF(@Validated @RequestBody VolunteerFrom vo,BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        volunteerService.createVF(vo);
+        return CommonResult.success("创建志愿者申请表单成功");
     }
 
 }

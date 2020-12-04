@@ -3,6 +3,7 @@ package com.service.impl;
 import com.common.utils.TimeUtils;
 import com.mapper.VolunteerMapper;
 import com.mapper.BasesMapper;
+import com.pojo.VolunteerFrom;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.Volunteer;
 import com.service.VolunteerService;
@@ -61,6 +62,12 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public Volunteer queryVolunteerByBaseId(Integer base_id) {
         return volunteerMapper.queryVolunteerByBaseId(base_id);
+    }
+
+    @Override
+    public void createVF(VolunteerFrom volunteerFrom) {
+        volunteerFrom.setVf_createTime(TimeUtils.getNowTime());
+        volunteerMapper.createVF(volunteerFrom);
     }
 
 

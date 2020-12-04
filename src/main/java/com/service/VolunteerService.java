@@ -1,7 +1,8 @@
 package com.service;
 
-import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.Volunteer;
+import com.pojo.VolunteerFrom;
+import com.pojo.vo.QueryVolunteerByIdVo;
 
 /**
  * @author BeamStark
@@ -14,5 +15,8 @@ public interface VolunteerService {
     QueryVolunteerByIdVo queryVolunteerById(Integer user_id);
 
     Volunteer queryVolunteerByBaseId(Integer base_id);
+
+    void createVF(VolunteerFrom volunteerFrom);
+
 
 }

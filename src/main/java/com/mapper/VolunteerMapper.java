@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.pojo.VolunteerFrom;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.Volunteer;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,4 +18,6 @@ public interface VolunteerMapper {
     QueryVolunteerByIdVo queryVolunteerById(Integer user_id);
 
     Volunteer queryVolunteerByBaseId(Integer base_id);
+
+    void createVF(VolunteerFrom volunteerFrom);
 }
