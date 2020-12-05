@@ -8,7 +8,7 @@
         select *
         from bases left join volunteer
         on bases.base_id = volunteer.base_id
-        order by bases.base_id
+
     </select>
 
     <select id="fuzzyQueryBases" resultType="com.pojo.Bases" parameterType="com.pojo.vo.QueryBasesVo">
@@ -28,8 +28,10 @@
 
     <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="java.lang.Integer">
         select *
-        from bases
-        where base_id = #{base_id}
+        from bases left join volunteer
+        on bases.base_id = volunteer.base_id
+        where bases.base_id = #{base_id}
+
     </select>
 
     <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="com.pojo.vo.BaseIdVo">

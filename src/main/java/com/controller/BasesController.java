@@ -83,4 +83,14 @@ public class BasesController {
 
         return CommonResult.success(service.queryBaseMessages(baseIdVo));
     }
+
+    @ApiOperation("根据基地id查询基地信息")
+    @Action(description = "根据基地id查询基地信息")
+    @PostMapping("queryBasesById")
+    public CommonResult queryBasesById(@Validated @RequestBody BaseIdVo vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        return CommonResult.success(service.queryBasesById(vo.getBase_id()));
+    }
 }
