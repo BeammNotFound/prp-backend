@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
 import com.mapper.PetsMapper;
 import com.mapper.UserMapper;
@@ -21,9 +22,21 @@ public class PetsServiceImpl implements PetsService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
     public List<PetsInfo> queryPetsInfoByBaseId(Integer base_id) {
         return petsMapper.queryPetsInfoByBaseId(base_id);
+    }
+
+    @Override
+    public Object queryAllPetsInfo() {
+        if (redisUtil.hasKey("allPetsInfo"))
+            return redisUtil.get("allPetsInfo");
+        else
+            redisUtil.set("allPetsInfo", petsMapper.queryAllPetsInfo(), 30);
+        return redisUtil.get("allPetsInfo");
     }
 
     @Override

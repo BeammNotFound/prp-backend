@@ -11,6 +11,11 @@
         where base_id = #{base_id}
     </select>
 
+    <select id="queryAllPetsInfo" resultType="com.pojo.PetsInfo">
+        select *
+        from pets_info
+    </select>
+
 
     <insert id="adoptPet" parameterType="com.pojo.AdoptionPats">
         insert into

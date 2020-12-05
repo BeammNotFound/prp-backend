@@ -14,6 +14,8 @@ import java.util.List;
 public interface PetsMapper {
     List<PetsInfo> queryPetsInfoByBaseId(Integer base_id);
 
+    List<PetsInfo> queryAllPetsInfo();
+
     List<PetsInfo> queryAdoptPet(Integer base_id);
 
     void adoptPet(AdoptionPats adoptionPats);

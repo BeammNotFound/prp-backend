@@ -3,8 +3,8 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.pojo.AdoptionPats;
 import com.pojo.AdoptionForm;
+import com.pojo.AdoptionPats;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.UserIdVo;
 import com.service.PetsService;
@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,13 @@ public class PetsController {
         }
         return CommonResult.success(service.queryPetsInfoByBaseId(baseIdVo.getBase_id()));
 
+    }
+
+    @ApiOperation("查询所有领养宠物信息")
+    @Action(description = "查询所有领养宠物信息")
+    @GetMapping("queryAllPetsInfo")
+    public CommonResult queryAllPetsInfo() {
+        return CommonResult.success(service.queryAllPetsInfo());
     }
 
     @ApiOperation("申请领养宠物接口")
