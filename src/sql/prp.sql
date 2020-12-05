@@ -11,7 +11,7 @@
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 02/12/2020 17:26:20
+ Date: 05/12/2020 14:53:19
 */
 
 SET NAMES utf8mb4;
@@ -27,9 +27,15 @@ CREATE TABLE `adoption_pets`  (
   `user_id` int(11) DEFAULT NULL,
   `pet_id` int(11) DEFAULT NULL,
   `ap_status` int(11) DEFAULT NULL,
-  `ap_time` datetime(0) DEFAULT NULL COMMENT '领养时间',
+  `ap_pass_time` datetime(0) DEFAULT NULL,
+  `ap_application_time` datetime(0) DEFAULT NULL COMMENT '领养时间',
   PRIMARY KEY (`ap_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of adoption_pets
+-- ----------------------------
+INSERT INTO `adoption_pets` VALUES (1, 3, 1, 2, 2, NULL, '2020-12-02 22:00:14');
 
 -- ----------------------------
 -- Table structure for background_images
@@ -211,7 +217,7 @@ CREATE TABLE `pets_info`  (
 INSERT INTO `pets_info` VALUES (1, '花花', '三个月', '野猫', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://img9.51tietu.net/pic/2019-091021/4ps1awasijj4ps1awasijj.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811929&di=9d61552fc1d40958e20957e057dba899&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F161118%2F12-16111q51050.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811929&di=9d61552fc1d40958e20957e057dba899&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F161118%2F12-http://pic1.win4000.com/wallpaper/2020-11-http://pic1.win4000.com/wallpaper/2020-11-18/5fb489f15f9bc.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811929&di=9d61552fc1d40958e20957e057dba899&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F161118%2F12-16111q51050.jpg', 3, NULL);
 INSERT INTO `pets_info` VALUES (2, '嘟嘟', '三岁', '英短', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'http://pic1.win4000.com/wallpaper/2020-11-03/5fa10f7ce7316.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571553271&di=1dfe76c1d9ca3bda23eb4c023d62e1e8&imgtype=0&src=http%3A%2F%2Fs2.168muyu.com%2Fupload%2Fgalleryhttp://pic1.win4000.com/wallpaper/2020-11-18/5fb489f15f9bc.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571553271&di=1dfe76c1d9ca3bda23eb4c023d62e1e8&imgtype=0&src=http%3A%2F%2Fs2.168muyu.com%2Fupload%2Fgallery%2F1001%2F298e8bcdaee549a3.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571553271&di=1dfe76c1d9ca3bda23eb4c023d62e1e8&imgtype=0&src=http%3A%2F%2Fs2.168muyu.com%2Fupload%2Fgallery%2F1001%2F298e8bcdaee549a3.jpg', 3, NULL);
 INSERT INTO `pets_info` VALUES (3, '七七', '一岁', '豹纹', '2019年曾有情流感，已医治好', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'http://pic1.win4000.com/wallpaper/2020-11-03/5fa10f7f08cc4.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570896430&di=480625fc74545d63f2fc0fe3c3b598db&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaperhttp://pic1.win4000.com/wallpaper/2020-11-http://pic1.win4000.com/wallpaper/2020-11-13/5fae02db82a70.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570896430&di=480625fc74545d63f2fc0fe3c3b598db&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F551521c398610.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570896430&di=480625fc74545d63f2fc0fe3c3b598db&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F551521c398610.jpg', 3, NULL);
-INSERT INTO `pets_info` VALUES (4, '小黑', '三个月', '英短', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571537721&di=5065fe0165716fcd9a2f5803c339087c&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191101%2F15%2F1572593235-DFQzqrLhkt.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489ec15383.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489ec15383.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489ec15383.jpg', 1, NULL);
+INSERT INTO `pets_info` VALUES (4, '小黑', '三个月', '英短', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571537721&di=5065fe0165716fcd9a2f5803c339087c&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191101%2F15%2F1572593235-DFQzqrLhkt.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3193766112,992114955&fm=26&gp=0.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489ec15383.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489ec15383.jpg', 1, NULL);
 INSERT INTO `pets_info` VALUES (5, '小白', '一岁', '无毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571263377&di=deac956ffaf7c3f3727a3e6b9e98194f&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F53d6f88f1802f.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489edd36b0.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489edd36b0.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489edd36b0.jpg', 1, NULL);
 INSERT INTO `pets_info` VALUES (6, '金毛', '五个月', '金毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570884427&di=410ec2c59f2ec697fee2ec3902a4fe85&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1309%2F29%2Fc0%2F26600200_1380425742844.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489eeae9aa.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489eeae9aa.jpg', '18/5fb489edd36b0.jpg', 2, NULL);
 INSERT INTO `pets_info` VALUES (7, '金毛', '五个月', '金毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570884427&di=410ec2c59f2ec697fee2ec3902a4fe85&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1309%2F29%2Fc0%2F26600200_1380425742844.jpg', '18/5fb489eeae9aa.jpg', '18/5fb489eeae9aa.jpg', '18/5fb489edd36b0.jpg', 2, NULL);
@@ -250,27 +256,30 @@ CREATE TABLE `user_info`  (
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_nickname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_realname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_sex` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_age` int(11) DEFAULT NULL,
   `user_type` int(2) NOT NULL COMMENT '1是管理员；2是普通用户',
   `user_phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_mail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_application` int(3) DEFAULT NULL,
+  `user_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_createtime` datetime(0) DEFAULT NULL,
   `user_updatetime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`user_id`, `user_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES (1, 'root', 'Beam', '梁豪', '123123', 2, '1583836536', 'https://pic4.zhimg.com/80/v2-557a700c26facb72f4ed088041e23c17_720w.jpg', 'I love code', '河南', 'Beamm0613@163.com', '郑州', 3, 'I AM CEO', '2020-11-06 14:03:37', '2020-11-11 21:42:00');
-INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', '25d55ad283aa400af464c76d713c07ad', 1, '110', 'https://pic1.zhimg.com/80/v2-cc3a5cdd40e9dab5c5ea3e934d4a31e0_720w.jpg', 'I love code', '重庆', 'zhangsan110@gmail.com', '羊山区', 1, 'i love code', '2020-11-06 17:26:54', '2020-11-12 17:54:30');
-INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', NULL, '1bbd886460827015e5d605ed44252251', 1, NULL, 'https://pic3.zhimg.com/80/v2-ef8d69f363056224d695ac495f9e6b62_720w.jpg', 'I love code', NULL, '1223697311@qq.com', NULL, 1, NULL, '2020-11-16 17:52:54', '2020-11-16 17:52:54');
+INSERT INTO `user_info` VALUES (1, 'root', 'Beam', '梁豪', 'https://pic4.zhimg.com/80/v2-557a700c26facb72f4ed088041e23c17_720w.jpg', '25d55ad283aa400af464c76d713c07ad', 'string', 21, 2, '1583836536', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南', '郑州', '2020-11-06 14:03:37', '2020-12-03 21:44:40');
+INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', 'https://pic1.zhimg.com/80/v2-cc3a5cdd40e9dab5c5ea3e934d4a31e0_720w.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 21, 1, '110', 'zhangsan110@gmail.com', 'I love code', 'i love code', '重庆', '羊山区', '2020-11-06 17:26:54', '2020-11-12 17:54:30');
+INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', '美少女', 'https://pic3.zhimg.com/80/v2-ef8d69f363056224d695ac495f9e6b62_720w.jpg', '1bbd886460827015e5d605ed44252251', '女', 20, 1, '18568275991', '1223697311@qq.com', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '北京市', '北京市西城区', '2020-11-16 17:52:54', '2020-12-03 22:01:29');
+INSERT INTO `user_info` VALUES (18, '604520242@qq.com', 'ahaha', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', NULL, NULL, 1, NULL, '604520242@qq.com', NULL, NULL, NULL, NULL, '2020-12-04 17:49:07', '2020-12-04 17:49:07');
+INSERT INTO `user_info` VALUES (19, 'Beamm0613@163.com', '12312', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', NULL, NULL, 1, NULL, 'Beamm0613@163.com', NULL, NULL, NULL, NULL, '2020-12-04 17:50:25', '2020-12-04 17:50:25');
 
 -- ----------------------------
 -- Table structure for volunteer
@@ -294,5 +303,31 @@ CREATE TABLE `volunteer`  (
 -- Records of volunteer
 -- ----------------------------
 INSERT INTO `volunteer` VALUES (1, 1, 3, NULL, 2, 50, '2021-01-01 13:38:37', '2020-12-01 13:38:49', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for volunteer_form
+-- ----------------------------
+DROP TABLE IF EXISTS `volunteer_form`;
+CREATE TABLE `volunteer_form`  (
+  `vf_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `vf_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_age` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_appraise` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `base_id` int(11) DEFAULT NULL,
+  `vf_info1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_info2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_info3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_info4` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_info5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_info6` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_createTime` datetime(0) DEFAULT NULL,
+  PRIMARY KEY (`vf_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of volunteer_form
+-- ----------------------------
+INSERT INTO `volunteer_form` VALUES (1, 1, '河南省郑州市', '21', '我很好', NULL, '是', '是', '是', '是', '是', '是', '2020-12-05 14:47:41');
 
 SET FOREIGN_KEY_CHECKS = 1;

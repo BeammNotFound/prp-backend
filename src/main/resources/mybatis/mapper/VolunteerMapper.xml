@@ -31,8 +31,8 @@
 
     <insert id="createVF" parameterType="com.pojo.VolunteerFrom">
         insert into
-        volunteer_form(vf_address,vf_age,vf_appraise,vf_info1,vf_info2,vf_info3,vf_info4,vf_info5,vf_info6,vf_createTime,user_id)
-        values(#{vf_address},#{vf_age},#{vf_appraise},#{vf_info1},#{vf_info2},#{vf_info3},#{vf_info4},#{vf_info5},#{vf_info6},#{vf_createTime},#{user_id})
+        volunteer_form(vf_address,vf_age,vf_appraise,vf_info1,vf_info2,vf_info3,vf_info4,vf_info5,vf_info6,vf_createTime,user_id,base_id)
+        values(#{vf_address},#{vf_age},#{vf_appraise},#{vf_info1},#{vf_info2},#{vf_info3},#{vf_info4},#{vf_info5},#{vf_info6},#{vf_createTime},#{user_id},#{base_id})
     </insert>
 
 </mapper>

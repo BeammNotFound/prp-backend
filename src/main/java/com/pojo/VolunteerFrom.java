@@ -1,5 +1,6 @@
 package com.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -29,6 +30,8 @@ public class VolunteerFrom {
     private String vf_info5;
     @NotBlank(message = "该数据不能为空")
     private String vf_info6;
-    private Date vf_createTime;
     private String user_id;
+    private Integer base_id;
+    @JsonIgnore
+    private Date vf_createTime;
 }
