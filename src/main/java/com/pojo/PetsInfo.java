@@ -14,7 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 @ApiModel("领养宠物实体类")
 public class PetsInfo {
-    @JsonIgnore
     private Integer pi_id;
     private Integer base_id;
     private String pi_name;

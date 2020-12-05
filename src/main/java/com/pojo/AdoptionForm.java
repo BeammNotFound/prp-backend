@@ -12,27 +12,28 @@ import java.util.Date;
  * @Version 0.1 2020/12
  */
 @Data
-public class VolunteerFrom {
+public class AdoptionForm {
     @NotBlank(message = "该数据不能为空")
-    private String vf_address;
+    private String af_address;
     @NotNull(message = "该数据不能为空")
-    private Integer vf_age;
+    private Integer af_age;
     @NotBlank(message = "该数据不能为空")
-    private String vf_appraise;
+    private String af_appraise;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info1;
+    private String af_info1;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info2;
+    private String af_info2;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info3;
+    private String af_info3;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info4;
+    private String af_info4;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info5;
+    private String af_info5;
     @NotBlank(message = "该数据不能为空")
-    private String vf_info6;
+    private String af_info6;
     private String user_id;
     private Integer base_id;
+    private Integer pet_id;
     @JsonIgnore
-    private Date vf_createTime;
+    private Date af_createTime;
 }

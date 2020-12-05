@@ -4,6 +4,7 @@ package com.controller;
 import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.pojo.AdoptionPats;
+import com.pojo.AdoptionForm;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.UserIdVo;
 import com.service.PetsService;
@@ -56,5 +57,16 @@ public class PetsController {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
         return CommonResult.success(service.queryAdoptPet(vo.getUser_id()));
+    }
+
+    @ApiOperation("创建宠物申请领养表单")
+    @Action(description = "创建宠物申请领养表单")
+    @PostMapping("createAdoptionForm")
+    public CommonResult createAf(@Validated @RequestBody AdoptionForm vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        service.createAf(vo);
+        return CommonResult.success("创建宠物申请领养表单成功");
     }
 }

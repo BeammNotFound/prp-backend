@@ -4,6 +4,7 @@ import com.common.utils.TimeUtils;
 import com.mapper.PetsMapper;
 import com.mapper.UserMapper;
 import com.pojo.AdoptionPats;
+import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,11 @@ public class PetsServiceImpl implements PetsService {
     @Override
     public List<PetsInfo> queryAdoptPet(Integer user_id) {
         return petsMapper.queryAdoptPet(user_id);
+    }
+
+    @Override
+    public void createAf(AdoptionForm adoptionForm) {
+        adoptionForm.setAf_createTime(TimeUtils.getNowTime());
+        petsMapper.createAf(adoptionForm);
     }
 }
