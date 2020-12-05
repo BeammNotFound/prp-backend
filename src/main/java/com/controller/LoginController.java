@@ -6,7 +6,6 @@ import com.pojo.vo.LoginVo;
 import com.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -22,10 +21,10 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @ApiOperation("验证用户登录信息")
-    @Action(description = "验证用户登录信息")
+    @ApiOperation("用户登录")
+    @Action(description = "用户登录")
     @PostMapping("/login")
-    public CommonResult login(@ApiParam("输入用户凭据") @Validated @RequestBody LoginVo user, BindingResult result){
+    public CommonResult login(@Validated @RequestBody LoginVo user, BindingResult result){
 
         //判断是否为空
         if (result.hasErrors()) {

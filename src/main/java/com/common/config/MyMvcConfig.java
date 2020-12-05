@@ -14,9 +14,10 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
         //注册TestInterceptor拦截器
         InterceptorRegistration registration = registry.addInterceptor(new LoginHandlerInterceptor());
-        registration.addPathPatterns("/**");                      //所有路径都被拦截
+        //所有路径都被拦截
+        registration.addPathPatterns("/**");
         registration.excludePathPatterns(                         //添加不拦截路径
-                "/login",                                         //登录
+                "/login",
                 "/queryMessages",
                 "/creatUser",
                 "/verifyMail",
@@ -26,6 +27,9 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 "/fuzzyQueryMessages",
                 "/createMessage",
                 "/createPopularization",
+                "/",
+                "/csrf",
+                "/favicon.ico",
 
 
 
