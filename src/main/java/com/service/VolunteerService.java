@@ -1,7 +1,8 @@
 package com.service;
 
-import com.pojo.Volunteer;
+import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerFrom;
+import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 
 /**
@@ -10,11 +11,11 @@ import com.pojo.vo.QueryVolunteerByIdVo;
  */
 public interface VolunteerService {
 
-    Integer userApplication(Volunteer applicationVo);
+    Integer userApplication(ApplicationVolunteer vo);
 
-    QueryVolunteerByIdVo queryVolunteerById(Integer user_id);
+    QueryVolunteerByIdVo queryAppVolunteerById(Integer user_id);
 
-    Volunteer queryVolunteerByBaseId(Integer base_id);
+    VolunteerInfo queryVolunteerInfoByBaseId(Integer base_id);
 
     void createVF(VolunteerFrom volunteerFrom);
 

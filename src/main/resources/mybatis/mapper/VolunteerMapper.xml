@@ -4,29 +4,39 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.VolunteerMapper">
 
-    <update id="userApplication" parameterType="com.pojo.Volunteer">
+    <insert id="userApplication" parameterType="com.pojo.ApplicationVolunteer">
+        insert into
+        application_volunteer(vi_id,user_id,base_id,av_status,av_application_time)
+        values (#{vi_id},#{user_id},#{base_id},#{av_status},#{av_application_time})
+    </insert>
 
-        update volunteer
-        <if test="base_id != null || user_id != null">
-            set v_joinPopulation = v_joinPopulation + 1 ,
-                user_id = #{user_id},
-                base_id = #{base_id}
-        </if>
+    <select id="queryAppVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
+            parameterType="java.lang.Integer">
+        select *
+        from application_volunteer left join volunteer_info
+        on application_volunteer.vi_id = volunteer_info.vi_id
+        where application_volunteer.user_id = #{user_id}
+    </select>
+
+    <select id="queryVolunteerInfoByBaseId" resultType="com.pojo.VolunteerInfo"
+            parameterType="java.lang.Integer">
+        select *
+        from volunteer_info left join bases
+        on volunteer_info.base_id = bases.base_id
+        where volunteer_info.base_id = #{base_id};
+    </select>
+
+    <update id="updateJoinPopulationByBaseId" parameterType="java.lang.Integer">
+        update volunteer_info
+        set vi_joinPopulation = vi_joinPopulation + 1
+        where base_id = #{base_id}
     </update>
 
-    <select id="queryVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
-            parameterType="java.lang.Integer">
-        select *
-        from user_info,volunteer
-        where user_info.user_id = #{user_id} and volunteer.user_id = #{user_id}
-    </select>
-
-    <select id="queryVolunteerByBaseId" resultType="com.pojo.Volunteer"
-            parameterType="java.lang.Integer">
-        select *
-        from volunteer,bases
-        where volunteer.base_id = #{base_id} and bases.base_id = #{base_id};
-    </select>
+    <update id="updateStatusByBaseId" parameterType="com.pojo.ApplicationVolunteer">
+        update volunteer_info
+        set vi_status = #{vi_status}
+        where base_id = #{base_id}
+    </update>
 
 
     <insert id="createVF" parameterType="com.pojo.VolunteerFrom">

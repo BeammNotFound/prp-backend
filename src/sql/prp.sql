@@ -11,11 +11,39 @@
  Target Server Version : 50730
  File Encoding         : 65001
 
- Date: 05/12/2020 14:53:19
+ Date: 06/12/2020 14:22:59
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for adoption_form
+-- ----------------------------
+DROP TABLE IF EXISTS `adoption_form`;
+CREATE TABLE `adoption_form`  (
+  `af_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `pet_id` int(11) DEFAULT NULL,
+  `base_id` int(11) DEFAULT NULL,
+  `af_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_age` int(11) DEFAULT NULL,
+  `af_appraise` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info4` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_info6` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `af_createTime` datetime(0) DEFAULT NULL,
+  PRIMARY KEY (`af_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of adoption_form
+-- ----------------------------
+INSERT INTO `adoption_form` VALUES (1, 2, NULL, 1, '河南郑州', 21, '活泼外向', '是', '是', '是', '是', '是', '是', '2020-12-05 16:29:31');
+INSERT INTO `adoption_form` VALUES (2, NULL, 1, NULL, '111', 1111, '11111', '是', '是', '是', '是', '是', '是', '2020-12-05 17:08:51');
 
 -- ----------------------------
 -- Table structure for adoption_pets
@@ -30,12 +58,34 @@ CREATE TABLE `adoption_pets`  (
   `ap_pass_time` datetime(0) DEFAULT NULL,
   `ap_application_time` datetime(0) DEFAULT NULL COMMENT '领养时间',
   PRIMARY KEY (`ap_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of adoption_pets
 -- ----------------------------
 INSERT INTO `adoption_pets` VALUES (1, 3, 1, 2, 2, NULL, '2020-12-02 22:00:14');
+INSERT INTO `adoption_pets` VALUES (2, 1, 1, 1, 2, NULL, '2020-12-05 15:58:42');
+INSERT INTO `adoption_pets` VALUES (3, 1, 1, 1, 2, NULL, '2020-12-05 16:03:05');
+
+-- ----------------------------
+-- Table structure for application_volunteer
+-- ----------------------------
+DROP TABLE IF EXISTS `application_volunteer`;
+CREATE TABLE `application_volunteer`  (
+  `av_id` int(11) NOT NULL AUTO_INCREMENT,
+  `vi_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `base_id` int(11) DEFAULT NULL,
+  `av_status` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `av_pass_time` datetime(0) DEFAULT NULL COMMENT '通过时间',
+  `av_application_time` datetime(0) DEFAULT NULL COMMENT '申请时间',
+  PRIMARY KEY (`av_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of application_volunteer
+-- ----------------------------
+INSERT INTO `application_volunteer` VALUES (2, 1, 1, 3, '待审批', NULL, '2020-12-06 14:14:39');
 
 -- ----------------------------
 -- Table structure for background_images
@@ -97,7 +147,6 @@ CREATE TABLE `bases`  (
   `b_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `b_status` int(255) DEFAULT NULL,
   `b_contacts` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_mail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -108,9 +157,9 @@ CREATE TABLE `bases`  (
 -- ----------------------------
 -- Records of bases
 -- ----------------------------
-INSERT INTO `bases` VALUES (1, '成都爱之家动物救助中心', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570482996&di=e200e2c34d328fc979318406bbd14132&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-01%2F5a20f8c0a36e4.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571324720&di=bbd2ce4efa3d2cb0babc7b7b82a19ad3&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F537d90f67c413.jpg', '四川省成都市', '【爱之家简介】流浪动物的生态救助中心及爱心教育基地！救助流浪动物22年！于2009年在民政局正式注册成立。', 3, '张先生', '123@gmail.com', '12345678911', '2009-03-12 11:35:05');
-INSERT INTO `bases` VALUES (2, '郑州动物之家', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811929&di=9d61552fc1d40958e20957e057dba899&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F161118%2F12-16111q51050.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571721135&di=de7bb68293f5bb701ab2f7a8ca13f919&imgtype=0&src=http%3A%2F%2Fs2.168muyu.com%2Fupload%2Fgallery%2F1001%2F36008df2ede930f7.jpg', '上海市', 'Tesla 全轮驱动车型搭载两台独立电机以提升冗余度，每台电机只有一个活动部件，耐用性高且易于维护。与传统的全轮驱动系统不同，两台电机可精准地分配前后轮扭矩，操控性和牵引力控制更为出色。', 2, '李先生', '321@qq.com', '12345678911', '2020-11-23 16:45:42');
-INSERT INTO `bases` VALUES (3, 'Beam的猫咖馆', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811934&di=460d27770cae8efb4c550725ee2839a0&imgtype=0&src=http%3A%2F%2Fpic4.bbzhi.com%2Fdongwubizhi%2Fgaoqingdongwubizhixiazai%2Fgaoqingdongwubizhixiazai_350162_12.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811926&di=18fb735e54b26ee857a2dfe107550bb7&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F5%2F55ec0ba414380.jpg', '美国', '探索Apple 充满创新的世界,选购各式 iPhone、iPad、Apple Watch 和 Mac,浏览各种配件、娱乐产品,并获得相关产品的专家支持服务。', 1, '梁豪', 'Beamm0613@163.com', '15838365368', '2020-11-03 15:00:33');
+INSERT INTO `bases` VALUES (1, '成都爱之家动物救助中心', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570482996&di=e200e2c34d328fc979318406bbd14132&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-01%2F5a20f8c0a36e4.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571324720&di=bbd2ce4efa3d2cb0babc7b7b82a19ad3&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F537d90f67c413.jpg', '四川省成都市', '【爱之家简介】流浪动物的生态救助中心及爱心教育基地！救助流浪动物22年！于2009年在民政局正式注册成立。', '张先生', '123@gmail.com', '12345678911', '2009-03-12 11:35:05');
+INSERT INTO `bases` VALUES (2, '郑州动物之家', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811929&di=9d61552fc1d40958e20957e057dba899&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F161118%2F12-16111q51050.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571721135&di=de7bb68293f5bb701ab2f7a8ca13f919&imgtype=0&src=http%3A%2F%2Fs2.168muyu.com%2Fupload%2Fgallery%2F1001%2F36008df2ede930f7.jpg', '上海市', 'Tesla 全轮驱动车型搭载两台独立电机以提升冗余度，每台电机只有一个活动部件，耐用性高且易于维护。与传统的全轮驱动系统不同，两台电机可精准地分配前后轮扭矩，操控性和牵引力控制更为出色。', '李先生', '321@qq.com', '12345678911', '2020-11-23 16:45:42');
+INSERT INTO `bases` VALUES (3, 'Beam的猫咖馆', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811934&di=460d27770cae8efb4c550725ee2839a0&imgtype=0&src=http%3A%2F%2Fpic4.bbzhi.com%2Fdongwubizhi%2Fgaoqingdongwubizhixiazai%2Fgaoqingdongwubizhixiazai_350162_12.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606572811926&di=18fb735e54b26ee857a2dfe107550bb7&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F5%2F55ec0ba414380.jpg', '美国', '探索Apple 充满创新的世界,选购各式 iPhone、iPad、Apple Watch 和 Mac,浏览各种配件、娱乐产品,并获得相关产品的专家支持服务。', '梁豪', 'Beamm0613@163.com', '15838365368', '2020-11-03 15:00:33');
 
 -- ----------------------------
 -- Table structure for bases_images
@@ -282,29 +331,6 @@ INSERT INTO `user_info` VALUES (18, '604520242@qq.com', 'ahaha', NULL, NULL, '25
 INSERT INTO `user_info` VALUES (19, 'Beamm0613@163.com', '12312', NULL, NULL, '25d55ad283aa400af464c76d713c07ad', NULL, NULL, 1, NULL, 'Beamm0613@163.com', NULL, NULL, NULL, NULL, '2020-12-04 17:50:25', '2020-12-04 17:50:25');
 
 -- ----------------------------
--- Table structure for volunteer
--- ----------------------------
-DROP TABLE IF EXISTS `volunteer`;
-CREATE TABLE `volunteer`  (
-  `v_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `base_id` int(11) DEFAULT NULL,
-  `v_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `v_joinPopulation` int(11) DEFAULT NULL,
-  `v_population` int(11) DEFAULT NULL,
-  `v_end_time` datetime(0) DEFAULT NULL,
-  `v_start_time` datetime(0) DEFAULT NULL,
-  `v_pass_time` datetime(0) DEFAULT NULL,
-  `v_application_time` datetime(0) DEFAULT NULL,
-  PRIMARY KEY (`v_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of volunteer
--- ----------------------------
-INSERT INTO `volunteer` VALUES (1, 1, 3, NULL, 2, 50, '2021-01-01 13:38:37', '2020-12-01 13:38:49', NULL, NULL);
-
--- ----------------------------
 -- Table structure for volunteer_form
 -- ----------------------------
 DROP TABLE IF EXISTS `volunteer_form`;
@@ -312,7 +338,7 @@ CREATE TABLE `volunteer_form`  (
   `vf_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `vf_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `vf_age` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vf_age` int(11) DEFAULT NULL,
   `vf_appraise` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `base_id` int(11) DEFAULT NULL,
   `vf_info1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -328,6 +354,29 @@ CREATE TABLE `volunteer_form`  (
 -- ----------------------------
 -- Records of volunteer_form
 -- ----------------------------
-INSERT INTO `volunteer_form` VALUES (1, 1, '河南省郑州市', '21', '我很好', NULL, '是', '是', '是', '是', '是', '是', '2020-12-05 14:47:41');
+INSERT INTO `volunteer_form` VALUES (1, 1, '河南省郑州市', 21, '我很好', NULL, '是', '是', '是', '是', '是', '是', '2020-12-05 14:47:41');
+
+-- ----------------------------
+-- Table structure for volunteer_info
+-- ----------------------------
+DROP TABLE IF EXISTS `volunteer_info`;
+CREATE TABLE `volunteer_info`  (
+  `vi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `base_id` int(11) DEFAULT NULL,
+  `vi_status` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vi_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vi_intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vi_joinPopulation` int(11) DEFAULT NULL,
+  `vi_population` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `vi_end_time` datetime(0) DEFAULT NULL,
+  `vi_start_time` datetime(0) DEFAULT NULL,
+  `vi_create_time` datetime(0) DEFAULT NULL,
+  PRIMARY KEY (`vi_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of volunteer_info
+-- ----------------------------
+INSERT INTO `volunteer_info` VALUES (1, 3, '名人数已满', '志愿者报名测试标题', '测试测试测试测试', 40, '50', '2021-01-21 18:28:02', '2020-12-01 18:28:08', '2020-12-05 18:28:12');
 
 SET FOREIGN_KEY_CHECKS = 1;

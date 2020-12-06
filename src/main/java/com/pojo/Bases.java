@@ -24,8 +24,6 @@ public class Bases {
     private String b_address;
     @NotBlank(message = "基地简介不能为空")
     private String b_intro;
-    @ApiModelProperty("基地状态：1为可报名，2为不可报名（已满）")
-    private Integer b_status;
 
     private String b_icon;
     private String b_image;
@@ -38,17 +36,20 @@ public class Bases {
     private String b_mail;
 
     @ApiModelProperty("参加人数")
-    private Integer v_joinPopulation;
+    private Integer vi_joinPopulation;
 
     @NotBlank(message = "报名人数不能为空")
     @ApiModelProperty("报名人数")
-    private Integer v_population;
+    private Integer vi_population;
 
-    private Integer v_status;
+    @ApiModelProperty("志愿者状态：1为可报名，2为不可报名（已满）")
+    private Integer vi_status;
+
+    private String vi_title;
+    private String vi_intro;
 
     private Date b_createtime;
-    private Date v_end_time;
-    private Date v_start_time;
-    private Date v_application_time;
+    private Date vi_end_time;
+    private Date vi_start_time;
 
 }

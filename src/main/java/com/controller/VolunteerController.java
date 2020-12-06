@@ -2,9 +2,9 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerFrom;
 import com.pojo.vo.QueryVolunteerByIdVo;
-import com.pojo.Volunteer;
 import com.pojo.vo.UserIdVo;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
@@ -30,7 +30,7 @@ public class VolunteerController {
     @ApiOperation("用户报名志愿者")
     @Action(description = "用户报名志愿者")
     @PostMapping("userApplication")
-    public CommonResult userApplication(@Validated @RequestBody Volunteer volunteer, BindingResult result) {
+    public CommonResult userApplication(@Validated @RequestBody ApplicationVolunteer volunteer, BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
@@ -60,7 +60,7 @@ public class VolunteerController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        QueryVolunteerByIdVo application = volunteerService.queryVolunteerById(userIdVo.getUser_id());
+        QueryVolunteerByIdVo application = volunteerService.queryAppVolunteerById(userIdVo.getUser_id());
         if (application == null) {
             return CommonResult.validateFailed("你没有参加任何志愿者活动呢");
         }

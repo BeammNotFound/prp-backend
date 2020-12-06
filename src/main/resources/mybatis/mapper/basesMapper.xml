@@ -6,8 +6,8 @@
 
     <select id="queryBases" resultType="com.pojo.Bases">
         select *
-        from bases left join volunteer
-        on bases.base_id = volunteer.base_id
+        from bases left join volunteer_info
+        on bases.base_id = volunteer_info.base_id
 
     </select>
 
@@ -28,8 +28,8 @@
 
     <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="java.lang.Integer">
         select *
-        from bases left join volunteer
-        on bases.base_id = volunteer.base_id
+        from bases left join volunteer_info
+        on bases.base_id = volunteer_info.base_id
         where bases.base_id = #{base_id}
 
     </select>

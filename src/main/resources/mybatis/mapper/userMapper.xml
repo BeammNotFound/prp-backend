@@ -69,17 +69,6 @@
         where user_mail = #{user_mail}
     </update>
 
-    <update id="userApplication" parameterType="com.pojo.Volunteer">
-
-        update bases,user_info
-        <if test="base_id != null || b_joinPopulation != null">
-            set b_joinPopulation = b_joinPopulation + 1 ,
-                user_application = #{base_id}
-        </if>
-        where user_name = #{user_name} and bases.base_id = #{base_id}
-
-    </update>
-
     <select id="queryUserByName" parameterType="java.lang.String" resultType="com.pojo.User">
         select *
         from user_info
