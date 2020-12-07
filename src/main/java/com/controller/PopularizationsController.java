@@ -3,15 +3,12 @@ package com.controller;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.RedisUtil;
-import com.common.utils.TimeUtils;
 import com.pojo.Popularizations;
 import com.service.PopularizationsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,10 +40,6 @@ public class PopularizationsController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-
-        popularizations.setP_createtime(TimeUtils.getNowTime());
-        popularizations.setP_updatetime(TimeUtils.getNowTime());
-        popularizations.setP_pv(1);
 
         service.createPopularization(popularizations);
 

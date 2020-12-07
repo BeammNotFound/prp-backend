@@ -10,6 +10,8 @@ import com.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -76,6 +78,11 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void createVF(VolunteerFrom volunteerFrom) {
         volunteerFrom.setVf_createTime(TimeUtils.getNowTime());
         volunteerMapper.createVF(volunteerFrom);
+    }
+
+    @Override
+    public List<VolunteerInfo> queryAllVolunteer() {
+        return volunteerMapper.queryAllVolunteer();
     }
 
 

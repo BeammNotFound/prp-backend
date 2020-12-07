@@ -7,6 +7,8 @@ import com.pojo.vo.QueryVolunteerByIdVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -25,4 +27,6 @@ public interface VolunteerMapper {
     void updateStatusByBaseId(ApplicationVolunteer vo);
 
     void createVF(VolunteerFrom volunteerFrom);
+
+    List<VolunteerInfo> queryAllVolunteer();
 }

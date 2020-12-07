@@ -43,7 +43,7 @@ public class Bases {
     private Integer vi_population;
 
     @ApiModelProperty("志愿者状态：1为可报名，2为不可报名（已满）")
-    private Integer vi_status;
+    private String vi_status;
 
     private String vi_title;
     private String vi_intro;

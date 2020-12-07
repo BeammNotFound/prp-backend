@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.common.utils.RedisUtil;
+import com.common.utils.TimeUtils;
 import com.mapper.PopularizationsMapper;
 import com.pojo.Popularizations;
 import com.service.PopularizationsService;
@@ -25,7 +26,9 @@ public class PopularizationsServiceImpl implements PopularizationsService {
 
     @Override
     public void createPopularization(Popularizations popularizations) {
-
+        popularizations.setP_createtime(TimeUtils.getNowTime());
+        popularizations.setP_updatetime(TimeUtils.getNowTime());
+        popularizations.setP_pv(1);
         mapper.createPopularization(popularizations);
         redisUtil.set("allPopularizations", mapper.queryPopularizationsList(popularizations));
     }
