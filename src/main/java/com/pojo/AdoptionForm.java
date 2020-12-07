@@ -1,6 +1,7 @@
 package com.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import java.util.Date;
  * @Version 0.1 2020/12
  */
 @Data
+@ApiModel("报名志愿者实体类")
 public class AdoptionForm {
     @NotBlank(message = "该数据不能为空")
     private String af_address;

@@ -1,16 +1,12 @@
 package com.pojo;
 
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("留言实体类")
 public class Contact {
     private Integer t_id;

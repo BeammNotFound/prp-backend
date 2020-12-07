@@ -2,15 +2,11 @@ package com.pojo;
 
 
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor 
 @ApiModel("基地信息实体类")
 public class BaseMessages {
     private Integer bm_id;

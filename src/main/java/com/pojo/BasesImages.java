@@ -1,14 +1,12 @@
 package com.pojo;
 
-import lombok.AllArgsConstructor;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@ApiModel("背景图片实体类")
 public class BasesImages {
     private Integer bi_id;
     private Integer base_id;

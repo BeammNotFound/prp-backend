@@ -2,9 +2,7 @@ package com.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
@@ -12,8 +10,6 @@ import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @ApiModel("用户实体类")
 public class User {
 
