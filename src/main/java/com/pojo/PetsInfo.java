@@ -26,6 +26,7 @@ public class PetsInfo {
     private String pi_image_2;
     private String pi_image_3;
     private String pi_image_4;
+    private String b_name;
     @JsonIgnore
     private Date pi_createtime;
 }

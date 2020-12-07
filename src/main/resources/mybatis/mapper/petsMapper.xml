@@ -13,7 +13,9 @@
 
     <select id="queryAllPetsInfo" resultType="com.pojo.PetsInfo">
         select *
-        from pets_info
+        from pets_info left join bases
+        on pets_info.base_id = bases.base_id
+
     </select>
 
 

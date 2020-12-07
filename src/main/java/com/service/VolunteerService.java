@@ -5,8 +5,6 @@ import com.pojo.VolunteerFrom;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 
-import java.util.List;
-
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -21,5 +19,5 @@ public interface VolunteerService {
 
     void createVF(VolunteerFrom volunteerFrom);
 
-    List<VolunteerInfo> queryAllVolunteer();
+    Object queryAllVolunteer();
 }

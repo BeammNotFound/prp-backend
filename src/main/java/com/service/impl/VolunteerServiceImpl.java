@@ -1,5 +1,6 @@
 package com.service.impl;
 
+import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
 import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
@@ -10,8 +11,6 @@ import com.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -21,6 +20,9 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Autowired
     private VolunteerMapper volunteerMapper;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public Integer userApplication(ApplicationVolunteer vo) {
@@ -81,9 +83,11 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public List<VolunteerInfo> queryAllVolunteer() {
-        return volunteerMapper.queryAllVolunteer();
+    public Object queryAllVolunteer() {
+        if (redisUtil.hasKey("allVolunteer"))
+            return redisUtil.get("allVolunteer");
+        else
+            redisUtil.set("allVolunteer", volunteerMapper.queryAllVolunteer(), 30);
+        return redisUtil.get("allVolunteer");
     }
-
-
 }
