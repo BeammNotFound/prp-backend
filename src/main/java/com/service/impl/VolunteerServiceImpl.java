@@ -78,7 +78,7 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public void createVF(VolunteerFrom volunteerFrom) {
-        volunteerFrom.setVf_createTime(TimeUtils.getNowTime());
+        volunteerFrom.setVf_create_time(TimeUtils.getNowTime());
         volunteerMapper.createVF(volunteerFrom);
     }
 

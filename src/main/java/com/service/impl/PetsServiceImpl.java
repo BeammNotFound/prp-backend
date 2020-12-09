@@ -57,7 +57,7 @@ public class PetsServiceImpl implements PetsService {
 
     @Override
     public void createAf(AdoptionForm adoptionForm) {
-        adoptionForm.setAf_createTime(TimeUtils.getNowTime());
+        adoptionForm.setAf_create_time(TimeUtils.getNowTime());
         petsMapper.createAf(adoptionForm);
     }
 }

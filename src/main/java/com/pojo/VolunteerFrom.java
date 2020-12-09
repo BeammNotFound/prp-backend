@@ -15,26 +15,39 @@ import java.util.Date;
 @Data
 @ApiModel("志愿者表单实体类")
 public class VolunteerFrom {
-    @NotBlank(message = "该数据不能为空")
-    private String vf_address;
-    @NotNull(message = "该数据不能为空")
-    private Integer vf_age;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_appraise;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info1;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info2;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info3;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info4;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info5;
-    @NotBlank(message = "该数据不能为空")
-    private String vf_info6;
-    private String user_id;
+
+
+
+    @NotNull(message = "user_id不能为空")
+    private Integer user_id;
+    @NotNull(message = "base_id不能为空")
     private Integer base_id;
+
+    @NotBlank(message = "vf_age不能为空")
+    private String vf_age;
+    @NotBlank(message = "vf_phone不能为空")
+    private String vf_phone;
+    @NotBlank(message = "vf_join_time不能为空")
+    private String vf_join_time;
+    @NotBlank(message = "vf_family_agree不能为空")
+    private String vf_family_agree;
+    @NotBlank(message = "vf_health不能为空")
+    private String vf_health;
+    @NotBlank(message = "vf_hobby不能为空")
+    private String vf_hobby;
+    @NotBlank(message = "vf_join_work不能为空")
+    private String vf_join_work;
+    @NotBlank(message = "vf_had_car不能为空")
+    private String vf_had_car;
+    @NotBlank(message = "vf_receive_train不能为空")
+    private String vf_receive_train;
+    @NotBlank(message = "vf_had_joined不能为空")
+    private String vf_had_joined;
+    @NotBlank(message = "vf_profession不能为空")
+    private String vf_profession;
+    @NotBlank(message = "vf_real_name不能为空")
+    private String vf_real_name;
+
     @JsonIgnore
-    private Date vf_createTime;
+    private Date vf_create_time;
 }

@@ -6,15 +6,15 @@
 
     <insert id="userApplication" parameterType="com.pojo.ApplicationVolunteer">
         insert into
-        application_volunteer(vi_id,user_id,base_id,av_status,av_application_time)
-        values (#{vi_id},#{user_id},#{base_id},#{av_status},#{av_application_time})
+        application_volunteer(user_id,base_id,av_status,av_application_time)
+        values (#{user_id},#{base_id},#{av_status},#{av_application_time})
     </insert>
 
     <select id="queryAppVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
             parameterType="java.lang.Integer">
         select *
         from application_volunteer left join volunteer_info
-        on application_volunteer.vi_id = volunteer_info.vi_id
+        on application_volunteer.base_id = volunteer_info.base_id
         where application_volunteer.user_id = #{user_id}
     </select>
 
@@ -39,15 +39,16 @@
     </update>
 
 
-    <insert id="createVF" parameterType="com.pojo.VolunteerFrom">
+    <insert id="createVolunteerFrom" parameterType="com.pojo.VolunteerFrom">
         insert into
-        volunteer_form(vf_address,vf_age,vf_appraise,vf_info1,vf_info2,vf_info3,vf_info4,vf_info5,vf_info6,vf_createTime,user_id,base_id)
-        values(#{vf_address},#{vf_age},#{vf_appraise},#{vf_info1},#{vf_info2},#{vf_info3},#{vf_info4},#{vf_info5},#{vf_info6},#{vf_createTime},#{user_id},#{base_id})
+        volunteer_form(user_id,base_id,vf_age,vf_phone,vf_join_time,vf_family_agree,vf_health,vf_hobby,vf_join_work,vf_createTime,vf_had_car,vf_receive_train,vf_had_joined,vf_profession,vf_real_name)
+        values(#{user_name},#{base_id},#{vf_age},#{vf_phone},#{vf_join_time},#{vf_family_agree},#{vf_health},#{vf_hobby},#{vf_join_work},#{vf_create_time},#{vf_had_car},#{vf_receive_train},#{vf_had_joined},#{vf_profession},#{vf_real_name})
     </insert>
 
     <select id="queryAllVolunteer" resultType="com.pojo.VolunteerInfo">
         select *
-        from volunteer_info
+        from volunteer_info left join bases
+        on bases.base_id = volunteer_info.base_id
     </select>
 
 </mapper>
