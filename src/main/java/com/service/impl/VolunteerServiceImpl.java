@@ -32,13 +32,13 @@ public class VolunteerServiceImpl implements VolunteerService {
 
 //        当前报名基地志愿者报名人数已满
         if (application.getVi_population() - application.getVi_joinPopulation() <= 0) {
-            vo.setVi_status("报名人数已满");
+            vo.setVi_status("已满");
             volunteerMapper.updateStatusByBaseId(vo);
             return 2;
         }
 //        志愿者报名已截止
-        if (application.getVi_end_time().before(TimeUtils.getNowTime())) {
-            vo.setVi_status("报名已截止");
+        if (!application.getVi_end_time().after(TimeUtils.getNowTime())) {
+            vo.setVi_status("已截止");
             volunteerMapper.updateStatusByBaseId(vo);
             return 3;
         }
@@ -84,10 +84,11 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public Object queryAllVolunteer() {
-        if (redisUtil.hasKey("allVolunteer"))
-            return redisUtil.get("allVolunteer");
-        else
-            redisUtil.set("allVolunteer", volunteerMapper.queryAllVolunteer(), 30);
-        return redisUtil.get("allVolunteer");
+//        if (redisUtil.hasKey("allVolunteer"))
+//            return redisUtil.get("allVolunteer");
+//        else
+//            redisUtil.set("allVolunteer", volunteerMapper.queryAllVolunteer(), 30);
+//        return redisUtil.get("allVolunteer");
+        return volunteerMapper.queryAllVolunteer();
     }
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @ApiModel("志愿者实体类")
-public class VolunteerInfo {
+public class VolunteerInfo extends Bases{
 
     @JsonIgnore
     private Integer vi_id;
@@ -19,7 +19,7 @@ public class VolunteerInfo {
     @ApiModelProperty("志愿者状态")
     private String vi_status;
 
-    private String vi_title;
+    private String vi_requirement;
     private String vi_intro;
     private Integer vi_joinPopulation;
     private Integer vi_population;

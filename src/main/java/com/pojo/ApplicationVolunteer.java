@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -13,9 +14,11 @@ import java.util.Date;
 @Data
 @ApiModel("志愿者实体类")
 public class ApplicationVolunteer {
-    private Integer vi_id;
+    @NotNull(message = "user_id不能为空")
     private Integer user_id;
+    @NotNull(message = "base_id不能为空")
     private Integer base_id;
+    @JsonIgnore
     private String av_status;
 
     @JsonIgnore
