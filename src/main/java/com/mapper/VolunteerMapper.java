@@ -1,7 +1,7 @@
 package com.mapper;
 
 import com.pojo.ApplicationVolunteer;
-import com.pojo.VolunteerFrom;
+import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,7 +26,7 @@ public interface VolunteerMapper {
 
     void updateStatusByBaseId(ApplicationVolunteer vo);
 
-    void createVF(VolunteerFrom volunteerFrom);
+    void createVolunteerForm(VolunteerForm volunteerForm);
 
     List<VolunteerInfo> queryAllVolunteer();
 }

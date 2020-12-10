@@ -4,7 +4,7 @@ import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
 import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
-import com.pojo.VolunteerFrom;
+import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.service.VolunteerService;
@@ -77,9 +77,9 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public void createVF(VolunteerFrom volunteerFrom) {
-        volunteerFrom.setVf_create_time(TimeUtils.getNowTime());
-        volunteerMapper.createVF(volunteerFrom);
+    public void createVolunteerForm(VolunteerForm volunteerForm) {
+        volunteerForm.setVf_create_time(TimeUtils.getNowTime());
+        volunteerMapper.createVolunteerForm(volunteerForm);
     }
 
     @Override
