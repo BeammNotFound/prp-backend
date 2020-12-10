@@ -13,8 +13,8 @@
     <select id="queryAppVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
             parameterType="java.lang.Integer">
         select *
-        from application_volunteer left join volunteer_info
-        on application_volunteer.base_id = volunteer_info.base_id
+        from application_volunteer left join bases
+        on application_volunteer.base_id = bases.base_id
         where application_volunteer.user_id = #{user_id}
     </select>
 
