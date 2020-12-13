@@ -4,6 +4,7 @@ import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
+import com.pojo.vo.UserIdVo;
 
 /**
  * @author BeamStark
@@ -20,4 +21,6 @@ public interface VolunteerService {
     void createVolunteerForm(VolunteerForm volunteerForm);
 
     Object queryAllVolunteer();
+
+    void cancelApplicationVolunteer(UserIdVo vo);
 }

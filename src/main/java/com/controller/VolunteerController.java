@@ -68,11 +68,23 @@ public class VolunteerController {
     }
 
 
-    @ApiOperation("查询所有志愿者信息")
-    @Action(description = "查询所有志愿者信息")
+    @ApiOperation("查询所有志愿者信息接口")
+    @Action(description = "查询所有志愿者信息接口")
     @GetMapping("queryAllVolunteer")
     public CommonResult queryAllVolunteer(){
         return CommonResult.success(volunteerService.queryAllVolunteer());
+    }
+
+
+    @ApiOperation("取消参加志愿者接口")
+    @Action(description = "取消参加志愿者接口")
+    @PostMapping("cancelApplicationVolunteer")
+    public CommonResult cancelApplicationVolunteer(@Validated @RequestBody UserIdVo vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        volunteerService.cancelApplicationVolunteer(vo);
+        return CommonResult.success("取消参加该志愿者成功");
     }
 
 

@@ -4,6 +4,7 @@ import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
+import com.pojo.vo.UserIdVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -29,4 +30,8 @@ public interface VolunteerMapper {
     void createVolunteerForm(VolunteerForm volunteerForm);
 
     List<VolunteerInfo> queryAllVolunteer();
+
+    void delApplicatVolunteerByUserId(UserIdVo vo);
+
+    void delApplicatFormByUserId(UserIdVo vo);
 }

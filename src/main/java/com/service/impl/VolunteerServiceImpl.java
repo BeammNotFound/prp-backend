@@ -7,6 +7,7 @@ import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
+import com.pojo.vo.UserIdVo;
 import com.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,5 +92,11 @@ public class VolunteerServiceImpl implements VolunteerService {
 //            redisUtil.set("allVolunteer", volunteerMapper.queryAllVolunteer(), 30);
 //        return redisUtil.get("allVolunteer");
         return volunteerMapper.queryAllVolunteer();
+    }
+
+    @Override
+    public void cancelApplicationVolunteer(UserIdVo vo) {
+        volunteerMapper.delApplicatFormByUserId(vo);
+        volunteerMapper.delApplicatVolunteerByUserId(vo);
     }
 }

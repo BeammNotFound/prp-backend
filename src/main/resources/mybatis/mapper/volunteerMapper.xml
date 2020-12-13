@@ -50,5 +50,15 @@
         from volunteer_info left join bases
         on bases.base_id = volunteer_info.base_id
     </select>
+    
+    <delete id="delApplicatVolunteerByUserId" parameterType="java.lang.Integer">
+        delete from application_volunteer
+        where user_id = #{user_id}
+    </delete>
+
+    <delete id="delApplicatFormByUserId" parameterType="java.lang.Integer">
+        delete from volunteer_form
+        where user_id = #{user_id}
+    </delete>
 
 </mapper>

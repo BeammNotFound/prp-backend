@@ -5,6 +5,7 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.pojo.AdoptionForm;
 import com.pojo.AdoptionPats;
+import com.pojo.PetsInfo;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.UserIdVo;
 import com.service.PetsService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Api(tags = "宠物接口")
 @RestController
@@ -68,7 +71,11 @@ public class PetsController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        return CommonResult.success(service.queryAdoptPet(vo.getUser_id()));
+        List<PetsInfo> petsInfos = service.queryAdoptPet(vo.getUser_id());
+        if (petsInfos.isEmpty()) {
+            return CommonResult.validateFailed("您没有领养任何宠物");
+        }
+        return CommonResult.success(petsInfos);
     }
 
 }
