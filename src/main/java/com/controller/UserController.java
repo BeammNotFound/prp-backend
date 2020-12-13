@@ -130,6 +130,8 @@ public class UserController {
     @Action(description = "根据id修改用户头像")
     @PostMapping("changeUserIconById")
     public CommonResult changeUserIconById(Integer user_id, MultipartFile icon_file){
+        if (user_id == null)
+            return CommonResult.validateFailed("user_id不能为空");
         UpdateUserInfoVo vo = new UpdateUserInfoVo();
         if (icon_file != null) {
             try {
