@@ -67,14 +67,6 @@ public class UserController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        if (vo.getIcon_file() != null) {
-            try {
-                vo.setUser_icon(new UpLoadImages().uploadImage(vo.getIcon_file()));
-            } catch (IOException e) {
-                CommonResult.validateFailed("头像上传失败");
-                e.printStackTrace();
-            }
-        }
 
         vo.setUser_updatetime(TimeUtils.getNowTime());
         userService.updateUserByUserId(vo);
@@ -114,7 +106,7 @@ public class UserController {
 
     }
 
-        @ApiOperation("发送邮箱验证码")
+    @ApiOperation("发送邮箱验证码")
     @Action(description = "发送邮箱验证码")
     @PostMapping("/verifyMail")
     public CommonResult verifyMail(@Validated @RequestBody VerifyMailVo user, BindingResult result) {
@@ -131,6 +123,23 @@ public class UserController {
 
         setMail.sendMail(user.getUser_mail());
         return CommonResult.success("邮箱发送成功");
+    }
+
+    @ApiOperation("根据id修改用户头像")
+    @Action(description = "根据id修改用户头像")
+    @PostMapping("changeUserIconById")
+    public CommonResult changeUserIconById(@Validated @RequestBody UpdateUserInfoVo vo){
+        if (vo.getIcon_file() != null) {
+            try {
+                vo.setUser_icon(new UpLoadImages().uploadImage(vo.getIcon_file()));
+            } catch (IOException e) {
+                CommonResult.validateFailed("头像上传失败");
+                e.printStackTrace();
+            }
+        }
+        vo.setUser_updatetime(TimeUtils.getNowTime());
+        userService.updateUserByUserId(vo);
+        return CommonResult.success(vo.getUser_icon());
     }
 
 
