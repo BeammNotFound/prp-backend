@@ -49,7 +49,6 @@ public class VolunteerController {
         } else if (flag == 6) {
             return CommonResult.validateFailed("您已经报过名啦");
         }
-
         return CommonResult.success("报名成功！");
 
     }
@@ -68,16 +67,6 @@ public class VolunteerController {
         return CommonResult.success(application);
     }
 
-    @ApiOperation("创建志愿者申请表单")
-    @Action(description = "创建志愿者申请表单")
-    @PostMapping("createVolunteerForm")
-    public CommonResult createVolunteerForm(@Validated @RequestBody VolunteerForm vo, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-        volunteerService.createVolunteerForm(vo);
-        return CommonResult.success("创建志愿者申请表单成功");
-    }
 
     @ApiOperation("查询所有志愿者信息")
     @Action(description = "查询所有志愿者信息")

@@ -41,7 +41,7 @@
 
     <insert id="createVolunteerForm" parameterType="com.pojo.VolunteerForm">
         insert into
-        volunteer_form(user_id,base_id,vf_age,vf_phone,vf_join_time,vf_family_agree,vf_health,vf_join_work,vf_createTime,vf_had_car,vf_receive_train,vf_had_joined,vf_profession,vf_real_name)
+        volunteer_form(user_id,base_id,vf_age,vf_phone,vf_join_time,vf_family_agree,vf_health,vf_join_work,vf_create_time,vf_had_car,vf_receive_train,vf_had_joined,vf_profession,vf_real_name)
         values(#{user_id},#{base_id},#{vf_age},#{vf_phone},#{vf_join_time},#{vf_family_agree},#{vf_health},#{vf_join_work},#{vf_create_time},#{vf_had_car},#{vf_receive_train},#{vf_had_joined},#{vf_profession},#{vf_real_name})
     </insert>
 

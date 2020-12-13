@@ -16,14 +16,8 @@ import java.util.Date;
 @Data
 @ApiModel("志愿者表单实体类")
 public class VolunteerForm {
-
-    @NotNull(message = "user_id不能为空")
-    private Integer user_id;
-    @NotNull(message = "base_id不能为空")
-    private Integer base_id;
-
-    @NotBlank(message = "vf_age不能为空")
-    private String vf_age;
+    @NotNull(message = "vf_age不能为空")
+    private Integer vf_age;
     @NotBlank(message = "vf_phone不能为空")
     @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$",message = "手机号格式不正确")
     private String vf_phone;

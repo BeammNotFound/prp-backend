@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel("志愿者实体类")
-public class ApplicationVolunteer {
+public class ApplicationVolunteer extends VolunteerForm {
     @NotNull(message = "user_id不能为空")
     private Integer user_id;
     @NotNull(message = "base_id不能为空")

@@ -62,6 +62,7 @@ public class VolunteerServiceImpl implements VolunteerService {
         vo.setAv_status("待审批");
         vo.setAv_application_time(TimeUtils.getNowTime());
         volunteerMapper.updateJoinPopulationByBaseId(vo.getBase_id());
+        volunteerMapper.createVolunteerForm(vo);
         volunteerMapper.userApplication(vo);
         return 1;
     }
