@@ -40,14 +40,24 @@ public class PetsServiceImpl implements PetsService {
     }
 
     @Override
-    public Boolean adoptPet(AdoptionPats adoptionPats) {
+    public Integer adoptPet(AdoptionPats adoptionPats) {
+        //判断是否有这个用户
         if (userMapper.queryUserById(adoptionPats.getUser_id()) == null) {
-            return false;
+            return 3;
+        }
+        //判断是否已经领养
+        List<AdoptionPats> ls = petsMapper.queryAdoptPetByUserId(adoptionPats.getUser_id());
+        if (ls != null) {
+            for (AdoptionPats l : ls) {
+                if (l.getPet_id().equals(adoptionPats.getPet_id())) {
+                    return 2;
+                }
+            }
         }
         adoptionPats.setAp_application_time(TimeUtils.getNowTime());
         adoptionPats.setAp_status(2);
         petsMapper.adoptPet(adoptionPats);
-        return true;
+        return 1;
     }
 
     @Override

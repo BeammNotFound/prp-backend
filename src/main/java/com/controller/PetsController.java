@@ -51,10 +51,14 @@ public class PetsController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        if (service.adoptPet(adoptionPats)) {
+        Integer flag = service.adoptPet(adoptionPats);
+        if (flag == 2)
+            return CommonResult.validateFailed("你已经领养过该宠物了");
+        else if (flag == 3)
+            return CommonResult.validateFailed("用户效验失败，请重新登录");
+        else
+            service.createAf(adoptionPats);
             return CommonResult.success("申请领养成功");
-        }
-        return CommonResult.validateFailed("用户效验失败，请重新登录");
     }
 
     @ApiOperation("查看用户申请领养宠物接口")
@@ -67,14 +71,4 @@ public class PetsController {
         return CommonResult.success(service.queryAdoptPet(vo.getUser_id()));
     }
 
-    @ApiOperation("创建宠物申请领养表单")
-    @Action(description = "创建宠物申请领养表单")
-    @PostMapping("createAdoptionForm")
-    public CommonResult createAf(@Validated @RequestBody AdoptionForm vo, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-        service.createAf(vo);
-        return CommonResult.success("创建宠物申请领养表单成功");
-    }
 }

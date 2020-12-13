@@ -18,6 +18,8 @@ public interface PetsMapper {
 
     List<PetsInfo> queryAdoptPet(Integer base_id);
 
+    List<AdoptionPats> queryAdoptPetByUserId(Integer user_id);
+
     void adoptPet(AdoptionPats adoptionPats);
 
     void createAf(AdoptionForm adoptionForm);

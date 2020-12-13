@@ -34,13 +34,6 @@ public class AdoptionForm {
     @NotBlank(message = "af_info6不能为空")
     private String af_info6;
 
-
-    @NotNull(message = "user_id不能为空")
-    private Integer user_id;
-    @NotNull(message = "base_id不能为空")
-    private Integer base_id;
-    @NotNull(message = "pet_id不能为空")
-    private Integer pet_id;
     @JsonIgnore
     private Date af_create_time;
 }
