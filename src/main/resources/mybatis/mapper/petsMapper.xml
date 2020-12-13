@@ -34,7 +34,7 @@
 
     <insert id="createAf" parameterType="com.pojo.AdoptionForm">
         insert into
-        adoption_form(af_address,af_age,af_appraise,af_info1,af_info2,af_info3,af_info4,af_info5,af_info6,af_createTime,user_id,base_id,pet_id)
+        adoption_form(af_address,af_age,af_appraise,af_info1,af_info2,af_info3,af_info4,af_info5,af_info6,af_create_time,user_id,base_id,pet_id)
         values(#{af_address},#{af_age},#{af_appraise},#{af_info1},#{af_info2},#{af_info3},#{af_info4},#{af_info5},#{af_info6},#{af_create_time},#{user_id},#{base_id},#{pet_id})
     </insert>
 
