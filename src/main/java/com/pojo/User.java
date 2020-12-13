@@ -3,7 +3,6 @@ package com.pojo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
@@ -47,8 +46,6 @@ public class User {
     private String enter_password;
 
     private String user_tooken;
-
-    private MultipartFile file;
 
     @ApiModelProperty("用户申请的基地id")
     private Integer user_application;

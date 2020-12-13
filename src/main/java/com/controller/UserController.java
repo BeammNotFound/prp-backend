@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -128,19 +129,19 @@ public class UserController {
     @ApiOperation("根据id修改用户头像")
     @Action(description = "根据id修改用户头像")
     @PostMapping("changeUserIconById")
-    public CommonResult changeUserIconById(@Validated @RequestBody UpdateUserInfoVo vo){
-        if (vo.getIcon_file() != null) {
+    public CommonResult changeUserIconById(Integer user_id, MultipartFile icon_file){
+        UpdateUserInfoVo vo = new UpdateUserInfoVo();
+        if (icon_file != null) {
             try {
-                vo.setUser_icon(new UpLoadImages().uploadImage(vo.getIcon_file()));
+                vo.setUser_icon(new UpLoadImages().uploadImage(icon_file));
             } catch (IOException e) {
                 CommonResult.validateFailed("头像上传失败");
                 e.printStackTrace();
             }
         }
         vo.setUser_updatetime(TimeUtils.getNowTime());
+        vo.setUser_id(user_id);
         userService.updateUserByUserId(vo);
         return CommonResult.success(vo.getUser_icon());
     }
-
-
 }
