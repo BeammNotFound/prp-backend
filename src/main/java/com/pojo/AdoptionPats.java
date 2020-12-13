@@ -27,7 +27,7 @@ public class AdoptionPats extends AdoptionForm{
 
     @ApiModelProperty("领养状态：1为审批通过，2为待审批，3为审批不通过")
     @JsonIgnore
-    private Integer ap_status;
+    private String ap_status;
     @JsonIgnore
     private Date ap_application_time;
     @JsonIgnore

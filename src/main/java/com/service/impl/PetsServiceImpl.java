@@ -55,7 +55,7 @@ public class PetsServiceImpl implements PetsService {
             }
         }
         adoptionPats.setAp_application_time(TimeUtils.getNowTime());
-        adoptionPats.setAp_status(2);
+        adoptionPats.setAp_status("待审批");
         petsMapper.adoptPet(adoptionPats);
         return 1;
     }
