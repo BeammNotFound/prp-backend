@@ -46,8 +46,4 @@ public class User {
     private String enter_password;
 
     private String user_tooken;
-
-    @ApiModelProperty("用户申请的基地id")
-    private Integer user_application;
-
 }

@@ -2,7 +2,6 @@ package com.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -30,6 +29,5 @@ public class UpdateUserInfoVo {
     private Integer user_age;
     @JsonIgnore
     private Date user_updatetime;
-    private MultipartFile icon_file;
 
 }
