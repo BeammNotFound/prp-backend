@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.RController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;

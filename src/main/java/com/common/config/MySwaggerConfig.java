@@ -2,7 +2,6 @@ package com.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,14 +15,27 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class MySwaggerConfig {
     //api接口包扫描路径
-    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.controller";
+    public static final String ReceptionController = "com.controller.RController";
+    public static final String ManagementController = "com.controller.MController";
 //    public static final String VERSION = "1.0.0";
-    @Bean
-    public Docket createRestApi() {
+    @Bean("前台")
+    public Docket ReceptionController() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("前台")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
+                .apis(RequestHandlerSelectors.basePackage(ReceptionController))
+                .paths(PathSelectors.any()) // 可以根据url路径设置哪些请求加入文档，忽略哪些请求
+                .build();
+    }
+
+    @Bean("后台")
+    public Docket ManagementController() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("后台")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage(ManagementController))
                 .paths(PathSelectors.any()) // 可以根据url路径设置哪些请求加入文档，忽略哪些请求
                 .build();
     }

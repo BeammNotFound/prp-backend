@@ -1,8 +1,7 @@
-package com.controller;
+package com.controller.MController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
-import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
 import com.pojo.Messages;
 import com.service.MessagesListService;
@@ -10,27 +9,30 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author BeamStark
+ * @Version 0.1 2020/12
+ */
 @RestController
-@Api(tags = "资讯列表接口")
-public class MessagesListController {
-
+@Api(tags = "后台资讯列表接口")
+public class MessagesManageController {
     @Autowired
     private MessagesListService messagesListService;
 
-    @ApiOperation("获取全部资讯列表")
-    @Action(description = "获取全部资讯列表")
-    @GetMapping("/queryMessages")
-    public CommonResult allMessages() {
-        return CommonResult.success(messagesListService.allMessages());
-    }
-
+//    @ApiOperation("获取全部资讯列表")
+//    @Action(description = "获取全部资讯列表")
+//    @GetMapping("/queryManageMessages")
+//    public CommonResult allManageMessages() {
+//        return CommonResult.success(messagesListService.allMessages());
+//}
 
     @ApiOperation("创建资讯")
     @Action(description = "创建资讯")

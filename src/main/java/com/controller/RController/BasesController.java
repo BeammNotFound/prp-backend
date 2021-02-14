@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.RController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
@@ -31,33 +31,6 @@ public class BasesController {
     @GetMapping("/queryBases")
     public CommonResult queryBases() {
         return CommonResult.success(service.queryBases());
-    }
-
-    @ApiOperation("根据基地名模糊搜索基地信息")
-    @Action(description = "根据基地名模糊搜索基地信息")
-    @PostMapping("fuzzyQueryBases")
-    public CommonResult fuzzyQueryBases(@Validated @RequestBody QueryBasesVo basesVo, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-
-        List<Bases> bases = service.fuzzyQueryBases(basesVo);
-        if (bases == null || bases.size() == 0) {
-            return CommonResult.validateFailed("查不到内容呢 QAQ ,检查一下搜索内容~");
-        }
-        return CommonResult.success(service.fuzzyQueryBases(basesVo));
-
-    }
-
-    @ApiOperation("删除基地")
-    @Action(description = "删除基地")
-    @PostMapping("delBases")
-    public CommonResult delBases(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-        service.delBases(baseIdVo);
-        return CommonResult.success("删除成功");
     }
 
 

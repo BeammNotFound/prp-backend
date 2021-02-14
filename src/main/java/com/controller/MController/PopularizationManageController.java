@@ -1,5 +1,4 @@
-package com.controller;
-
+package com.controller.MController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
@@ -17,20 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author BeamStark
+ * @Version 0.1 2020/12
+ */
 @RestController
-@Api(tags = "科普接口")
-public class PopularizationsController {
+@Api(tags = "后台科普接口")
+public class PopularizationManageController {
 
     @Autowired
     private PopularizationsService service;
-
-    @ApiOperation("查询科普列表")
-    @Action(description = "查询科普列表")
-    @PostMapping("/queryPopularizationsList")
-    public CommonResult queryPopularizations(@RequestBody Popularizations popularizations) {
-        return CommonResult.success(service.queryPopularizations(popularizations));
-
-    }
 
     @ApiOperation("创建科普信息")
     @Action(description = "创建科普信息")
