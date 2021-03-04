@@ -7,6 +7,7 @@ import com.service.PetsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +28,12 @@ public class PetsManageController {
     @PostMapping("queryPetByName")
     public CommonResult queryPetsInfoByBaseId(@RequestBody PetNameVo pi_name) {
         return CommonResult.success(service.queryPetByName(pi_name.getPetName()));
+    }
+
+    @ApiOperation("查询所有宠物申请表单")
+    @Action(description = "查询所有宠物申请表单")
+    @GetMapping("queryPetByName")
+    public CommonResult queryAdoptionForm(){
+        return CommonResult.success(service.queryAdoptionForm());
     }
 }

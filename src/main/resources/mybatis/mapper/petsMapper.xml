@@ -52,4 +52,9 @@
         where adoption_pets.user_id = #{user_id}
     </select>
 
+    <select id="queryAdoptionForm" resultType="com.pojo.AdoptionPats">
+        select *
+        from adoption_form
+    </select>
+
 </mapper>

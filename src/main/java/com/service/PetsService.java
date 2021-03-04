@@ -13,5 +13,7 @@ public interface PetsService {
     Integer adoptPet(AdoptionPats adoptionPats);
     List<PetsInfo> queryAdoptPet(Integer user_id);
     void createAf(AdoptionForm adoptionForm);
+    List<AdoptionPats> queryAdoptionForm();
+
 
 }

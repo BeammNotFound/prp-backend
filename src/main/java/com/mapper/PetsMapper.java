@@ -26,6 +26,7 @@ public interface PetsMapper {
 
     void createAf(AdoptionForm adoptionForm);
 
+    List<AdoptionPats> queryAdoptionForm();
 
 
 }

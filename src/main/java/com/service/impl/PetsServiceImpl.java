@@ -75,4 +75,9 @@ public class PetsServiceImpl implements PetsService {
         adoptionForm.setAf_create_time(TimeUtils.getNowTime());
         petsMapper.createAf(adoptionForm);
     }
+
+    @Override
+    public List<AdoptionPats> queryAdoptionForm() {
+        return petsMapper.queryAdoptionForm();
+    }
 }

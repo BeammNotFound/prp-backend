@@ -13,7 +13,7 @@ import java.util.Date;
  * @Version 0.1 2020/12
  */
 @Data
-@ApiModel("报名志愿者实体类")
+@ApiModel("宠物领养表单")
 public class AdoptionForm {
     @NotBlank(message = "af_address不能为空")
     private String af_address;
