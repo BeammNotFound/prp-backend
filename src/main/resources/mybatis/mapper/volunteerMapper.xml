@@ -61,4 +61,9 @@
         where user_id = #{user_id}
     </delete>
 
+    <select id="queryVolunteerFrom" resultType="com.pojo.VolunteerForm">
+        select *
+        from volunteer_form
+    </select>
+
 </mapper>

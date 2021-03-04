@@ -6,6 +6,8 @@ import com.pojo.VolunteerInfo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.vo.UserIdVo;
 
+import java.util.List;
+
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -23,4 +25,6 @@ public interface VolunteerService {
     Object queryAllVolunteer();
 
     void cancelApplicationVolunteer(UserIdVo vo);
+
+    List<VolunteerForm> queryVolunteerFrom();
 }

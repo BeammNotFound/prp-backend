@@ -12,6 +12,8 @@ import com.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author BeamStark
  * @Version 0.1 2020/12
@@ -100,5 +102,10 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void cancelApplicationVolunteer(UserIdVo vo) {
         volunteerMapper.delApplicatFormByUserId(vo);
         volunteerMapper.delApplicatVolunteerByUserId(vo);
+    }
+
+    @Override
+    public List<VolunteerForm> queryVolunteerFrom() {
+        return volunteerMapper.queryVolunteerFrom();
     }
 }

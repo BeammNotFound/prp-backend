@@ -31,6 +31,11 @@ public class PetsServiceImpl implements PetsService {
     }
 
     @Override
+    public List<PetsInfo> queryPetByName(String pi_name) {
+        return petsMapper.queryPetByName(pi_name);
+    }
+
+    @Override
     public Object queryAllPetsInfo() {
         if (redisUtil.hasKey("allPetsInfo"))
             return redisUtil.get("allPetsInfo");

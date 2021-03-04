@@ -9,4 +9,5 @@
         contact(user_id,c_words,c_createtime)
         values(#{user_id},#{c_words},#{c_createtime});
     </insert>
+
 </mapper>
