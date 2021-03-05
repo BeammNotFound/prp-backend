@@ -57,4 +57,16 @@
         from adoption_form
     </select>
 
+    <update id="updateApStatusByid" parameterType="com.pojo.vo.ApStatusVo">
+        update adoption_pets
+        set ap_status = #{ap_status}
+        where ap_id = #{ap_id}
+    </update>
+
+    <update id="updateApPassTimeByid" parameterType="com.pojo.vo.ApStatusVo">
+        update adoption_pets
+        set ap_pass_time = #{ap_pass_time}
+        where ap_id = #{ap_id}
+    </update>
+
 </mapper>

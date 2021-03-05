@@ -7,6 +7,7 @@ import com.mapper.UserMapper;
 import com.pojo.AdoptionPats;
 import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
+import com.pojo.vo.ApStatusVo;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,5 +80,15 @@ public class PetsServiceImpl implements PetsService {
     @Override
     public List<AdoptionPats> queryAdoptionForm() {
         return petsMapper.queryAdoptionForm();
+    }
+
+    @Override
+    public void updateApStatusByid(ApStatusVo apStatusVo) {
+        petsMapper.updateApStatusByid(apStatusVo);
+    }
+
+    @Override
+    public void updateApPassTimeByid(ApStatusVo apStatusVo) {
+        petsMapper.updateApPassTimeByid(apStatusVo);
     }
 }
