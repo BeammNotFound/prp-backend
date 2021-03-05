@@ -11,13 +11,13 @@ import java.util.Date;
  * @Version 0.1 2020/12
  */
 @Data
+public class ApplicationVo {
 
-public class ApStatusVo {
-    private Integer ap_id;
     @ApiModelProperty("审批状态： 1 审批通过; 2 待审批; 3 审批驳回")
     private Integer status;
+    private int av_id;
     @JsonIgnore
-    private String ap_status;
+    private String av_status;
     @JsonIgnore
-    private Date ap_pass_time;
+    private Date av_pass_time;
 }

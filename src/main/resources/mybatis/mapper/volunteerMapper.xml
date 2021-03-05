@@ -66,4 +66,16 @@
         from volunteer_form
     </select>
 
+    <update id="updateAVStatusByid" parameterType="com.pojo.vo.ApplicationVo">
+        update application_volunteer
+        set av_status = #{av_status}
+        where av_id = #{av_id}
+    </update>
+
+    <update id="updateAVPassTimeByid" parameterType="com.pojo.vo.ApplicationVo">
+        update application_volunteer
+        set av_pass_time = #{av_pass_time}
+        where av_id = #{av_id}
+    </update>
+
 </mapper>

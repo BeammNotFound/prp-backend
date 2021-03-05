@@ -6,6 +6,7 @@ import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
+import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.vo.UserIdVo;
 import com.service.VolunteerService;
@@ -107,5 +108,15 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public List<VolunteerForm> queryVolunteerFrom() {
         return volunteerMapper.queryVolunteerFrom();
+    }
+
+    @Override
+    public void updateAVStatusByid(ApplicationVo applicationVo) {
+        volunteerMapper.updateAVStatusByid(applicationVo);
+    }
+
+    @Override
+    public void updateAVPassTimeByid(ApplicationVo applicationVo) {
+        volunteerMapper.updateAVPassTimeByid(applicationVo);
     }
 }

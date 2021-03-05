@@ -3,6 +3,7 @@ package com.service;
 import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
+import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.vo.UserIdVo;
 
@@ -27,4 +28,8 @@ public interface VolunteerService {
     void cancelApplicationVolunteer(UserIdVo vo);
 
     List<VolunteerForm> queryVolunteerFrom();
+
+    void updateAVStatusByid(ApplicationVo applicationVo);
+
+    void updateAVPassTimeByid(ApplicationVo applicationVo);
 }

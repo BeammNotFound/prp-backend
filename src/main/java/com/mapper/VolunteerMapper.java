@@ -3,6 +3,7 @@ package com.mapper;
 import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
+import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.QueryVolunteerByIdVo;
 import com.pojo.vo.UserIdVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -36,5 +37,10 @@ public interface VolunteerMapper {
     void delApplicatFormByUserId(UserIdVo vo);
 
     List<VolunteerForm> queryVolunteerFrom();
+
+    void updateAVStatusByid(ApplicationVo applicationVo);
+
+    void updateAVPassTimeByid(ApplicationVo applicationVo);
+
 
 }
