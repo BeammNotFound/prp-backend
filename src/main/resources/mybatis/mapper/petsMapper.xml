@@ -12,9 +12,12 @@
     </select>
 
     <select id="queryAllPetsInfo" resultType="com.pojo.PetsInfo">
-        select *
-        from pets_info left join bases
+        select
+        pi_id,adoption_pets.base_id,pi_name,pi_age,pi_breed,pi_DH,pi_intro,pi_image_1,pi_image_2,pi_image_3,pi_image_4,b_name,ap_status,pi_createtime,ap_pass_time
+        from adoption_pets,pets_info
+        left join bases
         on pets_info.base_id = bases.base_id
+        where pets_info.pi_id = adoption_pets.pet_id
     </select>
 
     <select id="queryPetByName" resultType="com.pojo.PetsInfo" parameterType="java.lang.String">

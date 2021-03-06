@@ -1,6 +1,5 @@
 package com.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,6 +22,7 @@ public class PetsInfo {
     private String pi_image_3;
     private String pi_image_4;
     private String b_name;
-    @JsonIgnore
+    private String ap_status;
     private Date pi_createtime;
+    private Date ap_pass_time;
 }
