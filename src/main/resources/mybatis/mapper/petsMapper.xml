@@ -77,7 +77,7 @@
 
     <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApFormVo" resultType="com.pojo.vo.ApFormVo">
         SELECT
-            user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time
+                user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time,ap_id,ap_application_time
         FROM
             adoption_pets,user_info,pets_info,bases
         WHERE
