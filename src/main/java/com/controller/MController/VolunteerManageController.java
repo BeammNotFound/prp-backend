@@ -4,6 +4,7 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.vo.ApplicationVo;
+import com.pojo.vo.AvStatusVo;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,5 +50,20 @@ public class VolunteerManageController {
             return CommonResult.success("审批驳回成功！");
         }
         return CommonResult.validateFailed("审批失败，请重试！");
+    }
+
+    @ApiOperation("根据av_status筛选志愿者申请表单信息")
+    @Action(description = "根据av_status筛选志愿者申请表单信息")
+    @PostMapping("queryAvFormByStatus")
+    public CommonResult queryAvFormByStatus(@RequestBody AvStatusVo vo){
+        Integer status = vo.getStatus();
+        if (status.equals(1)) {
+            vo.setAv_status("审批通过");
+        }else if(status.equals(2)){
+            vo.setAv_status("待审批");
+        } else if (status.equals(3)) {
+            vo.setAv_status("审批驳回");
+        }
+        return CommonResult.success(volunteerService.queryAvFormByStatus(vo));
     }
 }

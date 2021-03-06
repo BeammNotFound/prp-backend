@@ -6,9 +6,7 @@ import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
-import com.pojo.vo.ApplicationVo;
-import com.pojo.vo.QueryVolunteerByIdVo;
-import com.pojo.vo.UserIdVo;
+import com.pojo.vo.*;
 import com.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -118,5 +116,10 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public void updateAVPassTimeByid(ApplicationVo applicationVo) {
         volunteerMapper.updateAVPassTimeByid(applicationVo);
+    }
+
+    @Override
+    public List<AvFormVo> queryAvFormByStatus(AvStatusVo vo) {
+        return volunteerMapper.queryAvFormByStatus(vo);
     }
 }

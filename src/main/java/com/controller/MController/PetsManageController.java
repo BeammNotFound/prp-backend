@@ -3,7 +3,6 @@ package com.controller.MController;
 import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
-import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
 import com.pojo.vo.PetNameVo;
 import com.service.PetsService;
@@ -59,10 +58,10 @@ public class PetsManageController {
         return CommonResult.validateFailed("审批失败，请重试！");
     }
 
-    @ApiOperation("根据ap_status查询领养宠物表单信息")
-    @Action(description = "根据ap_status查询领养宠物表单信息")
+    @ApiOperation("根据ap_status筛选领养宠物表单信息")
+    @Action(description = "根据ap_status筛选领养宠物表单信息")
     @PostMapping("queryApFormByStatus")
-    public CommonResult queryApFormByStatus(@RequestBody ApFormVo vo){
+    public CommonResult queryApFormByStatus(@RequestBody ApStatusVo vo){
 
         Integer status = vo.getStatus();
         if (status.equals(1)) {

@@ -75,7 +75,7 @@
             ap_id = #{ap_id}
     </update>
 
-    <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApFormVo" resultType="com.pojo.vo.ApFormVo">
+    <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApStatusVo" resultType="com.pojo.vo.ApFormVo">
         SELECT
                 user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time,ap_id,ap_application_time
         FROM

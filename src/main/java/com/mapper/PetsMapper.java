@@ -34,7 +34,7 @@ public interface PetsMapper {
 
     void updateApPassTimeByid(ApStatusVo apStatusVo);
 
-    List<ApFormVo> queryApFormByStatus(ApFormVo vo);
+    List<ApFormVo> queryApFormByStatus(ApStatusVo vo);
 
 
 }

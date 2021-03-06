@@ -94,7 +94,7 @@ public class PetsServiceImpl implements PetsService {
     }
 
     @Override
-    public List<ApFormVo> queryApFormByStatus(ApFormVo vo) {
+    public List<ApFormVo> queryApFormByStatus(ApStatusVo vo) {
         return petsMapper.queryApFormByStatus(vo);
     }
 }

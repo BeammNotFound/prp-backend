@@ -78,4 +78,19 @@
         where av_id = #{av_id}
     </update>
 
+    <select id="queryAvFormByStatus" parameterType="com.pojo.vo.AvStatusVo" resultType="com.pojo.vo.AvFormVo">
+        SELECT
+            av_id,user_name,b_name,user_phone,vi_joinPopulation,vi_population,av_application_time,av_pass_time
+        FROM
+            application_volunteer,user_info,volunteer_form,bases,volunteer_info
+        WHERE
+            bases.base_id = application_volunteer.base_id
+            AND application_volunteer.user_id = user_info.user_id
+            and application_volunteer.user_id = volunteer_form.user_id
+            and volunteer_info.base_id = application_volunteer.base_id
+            <if test="av_status != null and av_status != ''">
+                and av_status = #{av_status}
+            </if>
+    </select>
+
 </mapper>
