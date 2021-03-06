@@ -103,4 +103,9 @@ public class PetsServiceImpl implements PetsService {
     public List<PetsInfoVo> queryAdoptedPetsInfo() {
         return petsMapper.queryAdoptedPetsInfo();
     }
+
+    @Override
+    public List<PetsInfoVo> queryUnAdoptedPetsInfo() {
+        return petsMapper.queryUnAdoptedPetsInfo();
+    }
 }

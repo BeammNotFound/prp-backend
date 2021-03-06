@@ -21,5 +21,6 @@ public interface PetsService {
     void updateApPassTimeByid(ApStatusVo apStatusVo);
     List<ApFormVo> queryApFormByStatus(ApStatusVo vo);
     List<PetsInfoVo> queryAdoptedPetsInfo();
+    List<PetsInfoVo> queryUnAdoptedPetsInfo();
 
 }

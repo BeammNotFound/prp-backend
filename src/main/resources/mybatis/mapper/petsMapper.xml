@@ -102,4 +102,16 @@
             and ap_status = "审批通过"
     </select>
 
+    <select id="queryUnAdoptedPetsInfo" resultType="com.pojo.vo.PetsInfoVo">
+        SELECT
+	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name
+        FROM
+	        adoption_pets,user_info,pets_info,bases
+        WHERE
+	        adoption_pets.user_id = user_info.user_id
+	        and adoption_pets.base_id = bases.base_id
+	        and adoption_pets.pet_id = pets_info.pi_id
+            and ap_status = "待领养"
+    </select>
+
 </mapper>

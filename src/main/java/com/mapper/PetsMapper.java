@@ -39,5 +39,7 @@ public interface PetsMapper {
 
     List<PetsInfoVo> queryAdoptedPetsInfo();
 
+    List<PetsInfoVo> queryUnAdoptedPetsInfo();
+
 
 }

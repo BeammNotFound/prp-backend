@@ -34,7 +34,7 @@ public class PetsManageController {
 
     @ApiOperation("查询所有宠物申请表单")
     @Action(description = "查询所有宠物申请表单")
-    @GetMapping("queryPetByName")
+    @GetMapping("queryAdoptionForm")
     public CommonResult queryAdoptionForm(){
         return CommonResult.success(service.queryAdoptionForm());
     }
@@ -79,5 +79,12 @@ public class PetsManageController {
     @GetMapping("queryAdoptedPetsInfo")
     public CommonResult queryAdoptedPetsInfo() {
         return CommonResult.success(service.queryAdoptedPetsInfo());
+    }
+
+    @ApiOperation("未被领养宠物接口")
+    @Action(description = "未被领养宠物接口")
+    @GetMapping("queryUnAdoptedPetsInfo")
+    public CommonResult queryUnAdoptedPetsInfo(){
+        return CommonResult.success(service.queryUnAdoptedPetsInfo());
     }
 }
