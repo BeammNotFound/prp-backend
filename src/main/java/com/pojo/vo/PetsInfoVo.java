@@ -1,7 +1,6 @@
 package com.pojo.vo;
 
 import lombok.Data;
-
 import java.util.Date;
 
 /**
@@ -12,5 +11,5 @@ import java.util.Date;
 public class PetsInfoVo {
     private String pi_name,pi_breed,pi_age,pi_DH,ap_status,user_name,user_phone,b_name;
     private Integer pi_id;
-    private Date ap_pass_time;
+    private Date ap_pass_time,pi_createtime;
 }

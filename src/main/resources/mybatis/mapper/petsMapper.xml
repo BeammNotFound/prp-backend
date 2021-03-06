@@ -104,7 +104,7 @@
 
     <select id="queryUnAdoptedPetsInfo" resultType="com.pojo.vo.PetsInfoVo">
         SELECT
-	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name
+	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name,ap_createtime
         FROM
 	        adoption_pets,user_info,pets_info,bases
         WHERE
@@ -113,5 +113,9 @@
 	        and adoption_pets.pet_id = pets_info.pi_id
             and ap_status = "待领养"
     </select>
+
+    <insert id="insertPet" parameterType="com.pojo.PetsInfo">
+        insert into pets_info(pi_name,pi_age,pi_breed,pi_DH,pi_intro)
+    </insert>
 
 </mapper>
