@@ -6,6 +6,7 @@ import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetsInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +36,8 @@ public interface PetsMapper {
     void updateApPassTimeByid(ApStatusVo apStatusVo);
 
     List<ApFormVo> queryApFormByStatus(ApStatusVo vo);
+
+    List<PetsInfoVo> queryAdoptedPetsInfo();
 
 
 }

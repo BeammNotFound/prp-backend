@@ -73,4 +73,11 @@ public class PetsManageController {
         }
         return CommonResult.success(service.queryApFormByStatus(vo));
     }
+
+    @ApiOperation("已被领养宠物接口")
+    @Action(description = "已被领养宠物接口")
+    @GetMapping("queryAdoptedPetsInfo")
+    public CommonResult queryAdoptedPetsInfo() {
+        return CommonResult.success(service.queryAdoptedPetsInfo());
+    }
 }

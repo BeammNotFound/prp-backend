@@ -9,6 +9,7 @@ import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetsInfoVo;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,5 +97,10 @@ public class PetsServiceImpl implements PetsService {
     @Override
     public List<ApFormVo> queryApFormByStatus(ApStatusVo vo) {
         return petsMapper.queryApFormByStatus(vo);
+    }
+
+    @Override
+    public List<PetsInfoVo> queryAdoptedPetsInfo() {
+        return petsMapper.queryAdoptedPetsInfo();
     }
 }
