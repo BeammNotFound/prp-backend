@@ -7,6 +7,7 @@ import com.mapper.UserMapper;
 import com.pojo.AdoptionPats;
 import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
+import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,10 @@ public class PetsServiceImpl implements PetsService {
     @Override
     public void updateApPassTimeByid(ApStatusVo apStatusVo) {
         petsMapper.updateApPassTimeByid(apStatusVo);
+    }
+
+    @Override
+    public List<ApFormVo> queryApFormByStatus(ApFormVo vo) {
+        return petsMapper.queryApFormByStatus(vo);
     }
 }

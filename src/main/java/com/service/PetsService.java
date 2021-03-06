@@ -3,6 +3,7 @@ package com.service;
 import com.pojo.AdoptionForm;
 import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
+import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface PetsService {
     List<AdoptionPats> queryAdoptionForm();
     void updateApStatusByid(ApStatusVo apStatusVo);
     void updateApPassTimeByid(ApStatusVo apStatusVo);
-
+    List<ApFormVo> queryApFormByStatus(ApFormVo vo);
 }

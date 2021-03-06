@@ -58,18 +58,24 @@
     </select>
 
     <update id="updateApStatusByid" parameterType="com.pojo.vo.ApStatusVo">
-        update adoption_pets
-        set ap_status = #{ap_status}
-        where ap_id = #{ap_id}
+        update
+            adoption_pets
+        set
+            ap_status = #{ap_status}
+        where
+            ap_id = #{ap_id}
     </update>
 
     <update id="updateApPassTimeByid" parameterType="com.pojo.vo.ApStatusVo">
-        update adoption_pets
-        set ap_pass_time = #{ap_pass_time}
-        where ap_id = #{ap_id}
+        update
+            adoption_pets
+        set
+            ap_pass_time = #{ap_pass_time}
+        where
+            ap_id = #{ap_id}
     </update>
 
-    <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApFormVo" resultType="com.pojo.ApFormVo">
+    <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApFormVo" resultType="com.pojo.vo.ApFormVo">
         SELECT
             user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time
         FROM
@@ -78,15 +84,9 @@
             bases.base_id = adoption_pets.base_id
             AND adoption_pets.user_id = user_info.user_id
             AND adoption_pets.pet_id = pets_info.pi_id
-        <if test="status = 1">
-            and ap_status = "审批通过"
-        </if>
-        <if test="status = 2">
-            and ap_status = "待审批"
-        </if>
-        <if test="status = 3">
-            and ap_status = "审批驳回"
-        </if>
+            <if test="ap_status != null and ap_status != ''">
+                and ap_status = #{ap_status}
+            </if>
     </select>
 
 </mapper>
