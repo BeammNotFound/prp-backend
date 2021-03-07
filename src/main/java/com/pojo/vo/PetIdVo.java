@@ -1,8 +1,7 @@
 package com.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * @author BeamStark
@@ -10,6 +9,7 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 public class PetIdVo {
-    @NotNull(message = "pi_id不能为空")
     private Integer pi_id;
+    @JsonIgnore
+    private Integer pet_id;
 }

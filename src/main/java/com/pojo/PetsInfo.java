@@ -1,5 +1,6 @@
 package com.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -9,6 +10,10 @@ import java.util.Date;
 @Data
 @ApiModel("领养宠物实体类")
 public class PetsInfo {
+    @JsonIgnore
+    private Integer ap_id;
+    @JsonIgnore
+    private Integer pet_id;
     private Integer pi_id;
     private Integer base_id;
     private String pi_name;

@@ -99,7 +99,6 @@ public class PetsManageController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
-        po.setPi_createtime(TimeUtils.getNowTime());
         service.insertPetInfo(po);
         return CommonResult.success("增加宠物成功！宠物名为：" + po.getPi_name());
     }
@@ -107,11 +106,12 @@ public class PetsManageController {
     @ApiOperation("根据宠物id删除宠物接口")
     @Action(description = "根据宠物id删除宠物接口")
     @PostMapping("delPetByid")
-    public CommonResult delPetByid(@Validated @RequestBody PetIdVo vo, BindingResult result) {
-        if (result.hasErrors()) {
-            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+    public CommonResult delPetByid(@RequestBody PetIdVo vo) {
+        Integer pi_id = vo.getPi_id();
+        if (pi_id.equals(null) || pi_id.equals(0)) {
+            return CommonResult.validateFailed("宠物id不能为空或0");
         }
         service.delPetByid(vo);
-        return CommonResult.success("删除宠物成功！宠物id为：" + vo.getPi_id());
+        return CommonResult.success("删除宠物成功！宠物id为：" + pi_id);
     }
 }

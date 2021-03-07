@@ -44,7 +44,11 @@ public interface PetsMapper {
 
     void insertPetInfo(PetsInfo po);
 
-    void delPetByid(PetIdVo vo);
+    void insertAdoptionPet(PetsInfo po);
+
+    void delPetInfoByid(PetIdVo vo);
+
+    void delAdopitonPetByid(PetIdVo vo);
 
 
 }

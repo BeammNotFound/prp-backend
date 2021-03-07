@@ -112,11 +112,25 @@ public class PetsServiceImpl implements PetsService {
 
     @Override
     public void insertPetInfo(PetsInfo po) {
+        po.setPi_createtime(TimeUtils.getNowTime());
         petsMapper.insertPetInfo(po);
+        redisUtil.del("AllpetsInfo");
+        po.setAp_status("待领养");
+        List<PetsInfo> petsInfos = petsMapper.queryPetByName(po.getPi_name());
+        if (petsInfos != null) {
+            for (PetsInfo p : petsInfos) {
+                if (p.getPi_name().equals(po.getPi_name())){
+                    po.setPet_id(p.getPi_id());
+                }
+            }
+        }
+        petsMapper.insertAdoptionPet(po);
     }
 
     @Override
     public void delPetByid(PetIdVo vo) {
-        petsMapper.delPetByid(vo);
+        petsMapper.delPetInfoByid(vo);
+        vo.setPet_id(vo.getPi_id());
+        petsMapper.delAdopitonPetByid(vo);
     }
 }
