@@ -108,4 +108,9 @@ public class PetsServiceImpl implements PetsService {
     public List<PetsInfoVo> queryUnAdoptedPetsInfo() {
         return petsMapper.queryUnAdoptedPetsInfo();
     }
+
+    @Override
+    public void insertPetInfo(PetsInfo po) {
+        petsMapper.insertPetInfo(po);
+    }
 }

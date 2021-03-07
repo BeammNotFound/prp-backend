@@ -22,5 +22,6 @@ public interface PetsService {
     List<ApFormVo> queryApFormByStatus(ApStatusVo vo);
     List<PetsInfoVo> queryAdoptedPetsInfo();
     List<PetsInfoVo> queryUnAdoptedPetsInfo();
+    void insertPetInfo(PetsInfo po);
 
 }

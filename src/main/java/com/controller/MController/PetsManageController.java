@@ -3,12 +3,15 @@ package com.controller.MController;
 import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
+import com.pojo.PetsInfo;
 import com.pojo.vo.ApStatusVo;
 import com.pojo.vo.PetNameVo;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -86,5 +89,17 @@ public class PetsManageController {
     @GetMapping("queryUnAdoptedPetsInfo")
     public CommonResult queryUnAdoptedPetsInfo(){
         return CommonResult.success(service.queryUnAdoptedPetsInfo());
+    }
+
+    @ApiOperation("新增宠物接口")
+    @Action(description = "新增宠物接口")
+    @PostMapping("insertPetInfo")
+    public CommonResult insertPetInfo(@Validated @RequestBody PetsInfo po, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        po.setPi_createtime(TimeUtils.getNowTime());
+        service.insertPetInfo(po);
+        return CommonResult.success("增加宠物成功！宠物名为：" + po.getPi_name());
     }
 }

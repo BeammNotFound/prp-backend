@@ -41,5 +41,7 @@ public interface PetsMapper {
 
     List<PetsInfoVo> queryUnAdoptedPetsInfo();
 
+    void insertPetInfo(PetsInfo po);
+
 
 }
