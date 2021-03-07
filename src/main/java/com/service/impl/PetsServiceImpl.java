@@ -7,10 +7,7 @@ import com.mapper.UserMapper;
 import com.pojo.AdoptionPats;
 import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
-import com.pojo.vo.ApFormVo;
-import com.pojo.vo.ApStatusVo;
-import com.pojo.vo.PetIdVo;
-import com.pojo.vo.PetsInfoVo;
+import com.pojo.vo.*;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -132,5 +129,10 @@ public class PetsServiceImpl implements PetsService {
         petsMapper.delPetInfoByid(vo);
         vo.setPet_id(vo.getPi_id());
         petsMapper.delAdopitonPetByid(vo);
+    }
+
+    @Override
+    public void changePetInfo(PetInfoVo vo) {
+        petsMapper.changePetInfo(vo);
     }
 }

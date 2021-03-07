@@ -6,6 +6,7 @@ import com.common.utils.TimeUtils;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApStatusVo;
 import com.pojo.vo.PetIdVo;
+import com.pojo.vo.PetInfoVo;
 import com.pojo.vo.PetNameVo;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
@@ -113,5 +114,13 @@ public class PetsManageController {
         }
         service.delPetByid(vo);
         return CommonResult.success("删除宠物成功！宠物id为：" + pi_id);
+    }
+
+    @ApiOperation("通过pi_id更改宠物信息")
+    @Action(description = "通过pi_id更改宠物信息")
+    @PostMapping("changePetInfo")
+    public CommonResult changePetInfo(@RequestBody PetInfoVo vo) {
+        service.changePetInfo(vo);
+        return CommonResult.success("更改宠物信息成功！宠物名为" + vo.getPi_name());
     }
 }

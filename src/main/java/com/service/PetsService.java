@@ -3,10 +3,7 @@ package com.service;
 import com.pojo.AdoptionForm;
 import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
-import com.pojo.vo.ApFormVo;
-import com.pojo.vo.ApStatusVo;
-import com.pojo.vo.PetIdVo;
-import com.pojo.vo.PetsInfoVo;
+import com.pojo.vo.*;
 
 import java.util.List;
 
@@ -25,4 +22,5 @@ public interface PetsService {
     List<PetsInfoVo> queryUnAdoptedPetsInfo();
     void insertPetInfo(PetsInfo po);
     void delPetByid(PetIdVo vo);
+    void changePetInfo(PetInfoVo vo);
 }

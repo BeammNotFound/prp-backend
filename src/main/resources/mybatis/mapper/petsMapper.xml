@@ -139,4 +139,15 @@
         where pet_id = #{pet_id}
     </delete>
 
+    <update id="changePetInfo" parameterType="com.pojo.vo.PetInfoVo">
+        update pets_info
+        set
+            pi_name = #{pi_name},
+            pi_age = #{pi_age},
+            pi_breed = #{pi_breed},
+            pi_DH = #{pi_DH},
+            pi_intro = #{pi_intro}
+        where pi_id = #{pi_id}
+    </update>
+
 </mapper>

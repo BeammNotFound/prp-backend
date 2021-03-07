@@ -4,10 +4,7 @@ package com.mapper;
 import com.pojo.AdoptionForm;
 import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
-import com.pojo.vo.ApFormVo;
-import com.pojo.vo.ApStatusVo;
-import com.pojo.vo.PetIdVo;
-import com.pojo.vo.PetsInfoVo;
+import com.pojo.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -49,6 +46,8 @@ public interface PetsMapper {
     void delPetInfoByid(PetIdVo vo);
 
     void delAdopitonPetByid(PetIdVo vo);
+
+    void changePetInfo(PetInfoVo vo);
 
 
 }
