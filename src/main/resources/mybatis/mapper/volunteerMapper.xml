@@ -80,14 +80,12 @@
 
     <select id="queryAvFormByStatus" parameterType="com.pojo.vo.AvStatusVo" resultType="com.pojo.vo.AvFormVo">
         SELECT
-            av_id,user_name,b_name,user_phone,vi_joinPopulation,vi_population,av_application_time,av_pass_time
+        av_id,user_realname,user_phone,av_application_time,av_pass_time,av_status,user_age,user_sex,user_info.user_id
         FROM
-            application_volunteer,user_info,volunteer_form,bases,volunteer_info
-        WHERE
-            bases.base_id = application_volunteer.base_id
-            AND application_volunteer.user_id = user_info.user_id
-            and application_volunteer.user_id = volunteer_form.user_id
-            and volunteer_info.base_id = application_volunteer.base_id
+        application_volunteer
+        LEFT JOIN user_info
+        ON application_volunteer.user_id = user_info.user_id
+        WHERE 1 = 1
             <if test="av_status != null and av_status != ''">
                 and av_status = #{av_status}
             </if>

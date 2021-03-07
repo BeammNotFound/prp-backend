@@ -31,7 +31,6 @@ public class VolunteerServiceImpl implements VolunteerService {
         VolunteerInfo application = volunteerMapper.queryVolunteerInfoByBaseId(vo.getBase_id());
         String vi_status = volunteerMapper.queryVolunteerInfoByBaseId(vo.getBase_id()).getVi_status();
 
-
 //        当前报名基地志愿者报名人数已满
         if (application.getVi_population() - application.getVi_joinPopulation() <= 0) {
             vo.setVi_status("已满");
@@ -85,6 +84,7 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void createVolunteerForm(VolunteerForm volunteerForm) {
         volunteerForm.setVf_create_time(TimeUtils.getNowTime());
         volunteerMapper.createVolunteerForm(volunteerForm);
+        redisUtil.del("allPopularizations");
     }
 
     @Override
@@ -101,6 +101,7 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void cancelApplicationVolunteer(UserIdVo vo) {
         volunteerMapper.delApplicatFormByUserId(vo);
         volunteerMapper.delApplicatVolunteerByUserId(vo);
+        redisUtil.del("allPopularizations");
     }
 
     @Override
@@ -111,11 +112,13 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public void updateAVStatusByid(ApplicationVo applicationVo) {
         volunteerMapper.updateAVStatusByid(applicationVo);
+        redisUtil.del("allPopularizations");
     }
 
     @Override
     public void updateAVPassTimeByid(ApplicationVo applicationVo) {
         volunteerMapper.updateAVPassTimeByid(applicationVo);
+        redisUtil.del("allPopularizations");
     }
 
     @Override
