@@ -147,7 +147,8 @@
             pi_breed = #{pi_breed},
             pi_DH = #{pi_DH},
             pi_intro = #{pi_intro}
-        where pi_id = #{pi_id}
+        where
+            pi_id = #{pi_id}
     </update>
 
 </mapper>

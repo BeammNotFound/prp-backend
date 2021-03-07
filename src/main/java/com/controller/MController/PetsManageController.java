@@ -121,6 +121,6 @@ public class PetsManageController {
     @PostMapping("changePetInfo")
     public CommonResult changePetInfo(@RequestBody PetInfoVo vo) {
         service.changePetInfo(vo);
-        return CommonResult.success("更改宠物信息成功！宠物名为" + vo.getPi_name());
+        return CommonResult.success("更改宠物信息成功！被更改的宠物名为" + vo.getPi_name());
     }
 }

@@ -8,6 +8,6 @@ import lombok.Data;
  */
 @Data
 public class PetInfoVo {
-    private String pi_name,pi_breed,pi_DH,pi_intro;
-    private Integer pi_age,pi_id;
+    private String pi_name,pi_breed,pi_DH,pi_intro,pi_age;
+    private Integer pi_id;
 }
