@@ -129,10 +129,12 @@ public class PetsServiceImpl implements PetsService {
         petsMapper.delPetInfoByid(vo);
         vo.setPet_id(vo.getPi_id());
         petsMapper.delAdopitonPetByid(vo);
+        redisUtil.del("allPetsInfo");
     }
 
     @Override
     public void changePetInfo(PetInfoVo vo) {
         petsMapper.changePetInfo(vo);
+        redisUtil.del("allPetsInfo");
     }
 }

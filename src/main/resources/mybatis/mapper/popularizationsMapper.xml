@@ -27,7 +27,6 @@
         <if test="p_details != null and p_details != ''">
             and p_details like CONCAT('%',#{p_details},'%')
         </if>
-
         order by p_createtime desc;
     </select>
 </mapper>
