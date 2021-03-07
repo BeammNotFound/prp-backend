@@ -123,4 +123,9 @@
         values(#{pi_name},#{pi_age},#{pi_breed},#{pi_DH},#{pi_intro},#{pi_image_1},#{pi_image_2},#{pi_image_3},#{pi_image_4},#{base_id},#{pi_createtime})
     </insert>
 
+    <delete id="delPetByid" parameterType="com.pojo.vo.PetIdVo">
+        DELETE FROM pets_info
+        where pi_id = #{pi_id}
+    </delete>
+
 </mapper>

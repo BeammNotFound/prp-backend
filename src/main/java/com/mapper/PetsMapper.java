@@ -6,6 +6,7 @@ import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetIdVo;
 import com.pojo.vo.PetsInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,8 @@ public interface PetsMapper {
     List<PetsInfoVo> queryUnAdoptedPetsInfo();
 
     void insertPetInfo(PetsInfo po);
+
+    void delPetByid(PetIdVo vo);
 
 
 }

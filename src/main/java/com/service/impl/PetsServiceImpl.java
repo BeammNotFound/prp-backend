@@ -9,6 +9,7 @@ import com.pojo.AdoptionForm;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetIdVo;
 import com.pojo.vo.PetsInfoVo;
 import com.service.PetsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,5 +113,10 @@ public class PetsServiceImpl implements PetsService {
     @Override
     public void insertPetInfo(PetsInfo po) {
         petsMapper.insertPetInfo(po);
+    }
+
+    @Override
+    public void delPetByid(PetIdVo vo) {
+        petsMapper.delPetByid(vo);
     }
 }

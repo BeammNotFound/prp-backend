@@ -5,6 +5,7 @@ import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetIdVo;
 import com.pojo.vo.PetNameVo;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
@@ -101,5 +102,16 @@ public class PetsManageController {
         po.setPi_createtime(TimeUtils.getNowTime());
         service.insertPetInfo(po);
         return CommonResult.success("增加宠物成功！宠物名为：" + po.getPi_name());
+    }
+
+    @ApiOperation("根据宠物id删除宠物接口")
+    @Action(description = "根据宠物id删除宠物接口")
+    @PostMapping("delPetByid")
+    public CommonResult delPetByid(@Validated @RequestBody PetIdVo vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        service.delPetByid(vo);
+        return CommonResult.success("删除宠物成功！宠物id为：" + vo.getPi_id());
     }
 }

@@ -5,6 +5,7 @@ import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
 import com.pojo.vo.ApFormVo;
 import com.pojo.vo.ApStatusVo;
+import com.pojo.vo.PetIdVo;
 import com.pojo.vo.PetsInfoVo;
 
 import java.util.List;
@@ -23,5 +24,5 @@ public interface PetsService {
     List<PetsInfoVo> queryAdoptedPetsInfo();
     List<PetsInfoVo> queryUnAdoptedPetsInfo();
     void insertPetInfo(PetsInfo po);
-
+    void delPetByid(PetIdVo vo);
 }
