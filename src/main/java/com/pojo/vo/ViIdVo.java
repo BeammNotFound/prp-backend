@@ -7,6 +7,6 @@ import lombok.Data;
  * @Version 0.1 2020/12
  */
 @Data
-public class VolunteerInfoIdVo {
+public class ViIdVo {
     private Integer vi_id;
 }

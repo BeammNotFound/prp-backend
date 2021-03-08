@@ -24,6 +24,6 @@ public interface VolunteerService {
     List<AvFormVo> queryAvFormByStatus(AvStatusVo vo);
     void changeVolunteerInfo(VolunteerInfoVo vo);
     void createVolunteerInfo(VolunteerInfo po);
-    void delVolunteerInfoByid(VolunteerInfoIdVo vo);
+    void delVolunteerInfoByid(ViIdVo vo);
 
 }

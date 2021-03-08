@@ -91,7 +91,7 @@
             </if>
     </select>
 
-    <update id="changeVolunteerInfo" parameterType="com.pojo.VolunteerInfoVo">
+    <update id="changeVolunteerInfo" parameterType="com.pojo.vo.VolunteerInfoVo">
         update volunteer_info
         set
             vi_requirement = #{vi_requirement},
@@ -109,10 +109,9 @@
         (#{base_id},#{vi_status},#{vi_requirement},#{vi_intro},#{vi_joinPopulation},#{vi_population},#{vi_start_time},#{vi_end_time},#{vi_create_time})
     </insert>
 
-    <delete id="delVolunteerInfoByid" parameterType="com.pojo.vo.VolunteerInfoIdVo">
+    <delete id="delVolunteerInfoByid" parameterType="com.pojo.vo.ViIdVo">
         delete from volunteer_info
         where vi_id = #{vi_id}
     </delete>
-
 
 </mapper>

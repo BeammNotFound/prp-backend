@@ -46,7 +46,7 @@ public interface VolunteerMapper {
 
     void createVolunteerInfo(VolunteerInfo po);
 
-    void delVolunteerInfoByid(VolunteerInfoIdVo vo);
+    void delVolunteerInfoByid(ViIdVo vo);
 
 
 }

@@ -6,7 +6,7 @@ import com.common.utils.TimeUtils;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.AvStatusVo;
-import com.pojo.vo.VolunteerInfoIdVo;
+import com.pojo.vo.ViIdVo;
 import com.pojo.vo.VolunteerInfoVo;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
@@ -74,8 +74,12 @@ public class VolunteerManageController {
     @Action(description = "根据vi_id修改志愿者表单数据")
     @PostMapping("changeVolunteerInfo")
     public CommonResult changeVolunteerInfo(@RequestBody VolunteerInfoVo vo) {
+        Integer id = vo.getVi_id();
+        if (id == 0 || id == null)
+            return CommonResult.validateFailed("修改志愿者活动失败！请重试");
+
         volunteerService.changeVolunteerInfo(vo);
-        return CommonResult.success("修改志愿者活动成功！志愿者活动id为：" + vo.getVi_id());
+        return CommonResult.success("修改志愿者活动成功！志愿者活动id为：" + id);
     }
 
     @ApiOperation("新增志愿者活动")
@@ -89,11 +93,11 @@ public class VolunteerManageController {
     @ApiOperation("根据vi_id删除志愿者活动")
     @Action(description = "根据vi_id删除志愿者活动")
     @PostMapping("delVolunteerInfoByid")
-    public CommonResult delVolunteerInfoByid(@RequestBody VolunteerInfoIdVo vo) {
+    public CommonResult delVolunteerInfoByid(@RequestBody ViIdVo vo) {
         Integer id = vo.getVi_id();
-        if (id == 0 || id == null) {
+        if (id == 0 || id == null)
             return CommonResult.validateFailed("删除志愿者活动失败，请重试");
-        }
+
         volunteerService.delVolunteerInfoByid(vo);
         return CommonResult.success("删除志愿者活动成功！志愿者活动id为" + id);
     }

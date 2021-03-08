@@ -8,7 +8,6 @@
         select *
         from bases left join volunteer_info
         on bases.base_id = volunteer_info.base_id
-
     </select>
 
     <select id="fuzzyQueryBases" resultType="com.pojo.Bases" parameterType="com.pojo.vo.QueryBasesVo">
@@ -45,7 +44,5 @@
         from bases_images
         where base_id = #{base_id}
     </select>
-
-
 
 </mapper>

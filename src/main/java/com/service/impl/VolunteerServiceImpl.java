@@ -139,7 +139,7 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public void delVolunteerInfoByid(VolunteerInfoIdVo vo) {
+    public void delVolunteerInfoByid(ViIdVo vo) {
         volunteerMapper.delVolunteerInfoByid(vo);
     }
 }

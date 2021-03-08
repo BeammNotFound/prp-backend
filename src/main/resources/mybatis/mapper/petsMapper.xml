@@ -139,7 +139,7 @@
         where pet_id = #{pet_id}
     </delete>
 
-    <update id="changePetInfo" parameterType="com.pojo.vo.PetInfoVo">
+    <update id="changePetInfo" parameterType="com.pojo.vo.ViIdVo">
         update pets_info
         set
             pi_name = #{pi_name},
