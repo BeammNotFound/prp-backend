@@ -4,10 +4,7 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.PetsInfo;
-import com.pojo.vo.ApStatusVo;
-import com.pojo.vo.PetIdVo;
-import com.pojo.vo.PetInfoVo;
-import com.pojo.vo.PetNameVo;
+import com.pojo.vo.*;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,11 +34,11 @@ public class PetsManageController {
         return CommonResult.success(service.queryPetByName(pi_name.getPetName()));
     }
 
-    @ApiOperation("查询所有宠物申请表单")
-    @Action(description = "查询所有宠物申请表单")
-    @GetMapping("queryAdoptionForm")
-    public CommonResult queryAdoptionForm(){
-        return CommonResult.success(service.queryAdoptionForm());
+    @ApiOperation("根据user_id查询所有宠物申请表单")
+    @Action(description = "根据user_id查询所有宠物申请表单")
+    @PostMapping("queryAdoptionFormByUserId")
+    public CommonResult queryAdoptionForm(@RequestBody UserIdVo vo){
+        return CommonResult.success(service.queryAdoptionFormByUserId(vo));
     }
 
     @ApiOperation("根据ap_id修改宠物审批状态")

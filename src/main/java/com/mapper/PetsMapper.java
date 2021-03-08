@@ -27,7 +27,7 @@ public interface PetsMapper {
 
     void createAf(AdoptionForm adoptionForm);
 
-    List<AdoptionPats> queryAdoptionForm();
+    List<AdoptionPats> queryAdoptionFormByUserId(UserIdVo vo);
 
     void updateApStatusByid(ApStatusVo apStatusVo);
 

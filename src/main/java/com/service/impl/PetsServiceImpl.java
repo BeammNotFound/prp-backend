@@ -78,8 +78,8 @@ public class PetsServiceImpl implements PetsService {
     }
 
     @Override
-    public List<AdoptionPats> queryAdoptionForm() {
-        return petsMapper.queryAdoptionForm();
+    public List<AdoptionPats> queryAdoptionFormByUserId(UserIdVo vo) {
+        return petsMapper.queryAdoptionFormByUserId(vo);
     }
 
     @Override

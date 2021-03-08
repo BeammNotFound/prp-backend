@@ -14,7 +14,7 @@ public interface PetsService {
     Integer adoptPet(AdoptionPats adoptionPats);
     List<PetsInfo> queryAdoptPet(Integer user_id);
     void createAf(AdoptionForm adoptionForm);
-    List<AdoptionPats> queryAdoptionForm();
+    List<AdoptionPats> queryAdoptionFormByUserId(UserIdVo vo);
     void updateApStatusByid(ApStatusVo apStatusVo);
     void updateApPassTimeByid(ApStatusVo apStatusVo);
     List<ApFormVo> queryApFormByStatus(ApStatusVo vo);

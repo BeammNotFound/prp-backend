@@ -55,9 +55,10 @@
         where adoption_pets.user_id = #{user_id}
     </select>
 
-    <select id="queryAdoptionForm" resultType="com.pojo.AdoptionPats">
+    <select id="queryAdoptionFormByUserId" resultType="com.pojo.AdoptionPats" parameterType="com.pojo.vo.UserIdVo">
         select *
         from adoption_form
+        where user_id = {#user_id}
     </select>
 
     <update id="updateApStatusByid" parameterType="com.pojo.vo.ApStatusVo">
@@ -80,7 +81,7 @@
 
     <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApStatusVo" resultType="com.pojo.vo.ApFormVo">
         SELECT
-                user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time,ap_id,ap_application_time
+                user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time,ap_id,ap_application_time,adoption_pets.user_id
         FROM
             adoption_pets,user_info,pets_info,bases
         WHERE
@@ -107,7 +108,7 @@
 
     <select id="queryUnAdoptedPetsInfo" resultType="com.pojo.vo.PetsInfoVo">
         SELECT
-	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name,pi_createtime
+	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name,pi_createtime,pi_intro,adoption_pets.user_id
         FROM
 	        adoption_pets,user_info,pets_info,bases
         WHERE

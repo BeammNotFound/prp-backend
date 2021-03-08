@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 public class ApFormVo{
     private Integer ap_id;
-    private Integer status;
+    private Integer status,user_id;
     private String user_name;
     private String b_name;
     private String pi_name;
