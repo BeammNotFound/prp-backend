@@ -42,5 +42,7 @@ public interface VolunteerMapper {
 
     List<AvFormVo> queryAvFormByStatus(AvStatusVo vo);
 
+    void changeVolunteerInfo(VolunteerInfoVo vo);
+
 
 }

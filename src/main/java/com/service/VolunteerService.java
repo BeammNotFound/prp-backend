@@ -31,5 +31,7 @@ public interface VolunteerService {
 
     void updateAVPassTimeByid(ApplicationVo applicationVo);
     List<AvFormVo> queryAvFormByStatus(AvStatusVo vo);
+    void changeVolunteerInfo(VolunteerInfoVo vo);
+
 
 }

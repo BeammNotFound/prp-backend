@@ -125,4 +125,9 @@ public class VolunteerServiceImpl implements VolunteerService {
     public List<AvFormVo> queryAvFormByStatus(AvStatusVo vo) {
         return volunteerMapper.queryAvFormByStatus(vo);
     }
+
+    @Override
+    public void changeVolunteerInfo(VolunteerInfoVo vo) {
+        volunteerMapper.changeVolunteerInfo(vo);
+    }
 }

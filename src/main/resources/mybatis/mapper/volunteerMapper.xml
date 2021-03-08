@@ -91,4 +91,19 @@
             </if>
     </select>
 
+    <update id="changeVolunteerInfo" parameterType="com.pojo.VolunteerInfoVo">
+        update volunteer_info
+        set
+            vi_requirement = #{vi_requirement},
+            vi_intro = #{vi_intro},
+            vi_population = #{vi_population},
+            vi_start_time = #{vi_start_time},
+            vi_end_time = #{vi_end_time}
+        where vi_id = #{vi_id}
+    </update>
+
+    <insert id="createVolunteerInfo" parameterType="com.pojo.VolunteerInfo">
+        
+    </insert>
+
 </mapper>

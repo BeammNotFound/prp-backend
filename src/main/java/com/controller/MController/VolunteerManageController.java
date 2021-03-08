@@ -5,6 +5,7 @@ import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.AvStatusVo;
+import com.pojo.vo.VolunteerInfoVo;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -65,5 +66,13 @@ public class VolunteerManageController {
             vo.setAv_status("审批驳回");
         }
         return CommonResult.success(volunteerService.queryAvFormByStatus(vo));
+    }
+
+    @ApiOperation("根据vi_id修改志愿者表单数据")
+    @Action(description = "根据vi_id修改志愿者表单数据")
+    @PostMapping("changeVolunteerInfo")
+    public CommonResult changeVolunteerInfo(@RequestBody VolunteerInfoVo vo) {
+        volunteerService.changeVolunteerInfo(vo);
+        return CommonResult.success("修改成功！志愿者id为：" + vo.getVi_id());
     }
 }
