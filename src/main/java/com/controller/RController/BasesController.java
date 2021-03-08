@@ -66,4 +66,12 @@ public class BasesController {
         }
         return CommonResult.success(service.queryBasesById(vo.getBase_id()));
     }
+
+    @ApiOperation("根据基地id更改基地信息")
+    @Action(description = "根据基地id更改基地信息")
+    @PostMapping("changeBasesById")
+    public CommonResult changeBasesById(@RequestBody Bases po) {
+        service.changeBasesById(po);
+        return CommonResult.success("修改信息成功！基地id为" + po.getBase_id());
+    }
 }

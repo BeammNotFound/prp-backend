@@ -45,4 +45,18 @@
         where base_id = #{base_id}
     </select>
 
+    <update id="changeBasesById" parameterType="com.pojo.Bases">
+        update bases
+        set
+            b_name = #{b_name},
+            b_icon = #{b_icon},
+            b_image = #{b_image},
+            b_address = #{b_address},
+            b_intro = #{b_intro},
+            b_contacts = #{b_contacts},
+            b_mail = #{b_mail},
+            b_phone = #{b_phone}
+        where base_id = #{base_id}
+    </update>
+
 </mapper>

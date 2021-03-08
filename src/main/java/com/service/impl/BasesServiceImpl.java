@@ -57,4 +57,9 @@ public class BasesServiceImpl implements BasesService {
     public List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo) {
         return basesMapper.queryBaseMessages(baseIdVo);
     }
+
+    @Override
+    public void changeBasesById(Bases po) {
+        basesMapper.changeBasesById(po);
+    }
 }

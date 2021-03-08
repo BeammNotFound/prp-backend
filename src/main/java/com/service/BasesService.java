@@ -20,6 +20,7 @@ public interface BasesService {
     List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
 
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
+    void changeBasesById(Bases po);
 
 
 }
