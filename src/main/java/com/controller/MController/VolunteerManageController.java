@@ -6,6 +6,7 @@ import com.common.utils.TimeUtils;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.AvStatusVo;
+import com.pojo.vo.VolunteerInfoIdVo;
 import com.pojo.vo.VolunteerInfoVo;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
@@ -83,5 +84,17 @@ public class VolunteerManageController {
     public CommonResult createVolunteerInfo(@RequestBody VolunteerInfo po) {
         volunteerService.createVolunteerInfo(po);
         return CommonResult.success("增加志愿者活动成功!");
+    }
+
+    @ApiOperation("根据vi_id删除志愿者活动")
+    @Action(description = "根据vi_id删除志愿者活动")
+    @PostMapping("delVolunteerInfoByid")
+    public CommonResult delVolunteerInfoByid(@RequestBody VolunteerInfoIdVo vo) {
+        Integer id = vo.getVi_id();
+        if (id == 0 || id == null) {
+            return CommonResult.validateFailed("删除志愿者活动失败，请重试");
+        }
+        volunteerService.delVolunteerInfoByid(vo);
+        return CommonResult.success("删除志愿者活动成功！志愿者活动id为" + id);
     }
 }

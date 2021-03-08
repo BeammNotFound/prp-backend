@@ -137,4 +137,9 @@ public class VolunteerServiceImpl implements VolunteerService {
         po.setVi_status("待审批");
         volunteerMapper.createVolunteerInfo(po);
     }
+
+    @Override
+    public void delVolunteerInfoByid(VolunteerInfoIdVo vo) {
+        volunteerMapper.delVolunteerInfoByid(vo);
+    }
 }
