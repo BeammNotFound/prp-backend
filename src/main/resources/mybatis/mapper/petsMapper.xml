@@ -58,7 +58,7 @@
     <select id="queryAdoptionFormByUserId" resultType="com.pojo.AdoptionPats" parameterType="com.pojo.vo.UserIdVo">
         select *
         from adoption_form
-        where user_id = {#user_id}
+        where user_id = #{user_id}
     </select>
 
     <update id="updateApStatusByid" parameterType="com.pojo.vo.ApStatusVo">
