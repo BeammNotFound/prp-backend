@@ -130,4 +130,11 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void changeVolunteerInfo(VolunteerInfoVo vo) {
         volunteerMapper.changeVolunteerInfo(vo);
     }
+
+    @Override
+    public void createVolunteerInfo(VolunteerInfo po) {
+        po.setVi_create_time(TimeUtils.getNowTime());
+        po.setVi_status("待审批");
+        volunteerMapper.createVolunteerInfo(po);
+    }
 }

@@ -44,5 +44,7 @@ public interface VolunteerMapper {
 
     void changeVolunteerInfo(VolunteerInfoVo vo);
 
+    void createVolunteerInfo(VolunteerInfo po);
+
 
 }

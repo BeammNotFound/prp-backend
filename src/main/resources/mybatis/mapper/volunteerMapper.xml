@@ -103,7 +103,10 @@
     </update>
 
     <insert id="createVolunteerInfo" parameterType="com.pojo.VolunteerInfo">
-        
+        insert into
+        volunteer_info(base_id,vi_status,vi_requirement,vi_intro,vi_joinPopulation,vi_population,vi_start_time,vi_end_time,vi_create_time)
+        values
+        (#{base_id},#{vi_status},#{vi_requirement},#{vi_intro},#{vi_joinPopulation},#{vi_population},#{vi_start_time},#{vi_end_time},#{vi_create_time})
     </insert>
 
 </mapper>

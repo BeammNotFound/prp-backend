@@ -3,6 +3,7 @@ package com.controller.MController;
 import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
+import com.pojo.VolunteerInfo;
 import com.pojo.vo.ApplicationVo;
 import com.pojo.vo.AvStatusVo;
 import com.pojo.vo.VolunteerInfoVo;
@@ -73,6 +74,14 @@ public class VolunteerManageController {
     @PostMapping("changeVolunteerInfo")
     public CommonResult changeVolunteerInfo(@RequestBody VolunteerInfoVo vo) {
         volunteerService.changeVolunteerInfo(vo);
-        return CommonResult.success("修改成功！志愿者id为：" + vo.getVi_id());
+        return CommonResult.success("修改志愿者活动成功！志愿者活动id为：" + vo.getVi_id());
+    }
+
+    @ApiOperation("新增志愿者活动")
+    @Action(description = "新增志愿者活动")
+    @PostMapping("createVolunteerInfo")
+    public CommonResult createVolunteerInfo(@RequestBody VolunteerInfo po) {
+        volunteerService.createVolunteerInfo(po);
+        return CommonResult.success("增加志愿者活动成功!");
     }
 }
