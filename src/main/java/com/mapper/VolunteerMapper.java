@@ -34,7 +34,7 @@ public interface VolunteerMapper {
 
     void delApplicatFormByUserId(UserIdVo vo);
 
-    List<VolunteerForm> queryVolunteerFrom();
+    List<VolunteerForm> queryVolunteerFormByUserId(UserIdVo vo);
 
     void updateAVStatusByid(ApplicationVo applicationVo);
 

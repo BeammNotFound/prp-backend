@@ -18,7 +18,7 @@ public interface VolunteerService {
     void createVolunteerForm(VolunteerForm volunteerForm);
     Object queryAllVolunteer();
     void cancelApplicationVolunteer(UserIdVo vo);
-    List<VolunteerForm> queryVolunteerFrom();
+    List<VolunteerForm> queryVolunteerFormByUserId(UserIdVo vo);
     void updateAVStatusByid(ApplicationVo applicationVo);
     void updateAVPassTimeByid(ApplicationVo applicationVo);
     List<AvFormVo> queryAvFormByStatus(AvStatusVo vo);

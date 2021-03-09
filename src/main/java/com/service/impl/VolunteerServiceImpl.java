@@ -105,8 +105,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public List<VolunteerForm> queryVolunteerFrom() {
-        return volunteerMapper.queryVolunteerFrom();
+    public List<VolunteerForm> queryVolunteerFormByUserId(UserIdVo vo) {
+        return volunteerMapper.queryVolunteerFormByUserId(vo);
     }
 
     @Override

@@ -61,9 +61,10 @@
         where user_id = #{user_id}
     </delete>
 
-    <select id="queryVolunteerFrom" resultType="com.pojo.VolunteerForm">
+    <select id="queryVolunteerFormByUserId" resultType="com.pojo.VolunteerForm" parameterType="com.pojo.vo.UserIdVo">
         select *
         from volunteer_form
+        where user_id = #{user_id}
     </select>
 
     <update id="updateAVStatusByid" parameterType="com.pojo.vo.ApplicationVo">
@@ -89,6 +90,7 @@
             <if test="av_status != null and av_status != ''">
                 and av_status = #{av_status}
             </if>
+        order by user_info.user_id
     </select>
 
     <update id="changeVolunteerInfo" parameterType="com.pojo.vo.VolunteerInfoVo">

@@ -4,15 +4,11 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.VolunteerInfo;
-import com.pojo.vo.ApplicationVo;
-import com.pojo.vo.AvStatusVo;
-import com.pojo.vo.ViIdVo;
-import com.pojo.vo.VolunteerInfoVo;
+import com.pojo.vo.*;
 import com.service.VolunteerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,13 +24,12 @@ public class VolunteerManageController {
     @Autowired
     private VolunteerService volunteerService;
 
-    @ApiOperation("查询所有志愿者表单")
-    @Action(description = "查询所有志愿者表单")
-    @GetMapping("queryVolunteerFrom")
-    public CommonResult queryVolunteerFrom() {
-        return CommonResult.success(volunteerService.queryVolunteerFrom());
+    @ApiOperation("根据user_id查询所有志愿者表单")
+    @Action(description = "根据user_id查询所有志愿者表单")
+    @PostMapping("queryVolunteerFormByUserId")
+    public CommonResult queryVolunteerFormByUserId(@RequestBody UserIdVo vo) {
+        return CommonResult.success(volunteerService.queryVolunteerFormByUserId(vo));
     }
-
 
     @ApiOperation("通过av_id修改志愿者审批状态")
     @Action(description = "通过av_id修改志愿者审批状态")

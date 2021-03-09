@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @Api(tags = "基地接口")
 @RestController
 public class BasesController {
