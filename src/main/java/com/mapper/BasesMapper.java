@@ -20,4 +20,5 @@ public interface BasesMapper {
     List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
     void changeBasesById(Bases po);
+    void changeBasesMessagesById(BaseMessages po);
 }

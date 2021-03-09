@@ -62,4 +62,10 @@ public class BasesServiceImpl implements BasesService {
     public void changeBasesById(Bases po) {
         basesMapper.changeBasesById(po);
     }
+
+    @Override
+    public void changeBasesMessagesById(BaseMessages po) {
+        basesMapper.changeBasesMessagesById(po);
+        redisUtil.del("allMessages");
+    }
 }

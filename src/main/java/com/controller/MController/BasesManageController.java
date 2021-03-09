@@ -2,6 +2,7 @@ package com.controller.MController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.QueryBasesVo;
@@ -54,4 +55,13 @@ public class BasesManageController {
         service.delBases(baseIdVo);
         return CommonResult.success("删除成功");
     }
+
+    @ApiOperation("根据bm_id修改基地资讯成功")
+    @Action(description = "根据bm_id修改基地资讯成功")
+    @PostMapping("changeBasesMessagesById")
+    public CommonResult changeBasesMessagesById(@RequestBody BaseMessages po) {
+        service.changeBasesMessagesById(po);
+        return CommonResult.success("修改基地资讯成功！");
+    }
+
 }

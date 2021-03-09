@@ -21,6 +21,8 @@ public interface BasesService {
 
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
     void changeBasesById(Bases po);
+    void changeBasesMessagesById(BaseMessages po);
+
 
 
 }
