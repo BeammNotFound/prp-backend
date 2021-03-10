@@ -80,6 +80,7 @@ public class BasesManageController {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
+        service.delBasesMessageByBmId(vo);
         return CommonResult.success("删除活动成功！id为：" + vo.getBm_id());
     }
 
