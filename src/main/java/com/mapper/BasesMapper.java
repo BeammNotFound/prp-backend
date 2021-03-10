@@ -21,4 +21,5 @@ public interface BasesMapper {
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
     void changeBasesById(Bases po);
     void changeBasesMessagesById(BaseMessages po);
+    void insertBasesMessage(BaseMessages po);
 }

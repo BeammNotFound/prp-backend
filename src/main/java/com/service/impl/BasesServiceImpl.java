@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.common.utils.RedisUtil;
+import com.common.utils.TimeUtils;
 import com.mapper.BasesMapper;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
@@ -67,5 +68,11 @@ public class BasesServiceImpl implements BasesService {
     public void changeBasesMessagesById(BaseMessages po) {
         basesMapper.changeBasesMessagesById(po);
         redisUtil.del("allMessages");
+    }
+
+    @Override
+    public void insertBasesMessage(BaseMessages po) {
+        po.setBm_createtime(TimeUtils.getNowTime());
+        basesMapper.insertBasesMessage(po);
     }
 }

@@ -64,4 +64,12 @@ public class BasesManageController {
         return CommonResult.success("修改基地资讯成功！");
     }
 
+    @ApiOperation("插入基地咨询")
+    @Action(description = "插入基地咨询")
+    @PostMapping("insertBasesMessage")
+    public CommonResult insertBasesMessage(@RequestBody BaseMessages po) {
+        service.insertBasesMessage(po);
+        return CommonResult.success("插入基地咨询成功！资讯标题为：" + po.getBm_title());
+    }
+
 }

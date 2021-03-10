@@ -10,19 +10,12 @@ import java.util.List;
 
 public interface BasesService {
     Object queryBases();
-
     List<Bases> fuzzyQueryBases(QueryBasesVo bases);
-
     void delBases(BaseIdVo baseIdVo);
-
     Bases queryBasesById(Integer base_id);
-
     List<BasesImages> queryBasesImagesById(BaseIdVo baseIdVo);
-
     List<BaseMessages> queryBaseMessages(BaseIdVo baseIdVo);
     void changeBasesById(Bases po);
     void changeBasesMessagesById(BaseMessages po);
-
-
-
+    void insertBasesMessage(BaseMessages po);
 }
