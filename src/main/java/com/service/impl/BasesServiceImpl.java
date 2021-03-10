@@ -7,6 +7,7 @@ import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
+import com.pojo.vo.BaseMessageIdVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +75,10 @@ public class BasesServiceImpl implements BasesService {
     public void insertBasesMessage(BaseMessages po) {
         po.setBm_createtime(TimeUtils.getNowTime());
         basesMapper.insertBasesMessage(po);
+    }
+
+    @Override
+    public void delBasesMessageByBmId(BaseMessageIdVo vo) {
+        basesMapper.delBasesMessageByBmId(vo);
     }
 }

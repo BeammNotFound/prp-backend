@@ -5,6 +5,7 @@ import com.common.api.CommonResult;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.vo.BaseIdVo;
+import com.pojo.vo.BaseMessageIdVo;
 import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import io.swagger.annotations.Api;
@@ -70,6 +71,16 @@ public class BasesManageController {
     public CommonResult insertBasesMessage(@RequestBody BaseMessages po) {
         service.insertBasesMessage(po);
         return CommonResult.success("插入基地咨询成功！资讯标题为：" + po.getBm_title());
+    }
+
+    @ApiOperation("根据bm_id删除基地资讯")
+    @Action(description = "根据bm_id删除基地资讯")
+    @PostMapping("delBasesMessageByBmId")
+    public CommonResult delBasesMessageByBmId(@Validated @RequestBody BaseMessageIdVo vo, BindingResult result) {
+        if (result.hasErrors()) {
+            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
+        }
+        return CommonResult.success("删除活动成功！id为：" + vo.getBm_id());
     }
 
 }

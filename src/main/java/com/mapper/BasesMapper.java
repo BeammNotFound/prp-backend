@@ -4,6 +4,7 @@ import com.pojo.BaseMessages;
 import com.pojo.Bases;
 import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
+import com.pojo.vo.BaseMessageIdVo;
 import com.pojo.vo.QueryBasesVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -22,4 +23,5 @@ public interface BasesMapper {
     void changeBasesById(Bases po);
     void changeBasesMessagesById(BaseMessages po);
     void insertBasesMessage(BaseMessages po);
+    void delBasesMessageByBmId(BaseMessageIdVo vo);
 }

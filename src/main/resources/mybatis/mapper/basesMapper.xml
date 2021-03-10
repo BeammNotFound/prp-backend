@@ -79,4 +79,10 @@
         values (#{base_id},#{bm_title},#{bm_detail},#{bm_author},#{bm_image},#{bm_createtime});
     </insert>
 
+    <delete id="delBasesMessageByBmId" parameterType="com.pojo.vo.BaseMessageIdVo">
+        delete from
+            base_messages
+        where bm_id = #{bm_id}
+    </delete>
+
 </mapper>
