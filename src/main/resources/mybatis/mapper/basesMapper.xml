@@ -82,7 +82,8 @@
     <delete id="delBasesMessageByBmId" parameterType="com.pojo.vo.BaseMessageIdVo">
         delete from
             base_messages
-        where bm_id = #{bm_id}
+        where
+            bm_id = #{bm_id}
     </delete>
 
 </mapper>

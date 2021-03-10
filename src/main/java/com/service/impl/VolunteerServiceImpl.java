@@ -2,6 +2,7 @@ package com.service.impl;
 
 import com.common.utils.RedisUtil;
 import com.common.utils.TimeUtils;
+import com.mapper.BasesMapper;
 import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
 import com.pojo.VolunteerForm;
@@ -22,6 +23,9 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Autowired
     private VolunteerMapper volunteerMapper;
+
+    @Autowired
+    private BasesMapper basesMapper;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -128,7 +132,9 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public void changeVolunteerInfo(VolunteerInfoVo vo) {
-        volunteerMapper.changeVolunteerInfo(vo);
+        volunteerMapper.changeVolunteerInfoByBase_id(vo);
+        basesMapper.changeBasesById(vo);
+        redisUtil.del("allBases");
     }
 
     @Override

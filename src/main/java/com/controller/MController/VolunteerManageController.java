@@ -65,16 +65,16 @@ public class VolunteerManageController {
         return CommonResult.success(volunteerService.queryAvFormByStatus(vo));
     }
 
-    @ApiOperation("根据vi_id修改志愿者表单数据")
-    @Action(description = "根据vi_id修改志愿者表单数据")
-    @PostMapping("changeVolunteerInfo")
-    public CommonResult changeVolunteerInfo(@RequestBody VolunteerInfoVo vo) {
-        Integer id = vo.getVi_id();
+    @ApiOperation("根据base_id修改志愿者表单数据")
+    @Action(description = "根据base_id修改志愿者表单数据")
+    @PostMapping("changeVolunteerInfoByBase_id")
+    public CommonResult changeVolunteerInfoByBase_id(@RequestBody VolunteerInfoVo vo) {
+        Integer id = vo.getBase_id();
         if (id == 0 || id == null)
             return CommonResult.validateFailed("修改志愿者活动失败！请重试");
 
         volunteerService.changeVolunteerInfo(vo);
-        return CommonResult.success("修改志愿者活动成功！志愿者活动id为：" + id);
+        return CommonResult.success("修改志愿者活动成功！");
     }
 
     @ApiOperation("新增志愿者活动")

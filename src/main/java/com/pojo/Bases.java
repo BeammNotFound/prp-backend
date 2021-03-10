@@ -1,5 +1,6 @@
 package com.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -44,6 +45,7 @@ public class Bases {
     private String vi_title;
     private String vi_intro;
 
+    @JsonIgnore
     private Date b_createtime;
     private Date vi_end_time;
     private Date vi_start_time;
