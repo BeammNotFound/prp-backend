@@ -8,7 +8,6 @@
         from Popularizations
         where p_type = #{p_type}
         order by p_createtime desc;
-
     </select>
 
     <insert id="createPopularization" parameterType="com.pojo.Popularizations">

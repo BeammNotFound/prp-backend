@@ -48,5 +48,7 @@ public interface VolunteerMapper {
 
     void delVolunteerInfoByid(ViIdVo vo);
 
+    List<VolunteerInfo> queryMVolunteerInfoByBaseId(BaseIdVo vo);
+
 
 }

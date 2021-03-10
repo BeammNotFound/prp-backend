@@ -26,7 +26,6 @@
         <if test="m_details != null and m_details != ''">
             and m_details like CONCAT('%',#{m_details},'%')
         </if>
-
         order by m_createtime desc;
     </select>
 

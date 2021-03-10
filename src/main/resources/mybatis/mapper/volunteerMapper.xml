@@ -116,4 +116,10 @@
         where vi_id = #{vi_id}
     </delete>
 
+    <select id="queryMVolunteerInfoByBaseId" resultType="com.pojo.VolunteerInfo" parameterType="com.pojo.vo.BaseIdVo">
+        select *
+        from volunteer_info
+        where base_id = #{base_id}
+    </select>
+
 </mapper>

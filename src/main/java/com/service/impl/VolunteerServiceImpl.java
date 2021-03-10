@@ -142,4 +142,9 @@ public class VolunteerServiceImpl implements VolunteerService {
     public void delVolunteerInfoByid(ViIdVo vo) {
         volunteerMapper.delVolunteerInfoByid(vo);
     }
+
+    @Override
+    public List<VolunteerInfo> queryMVolunteerInfoByBaseId(BaseIdVo vo) {
+        return volunteerMapper.queryMVolunteerInfoByBaseId(vo);
+    }
 }

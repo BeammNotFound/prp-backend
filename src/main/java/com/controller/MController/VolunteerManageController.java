@@ -96,4 +96,12 @@ public class VolunteerManageController {
         volunteerService.delVolunteerInfoByid(vo);
         return CommonResult.success("删除志愿者活动成功！志愿者活动id为" + id);
     }
+
+
+    @ApiOperation("根据base_id查询活动列表")
+    @Action(description = "根据base_id查询活动列表")
+    @PostMapping("queryMVolunteerInfoByBaseId")
+    public CommonResult queryMVolunteerInfoByBaseId(@RequestBody BaseIdVo vo) {
+        return CommonResult.success(volunteerService.queryMVolunteerInfoByBaseId(vo));
+    }
 }

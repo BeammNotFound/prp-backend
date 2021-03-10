@@ -25,5 +25,5 @@ public interface VolunteerService {
     void changeVolunteerInfo(VolunteerInfoVo vo);
     void createVolunteerInfo(VolunteerInfo po);
     void delVolunteerInfoByid(ViIdVo vo);
-
+    List<VolunteerInfo> queryMVolunteerInfoByBaseId(BaseIdVo vo);
 }

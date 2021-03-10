@@ -43,7 +43,6 @@ public class BasesManageController {
             return CommonResult.validateFailed("查不到内容呢 QAQ ,检查一下搜索内容~");
         }
         return CommonResult.success(service.fuzzyQueryBases(basesVo));
-
     }
 
     @ApiOperation("删除基地")
@@ -83,5 +82,4 @@ public class BasesManageController {
         service.delBasesMessageByBmId(vo);
         return CommonResult.success("删除活动成功！id为：" + vo.getBm_id());
     }
-
 }
