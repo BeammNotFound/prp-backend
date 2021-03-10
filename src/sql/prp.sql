@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 08/03/2021 15:56:19
+ Date: 10/03/2021 21:12:50
 */
 
 SET NAMES utf8mb4;
@@ -42,14 +42,11 @@ CREATE TABLE `adoption_form`  (
 -- ----------------------------
 -- Records of adoption_form
 -- ----------------------------
-INSERT INTO `adoption_form` VALUES (3, 3, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `adoption_form` VALUES (4, 3, 1, 2, '河南省信阳市', 21, '乐观可爱', '是', '是', '是', '是', '是', '是', '2020-12-13 18:18:54');
-INSERT INTO `adoption_form` VALUES (5, 3, 4, 1, '111', 11, '11111', '是', '是', '是', '是', '是', '是', '2020-12-13 18:24:09');
-INSERT INTO `adoption_form` VALUES (6, 3, 3, 3, '河南省信阳市', 11, '11111', '是', '是', '是', '是', '是', '是', '2020-12-15 17:20:17');
-INSERT INTO `adoption_form` VALUES (7, 3, 5, 1, '河南省信阳市', 11, '11111', '是', '是', '是', '是', '是', '是', '2020-12-15 17:33:18');
-INSERT INTO `adoption_form` VALUES (8, 1, 4, 1, '123', 12, '123', '是', '是', '是', '是', '是', '是', '2020-12-15 17:34:59');
-INSERT INTO `adoption_form` VALUES (9, 1, 6, 2, '123', 12, '123', '是', '是', '是', '是', '是', '是', '2020-12-15 17:36:35');
-INSERT INTO `adoption_form` VALUES (10, 1, 5, 1, '123', 12, '123', '是', '是', '是', '是', '是', '是', '2020-12-15 17:37:41');
+INSERT INTO `adoption_form` VALUES (5, 1, 4, 1, '河南省郑州市', 11, '热爱动物', '是', '是', '是', '是', '是', '是', '2020-12-13 18:24:09');
+INSERT INTO `adoption_form` VALUES (6, 2, 3, 3, '河南省信阳市', 11, '性格开放', '是', '是', '是', '是', '是', '是', '2020-12-15 17:20:17');
+INSERT INTO `adoption_form` VALUES (7, 3, 5, 1, '河南省郑州市', 11, '乐于沟通', '是', '是', '是', '是', '是', '是', '2020-12-15 17:33:18');
+INSERT INTO `adoption_form` VALUES (8, 1, 4, 1, '广东省', 12, '123', '是', '是', '是', '是', '是', '是', '2020-12-15 17:34:59');
 
 -- ----------------------------
 -- Table structure for adoption_pets
@@ -62,7 +59,7 @@ CREATE TABLE `adoption_pets`  (
   `pet_id` int(11) DEFAULT NULL,
   `ap_status` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `ap_pass_time` datetime(0) DEFAULT NULL,
-  `ap_application_time` datetime(0) DEFAULT NULL COMMENT '领养时间',
+  `ap_application_time` datetime(0) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '领养时间',
   PRIMARY KEY (`ap_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -80,7 +77,6 @@ INSERT INTO `adoption_pets` VALUES (8, 1, 3, 5, '待审批', NULL, '2020-12-15 1
 INSERT INTO `adoption_pets` VALUES (9, 1, 1, 4, '待审批', NULL, '2020-12-15 17:34:59');
 INSERT INTO `adoption_pets` VALUES (10, 2, 1, 6, '待领养', NULL, '2020-12-15 17:36:35');
 INSERT INTO `adoption_pets` VALUES (11, 1, 1, 5, '待审批', NULL, '2020-12-15 17:37:41');
-INSERT INTO `adoption_pets` VALUES (21, NULL, NULL, 21, '待领养', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for application_volunteer
@@ -94,14 +90,18 @@ CREATE TABLE `application_volunteer`  (
   `av_pass_time` datetime(0) DEFAULT NULL COMMENT '通过时间',
   `av_application_time` datetime(0) DEFAULT NULL COMMENT '申请时间',
   PRIMARY KEY (`av_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of application_volunteer
 -- ----------------------------
 INSERT INTO `application_volunteer` VALUES (26, 3, 1, '审批驳回', '2021-03-05 15:08:45', '2020-12-14 17:45:36');
 INSERT INTO `application_volunteer` VALUES (27, 2, 2, '审批通过', '2021-03-07 15:09:45', '2021-01-06 15:09:49');
-INSERT INTO `application_volunteer` VALUES (28, 1, 3, '待审批', NULL, '2021-01-21 15:10:15');
+INSERT INTO `application_volunteer` VALUES (28, 1, 3, '审批通过', '2021-03-09 21:58:12', '2021-01-21 15:10:15');
+INSERT INTO `application_volunteer` VALUES (29, 1, 2, '审批驳回', NULL, '2021-03-09 21:31:42');
+INSERT INTO `application_volunteer` VALUES (30, 2, 1, '待审批', NULL, '2021-03-09 21:31:42');
+INSERT INTO `application_volunteer` VALUES (31, 2, 1, '待审批', NULL, '2021-03-09 21:31:42');
+INSERT INTO `application_volunteer` VALUES (32, 3, 3, '待审批', NULL, '2021-03-09 21:31:42');
 
 -- ----------------------------
 -- Table structure for background_images
@@ -277,10 +277,6 @@ INSERT INTO `pets_info` VALUES (4, '大q', '三个月', '英短', '无', '活泼
 INSERT INTO `pets_info` VALUES (5, '小白', '一岁', '无毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606571263377&di=deac956ffaf7c3f3727a3e6b9e98194f&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F53d6f88f1802f.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489edd36b0.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358098245&di=892fa3e1c8ba9bec32250800e2197508&imgtype=0&src=http%3A%2F%2Fpic41.nipic.com%2F20140429%2F18613761_132224353126_2.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489edd36b0.jpg', 1, '2021-03-06 16:21:55');
 INSERT INTO `pets_info` VALUES (6, '金毛', '五个月', '金毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570884427&di=410ec2c59f2ec697fee2ec3902a4fe85&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1309%2F29%2Fc0%2F26600200_1380425742844.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-18/5fb489eeae9aa.jpg', 'http://pic1.win4000.com/wallpaper/2020-11-https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358098195&di=b04d1403857cd585443de8aa6054fbd8&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180511%2F5d7a9ab54a26422a991942a7d3153701.jpeg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358098243&di=f9c173dba5ba4c2bb1d59e40f8daad52&imgtype=0&src=http%3A%2F%2Fimg.article.pchome.net%2F00%2F49%2F20%2F97%2Fpic_lib%2Fs960x639%2F12s960x639.jpg', 2, '2020-12-30 16:21:57');
 INSERT INTO `pets_info` VALUES (7, '金毛2', '五个月', '金毛', '无', '活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱活泼可爱', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606570884427&di=410ec2c59f2ec697fee2ec3902a4fe85&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1309%2F29%2Fc0%2F26600200_1380425742844.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358317542&di=fa1007c19a17f99ce955cb75baca5664&imgtype=0&src=http%3A%2F%2Fpic8.58cdn.com.cn%2Fp1%2Fbig%2Fn_v2067e13ee29454f088a9af439cdf6c8a9.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358317540&di=147fb37e89c4fbfe6bf4f663f4033e7a&imgtype=0&src=http%3A%2F%2Fpic8.58cdn.com.cn%2Fp1%2Fbig%2Fn_v2285ae73b1b574e3599253d083e7614ac.jpg', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607358317540&di=ee1388646b082ff6b264d29b4da7b2ab&imgtype=0&src=http%3A%2F%2Ftct.ganjistatic1.com%2Fgjfsqq%2Fgjupload%2Fd566ea4197364004b8787d04204bd2cc_600-0_6-0.jpg', 2, NULL);
-INSERT INTO `pets_info` VALUES (9, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 0, '2021-03-07 14:23:39');
-INSERT INTO `pets_info` VALUES (10, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 0, '2021-03-07 14:23:44');
-INSERT INTO `pets_info` VALUES (11, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 'string', 0, '2021-03-07 15:01:22');
-INSERT INTO `pets_info` VALUES (21, '111', '11111', '111', '111111', '111', NULL, NULL, NULL, NULL, NULL, '2021-03-07 16:35:00');
 
 -- ----------------------------
 -- Table structure for popularizations
@@ -366,13 +362,14 @@ CREATE TABLE `volunteer_form`  (
   `vf_real_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `vf_create_time` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`vf_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of volunteer_form
 -- ----------------------------
-INSERT INTO `volunteer_form` VALUES (5, 3, 1, 20, '18568275991', '周六,周日', '是', '否', '救助组,看时间决议', '无', '是', '是', 'IT', '晏金玉', NULL);
-INSERT INTO `volunteer_form` VALUES (6, 4, 2, 22, '15838365368', '周六，周日', '是', '否', '救援组', '无', '是', '是', 'TT', '梁豪', NULL);
+INSERT INTO `volunteer_form` VALUES (5, 1, 1, 20, '18568275991', '周六,周日', '是', '否', '救助组,看时间决议', '无', '是', '是', 'IT', '梁豪', NULL);
+INSERT INTO `volunteer_form` VALUES (6, 2, 2, 22, '15838365368', '周六，周日', '是', '否', '救援组', '无', '是', '是', 'TT', '张三', NULL);
+INSERT INTO `volunteer_form` VALUES (7, 3, 3, 21, '11212412341', '周一', '是', '否', '救援组', '无', '是', '是', '程序员', '美少女', NULL);
 
 -- ----------------------------
 -- Table structure for volunteer_info
@@ -390,7 +387,7 @@ CREATE TABLE `volunteer_info`  (
   `vi_end_time` datetime(0) DEFAULT NULL,
   `vi_create_time` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`vi_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of volunteer_info
