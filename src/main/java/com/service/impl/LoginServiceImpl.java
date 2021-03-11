@@ -2,7 +2,9 @@ package com.service.impl;
 
 import com.common.utils.AddLoginTooken;
 import com.common.utils.RedisUtil;
+import com.mapper.BasesMapper;
 import com.mapper.UserMapper;
+import com.pojo.Bases;
 import com.pojo.User;
 import com.pojo.vo.LoginVo;
 import com.service.LoginService;
@@ -18,6 +20,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private BasesMapper basesMapper;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -46,6 +51,25 @@ public class LoginServiceImpl implements LoginService {
 
         return map;
 
+    }
+
+    @Override
+    public Bases loginInManage(LoginVo vo) {
+        Bases bases = new Bases();
+        bases.setBase_id(0);
+        if (vo.getUser_password().equals("123456")) {
+            switch (vo.getUser_name()) {
+                case "user1":
+                    return basesMapper.queryBasesById(1);
+                case "user2":
+                    return basesMapper.queryBasesById(2);
+                case "user3":
+                    return basesMapper.queryBasesById(3);
+                default:
+                    return bases;
+            }
+        }else
+            return bases;
     }
 
 }
