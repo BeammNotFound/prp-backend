@@ -25,16 +25,16 @@ public class BasesController {
     @Autowired
     private BasesService service;
 
-    @ApiOperation("查询基地信息")
-    @Action(description = "查询基地信息")
+    @ApiOperation("查询全部基地资讯")
+    @Action(description = "查询全部基地资讯")
     @GetMapping("/queryBases")
     public CommonResult queryBases() {
         return CommonResult.success(service.queryBases());
     }
 
 
-    @ApiOperation("根据基地id查询基地图片")
-    @Action(description = "根据基地id查询基地图片")
+    @ApiOperation("根据base_id查询基地图片")
+    @Action(description = "根据base_id查询基地图片")
     @PostMapping("queryBasesImagesById")
     public CommonResult queryBasesImagesById(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
         if (result.hasErrors()) {
@@ -45,8 +45,8 @@ public class BasesController {
 
     }
 
-    @ApiOperation("根据基地id查询基地动态")
-    @Action(description = "根据基地id查询基地动态")
+    @ApiOperation("根据base_id查询基地资讯")
+    @Action(description = "根据base_id查询基地资讯")
     @PostMapping("queryBaseMessagesById")
     public CommonResult queryBaseMessagesById(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
         if (result.hasErrors()) {
@@ -56,8 +56,8 @@ public class BasesController {
         return CommonResult.success(service.queryBaseMessages(baseIdVo));
     }
 
-    @ApiOperation("根据基地id查询基地信息")
-    @Action(description = "根据基地id查询基地信息")
+    @ApiOperation("根据base_id查询基地信息")
+    @Action(description = "根据base_id查询基地信息")
     @PostMapping("queryBasesById")
     public CommonResult queryBasesById(@Validated @RequestBody BaseIdVo vo, BindingResult result) {
         if (result.hasErrors()) {
@@ -66,11 +66,4 @@ public class BasesController {
         return CommonResult.success(service.queryBasesById(vo.getBase_id()));
     }
 
-    @ApiOperation("根据基地id更改基地信息")
-    @Action(description = "根据基地id更改基地信息")
-    @PostMapping("changeBasesById")
-    public CommonResult changeBasesById(@RequestBody Bases po) {
-        service.changeBasesById(po);
-        return CommonResult.success("修改信息成功！基地id为" + po.getBase_id());
-    }
 }

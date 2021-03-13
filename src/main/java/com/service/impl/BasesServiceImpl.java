@@ -63,6 +63,7 @@ public class BasesServiceImpl implements BasesService {
     @Override
     public void changeBasesById(Bases po) {
         basesMapper.changeBasesById(po);
+        redisUtil.del("allBases");
     }
 
     @Override
@@ -75,10 +76,12 @@ public class BasesServiceImpl implements BasesService {
     public void insertBasesMessage(BaseMessages po) {
         po.setBm_createtime(TimeUtils.getNowTime());
         basesMapper.insertBasesMessage(po);
+        redisUtil.del("allMessages");
     }
 
     @Override
     public void delBasesMessageByBmId(BaseMessageIdVo vo) {
         basesMapper.delBasesMessageByBmId(vo);
+        redisUtil.del("allMessages");
     }
 }
