@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 13/03/2021 17:49:36
+ Date: 13/03/2021 17:57:58
 */
 
 SET NAMES utf8mb4;
@@ -109,7 +109,6 @@ INSERT INTO `application_volunteer` VALUES (32, 3, 3, '待审批', NULL, '2021-0
 DROP TABLE IF EXISTS `background_images`;
 CREATE TABLE `background_images`  (
   `i_id` int(11) NOT NULL AUTO_INCREMENT,
-  `i_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `i_src` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `i_createtime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`i_id`) USING BTREE
@@ -118,11 +117,11 @@ CREATE TABLE `background_images`  (
 -- ----------------------------
 -- Records of background_images
 -- ----------------------------
-INSERT INTO `background_images` VALUES (1, NULL, 'https://p26-tt.byteimg.com/origin/pgc-image/58e6d29c19ef4bcfaf64379891659e2b', '2020-11-28 16:51:37');
-INSERT INTO `background_images` VALUES (2, NULL, 'https://p6-tt-ipv6.byteimg.com/origin/pgc-image/3c4b1d0ee5c048d292608031c146d677', '2020-11-28 16:51:51');
-INSERT INTO `background_images` VALUES (3, NULL, 'https://p1-tt-ipv6.byteimg.com/origin/pgc-image/1962155d96b9471996aaba52be3a74c2', '2020-11-28 16:52:03');
-INSERT INTO `background_images` VALUES (4, NULL, 'https://p1-tt-ipv6.byteimg.com/origin/pgc-image/4fa73bd79f314674a581b7dd3fbf856c', '2020-11-30 15:24:18');
-INSERT INTO `background_images` VALUES (5, NULL, 'https://p9-tt-ipv6.byteimg.com/origin/pgc-image/e69c5f90ea5a40438ee8c5a3dc37f66e', '2020-11-30 15:24:29');
+INSERT INTO `background_images` VALUES (1, 'https://p26-tt.byteimg.com/origin/pgc-image/58e6d29c19ef4bcfaf64379891659e2b', '2020-11-28 16:51:37');
+INSERT INTO `background_images` VALUES (2, 'https://p6-tt-ipv6.byteimg.com/origin/pgc-image/3c4b1d0ee5c048d292608031c146d677', '2020-11-28 16:51:51');
+INSERT INTO `background_images` VALUES (3, 'https://p1-tt-ipv6.byteimg.com/origin/pgc-image/1962155d96b9471996aaba52be3a74c2', '2020-11-28 16:52:03');
+INSERT INTO `background_images` VALUES (4, 'https://p1-tt-ipv6.byteimg.com/origin/pgc-image/4fa73bd79f314674a581b7dd3fbf856c', '2020-11-30 15:24:18');
+INSERT INTO `background_images` VALUES (5, 'https://p9-tt-ipv6.byteimg.com/origin/pgc-image/e69c5f90ea5a40438ee8c5a3dc37f66e', '2020-11-30 15:24:29');
 
 -- ----------------------------
 -- Table structure for base_messages

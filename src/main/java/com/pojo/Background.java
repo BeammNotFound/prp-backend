@@ -10,9 +10,7 @@ import java.util.Date;
 @ApiModel("背景图片实体类")
 public class Background {
     private Integer i_id;
-    private String i_name;
     private String i_src;
-
     @JsonIgnore
     private Date i_createtime;
 }
