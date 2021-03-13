@@ -45,15 +45,15 @@ public class BasesManageController {
         return CommonResult.success(service.fuzzyQueryBases(basesVo));
     }
 
-    @ApiOperation("根据base_id删除基地")
-    @Action(description = "根据base_id删除基地")
+    @ApiOperation("根据base_id注销基地")
+    @Action(description = "根据base_id注销基地")
     @PostMapping("delBasesByBaseId")
     public CommonResult delBases(@Validated @RequestBody BaseIdVo baseIdVo, BindingResult result) {
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
         service.delBases(baseIdVo);
-        return CommonResult.success("删除成功");
+        return CommonResult.success("基地注销成功！");
     }
 
     @ApiOperation("根据bm_id修改基地资讯")
