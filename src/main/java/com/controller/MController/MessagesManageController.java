@@ -5,7 +5,6 @@ import com.common.api.CommonResult;
 import com.common.utils.TimeUtils;
 import com.pojo.Messages;
 import com.service.MessagesListService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -21,8 +19,8 @@ import java.util.List;
  * @author BeamStark
  * @Version 0.1 2020/12
  */
-@RestController
-@Api(tags = "后台资讯列表接口")
+//@RestController
+//@Api(tags = "后台资讯列表接口")
 public class MessagesManageController {
     @Autowired
     private MessagesListService messagesListService;
