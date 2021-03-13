@@ -17,6 +17,8 @@ public class CreateContactVo {
     private Integer user_id;
     @NotBlank(message = "留言内容不能为空")
     private String c_words;
+    @NotNull(message = "base_id不能为空")
+    private Integer base_id;
     @JsonIgnore
     private Date c_createtime;
 }
