@@ -24,4 +24,5 @@ public interface BasesMapper {
     void changeBasesMessagesById(BaseMessages po);
     void insertBasesMessage(BaseMessages po);
     void delBasesMessageByBmId(BaseMessageIdVo vo);
+    void changeBasesImageByBiId(BasesImages po);
 }

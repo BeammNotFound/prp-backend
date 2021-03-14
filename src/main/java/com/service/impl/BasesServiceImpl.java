@@ -84,4 +84,11 @@ public class BasesServiceImpl implements BasesService {
         basesMapper.delBasesMessageByBmId(vo);
         redisUtil.del("allMessages");
     }
+
+    @Override
+    public void changeBasesImageByBiId(BasesImages po) {
+        po.setBi_createtime(TimeUtils.getNowTime());
+        basesMapper.changeBasesImageByBiId(po);
+        redisUtil.del("allBases");
+    }
 }

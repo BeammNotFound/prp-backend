@@ -22,7 +22,6 @@ public class Bases {
     private String b_intro;
 
     private String b_icon;
-    private String b_image;
 
     @ApiModelProperty("基地的联系人姓名")
     private String b_contacts;

@@ -2,8 +2,10 @@ package com.controller.MController;
 
 import com.common.api.Action;
 import com.common.api.CommonResult;
+import com.common.utils.UpLoadImages;
 import com.pojo.BaseMessages;
 import com.pojo.Bases;
+import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.BaseMessageIdVo;
 import com.service.BasesService;
@@ -15,6 +17,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * @author BeamStark
@@ -86,5 +91,25 @@ public class BasesManageController {
     public CommonResult changeBasesById(@RequestBody Bases po) {
         service.changeBasesById(po);
         return CommonResult.success("修改信息成功！基地id为" + po.getBase_id());
+    }
+
+    @ApiOperation("根据bi_id修改地基图片")
+    @Action(description = "根据bi_id修改地基图片")
+    @PostMapping("changeBasesImageByBiId")
+    public CommonResult changeBasesImageByBiId(@RequestBody Integer bi_id, MultipartFile image) {
+        if (bi_id == null)
+            return CommonResult.validateFailed("bi_id不能为空！");
+        BasesImages po = new BasesImages();
+        if (image != null) {
+            try {
+                po.setBi_image(new UpLoadImages().uploadImage(image));
+            } catch (IOException e) {
+                CommonResult.validateFailed("上传图片失败！");
+                e.printStackTrace();
+            }
+        }
+        po.setBi_id(bi_id);
+        service.changeBasesImageByBiId(po);
+        return CommonResult.success(po.getBi_image());
     }
 }

@@ -137,7 +137,7 @@ public class UserController {
             try {
                 vo.setUser_icon(new UpLoadImages().uploadImage(icon_file));
             } catch (IOException e) {
-                CommonResult.validateFailed("头像上传失败");
+                CommonResult.validateFailed("头像上传失败！");
                 e.printStackTrace();
             }
         }

@@ -45,7 +45,6 @@
         set
             b_name = #{b_name},
             b_icon = #{b_icon},
-            b_image = #{b_image},
             b_address = #{b_address},
             b_intro = #{b_intro},
             b_contacts = #{b_contacts},
@@ -85,5 +84,15 @@
         where
             bm_id = #{bm_id}
     </delete>
+    
+    <update id="changeBasesImageByBiId" parameterType="com.pojo.BasesImages">
+        update
+            bases_images
+        set
+            bi_image = #{bi_image},
+            bi_createtime = #{bi_createtime},
+        where
+            bi_id = #{bi_id}
+    </update>
 
 </mapper>
