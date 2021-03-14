@@ -20,9 +20,7 @@ public class Bases {
     private String b_address;
     @NotBlank(message = "基地简介不能为空")
     private String b_intro;
-
     private String b_icon;
-
     @ApiModelProperty("基地的联系人姓名")
     private String b_contacts;
     @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$",message = "手机号格式不正确")

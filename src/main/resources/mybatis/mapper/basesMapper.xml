@@ -43,14 +43,31 @@
     <update id="changeBasesById" parameterType="com.pojo.Bases">
         update bases
         set
-            b_name = #{b_name},
-            b_icon = #{b_icon},
-            b_address = #{b_address},
-            b_intro = #{b_intro},
-            b_contacts = #{b_contacts},
-            b_mail = #{b_mail},
-            b_phone = #{b_phone}
-        where base_id = #{base_id}
+        <set>
+            <if test="b_name != null">
+                b_name = #{b_name},
+            </if>
+            <if test="b_icon != null">
+                b_icon = #{b_icon},
+            </if>
+            <if test="b_address != null">
+                b_address = #{b_address},
+            </if>
+            <if test="b_intro != null">
+                b_intro = #{b_intro},
+            </if>
+            <if test="b_contacts != null">
+                b_contacts = #{b_contacts},
+            </if>
+            <if test="b_mail != null">
+                b_mail = #{b_mail},
+            </if>
+            <if test="b_phone != null">
+                b_phone = #{b_phone}
+            </if>
+        </set>
+        where
+            base_id = #{base_id}
     </update>
 
     <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="com.pojo.vo.BaseIdVo">

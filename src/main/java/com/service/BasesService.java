@@ -21,4 +21,5 @@ public interface BasesService {
     void insertBasesMessage(BaseMessages po);
     void delBasesMessageByBmId(BaseMessageIdVo vo);
     void changeBasesImageByBiId(BasesImages po);
+    void changeBasesIconByBaseId(Bases vo);
 }

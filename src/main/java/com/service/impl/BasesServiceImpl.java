@@ -91,4 +91,10 @@ public class BasesServiceImpl implements BasesService {
         basesMapper.changeBasesImageByBiId(po);
         redisUtil.del("allBases");
     }
+
+    @Override
+    public void changeBasesIconByBaseId(Bases vo) {
+        basesMapper.changeBasesById(vo);
+        redisUtil.del("allBases");
+    }
 }

@@ -112,4 +112,26 @@ public class BasesManageController {
         service.changeBasesImageByBiId(po);
         return CommonResult.success(po.getBi_image());
     }
+
+    @ApiOperation("根据base_id修改地头像")
+    @Action(description = "根据base_id修改地头像")
+    @PostMapping("changeBasesIconByBaseId")
+    public CommonResult changeBasesIconByBaseId(@RequestBody Integer base_id, MultipartFile base_icon) {
+        if (base_id == null)
+            return CommonResult.validateFailed("base_id不能为空！");
+
+        Bases vo = new Bases();
+        if (base_icon != null) {
+            try {
+                vo.setB_icon(new UpLoadImages().uploadImage(base_icon));
+            } catch (IOException e) {
+                CommonResult.validateFailed("上传图片失败！");
+                e.printStackTrace();
+            }
+        }
+        vo.setBase_id(base_id);
+        service.changeBasesIconByBaseId(vo);
+        return CommonResult.success(vo.getB_icon());
+    }
+
 }
