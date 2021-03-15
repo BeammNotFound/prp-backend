@@ -89,14 +89,17 @@
         where user_id = #{user_id} and base_id = user_application
     </select>
 
-    <update id="addStarPet" parameterType="com.pojo.vo.PetStarVo">
-        update user_info
-        <set>
-            <if test="user_star_petId != null">
-                user_star_petId = #{pi_id}
-            </if>
-        </set>
-        where user_id = #{user_id}
-    </update>
+    <insert id="addStarPet" parameterType="com.pojo.vo.PetStarVo">
+        insert into
+            pet_starred(user_id,pi_id,ps_create_time)
+        values
+            (#{user_id},#{pi_id},#{ps_create_time})
+    </insert>
+
+    <delete id="delStarPet" parameterType="com.pojo.vo.PsIdVo">
+        delete from
+            pet_starred
+        where ps_id = #{ps_id}
+    </delete>
 
 </mapper>

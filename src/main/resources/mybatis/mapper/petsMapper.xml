@@ -154,12 +154,9 @@
 
     <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.UserIdVo" resultType="com.pojo.PetsInfo">
         select *
-        from pets_info
-        where pi_id = (
-            select user_star_petId
-            from user_info
-            where user_id = #{user_id}
-            )
+        from pet_starred left join pets_info
+        on pet_starred.pi_id = pets_info.pi_id
+        where user_id = #{user_id}
     </select>
 
 </mapper>

@@ -18,5 +18,6 @@ public interface UserMapper {
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
     User queryUserById(Integer user_id);
     void addStarPet(PetStarVo vo);
+    void delStarPet(PsIdVo vo);
 }
 

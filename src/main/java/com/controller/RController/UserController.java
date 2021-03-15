@@ -154,4 +154,12 @@ public class UserController {
         userService.addStarPet(vo);
         return CommonResult.success("添加喜欢成功！");
     }
+
+    @ApiOperation("根据ps_id删除喜欢宠物")
+    @Action(description = "根据ps_id删除喜欢宠物")
+    @PostMapping("delStarPet")
+    public CommonResult delStarPet(@RequestBody PsIdVo vo) {
+        userService.delStarPet(vo);
+        return CommonResult.success("删除喜欢宠物成功");
+    }
 }

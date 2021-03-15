@@ -13,4 +13,5 @@ public interface UserService{
     User queryUserByName(String user_name);
     User queryUserById(Integer user_id);
     void addStarPet(PetStarVo vo);
+    void delStarPet(PsIdVo vo);
 }

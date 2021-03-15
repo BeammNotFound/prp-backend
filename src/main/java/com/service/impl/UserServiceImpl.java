@@ -79,7 +79,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addStarPet(PetStarVo vo) {
+        vo.setPs_create_time(TimeUtils.getNowTime());
         mapper.addStarPet(vo);
+    }
+
+    @Override
+    public void delStarPet(PsIdVo vo) {
+        mapper.delStarPet(vo);
     }
 
 
