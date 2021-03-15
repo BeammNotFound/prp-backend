@@ -96,7 +96,7 @@ public class BasesManageController {
     @ApiOperation("根据bi_id修改地基图片")
     @Action(description = "根据bi_id修改地基图片")
     @PostMapping("changeBasesImageByBiId")
-    public CommonResult changeBasesImageByBiId(@RequestBody Integer bi_id, MultipartFile image) {
+    public CommonResult changeBasesImageByBiId(Integer bi_id, MultipartFile image) {
         if (bi_id == null)
             return CommonResult.validateFailed("bi_id不能为空！");
         BasesImages po = new BasesImages();
@@ -116,7 +116,7 @@ public class BasesManageController {
     @ApiOperation("根据base_id修改地头像")
     @Action(description = "根据base_id修改地头像")
     @PostMapping("changeBasesIconByBaseId")
-    public CommonResult changeBasesIconByBaseId(@RequestBody Integer base_id, MultipartFile base_icon) {
+    public CommonResult changeBasesIconByBaseId(Integer base_id, MultipartFile base_icon) {
         if (base_id == null)
             return CommonResult.validateFailed("base_id不能为空！");
 
@@ -132,6 +132,27 @@ public class BasesManageController {
         vo.setBase_id(base_id);
         service.changeBasesIconByBaseId(vo);
         return CommonResult.success(vo.getB_icon());
+    }
+
+    @ApiOperation("根据bm_id上传基地资讯图片")
+    @Action(description = "根据bm_id上传基地资讯图片")
+    @PostMapping("uploadBaseMessageImageByBmId")
+    public CommonResult uploadBaseMessageImageByBmId(Integer bm_id, MultipartFile baseMessageImage) {
+        if (bm_id == null || bm_id == 0) {
+            return CommonResult.validateFailed("bm_id不能为空");
+        }
+        BaseMessages po = new BaseMessages();
+        if (baseMessageImage != null) {
+            try {
+                po.setBm_image(new UpLoadImages().uploadImage(baseMessageImage));
+            } catch (IOException e) {
+                CommonResult.validateFailed("图片上传失败！");
+                e.printStackTrace();
+            }
+            po.setBm_id(bm_id);
+        }
+        service.changeBasesMessagesById(po);
+        return CommonResult.success(po.getBm_image());
     }
 
 }

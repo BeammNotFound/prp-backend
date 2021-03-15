@@ -79,13 +79,26 @@
     <update id="changeBasesMessagesById" parameterType="com.pojo.BaseMessages">
         update
             base_messages
-        set
-            base_id = #{base_id},
-            bm_title = #{bm_title},
-            bm_detail = #{bm_detail},
-            bm_author = #{bm_author},
-            bm_image = #{bm_image},
-            bm_createtime = #{bm_createtime}
+        <set>
+            <if test="base_id != null">
+                base_id = #{base_id},
+            </if>
+            <if test="bm_title != null">
+                bm_title = #{bm_title},
+            </if>
+            <if test="bm_detail != null">
+                bm_detail = #{bm_detail},
+            </if>
+            <if test="bm_author != null">
+                bm_author = #{bm_author},
+            </if>
+            <if test="bm_image != null">
+                bm_image = #{bm_image},
+            </if>
+            <if test="bm_createtime != null">
+                bm_createtime = #{bm_createtime}
+            </if>
+        </set>
         where bm_id = #{bm_id}
     </update>
 

@@ -8,7 +8,6 @@ import com.pojo.Bases;
 import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.BaseMessageIdVo;
-import com.pojo.vo.QueryBasesVo;
 import com.service.BasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,10 +32,10 @@ public class BasesServiceImpl implements BasesService {
             return redisUtil.get("allBases");
     }
 
-    @Override
-    public List<Bases> fuzzyQueryBases(QueryBasesVo bases) {
-        return basesMapper.fuzzyQueryBases(bases);
-    }
+//    @Override
+//    public List<Bases> fuzzyQueryBases(QueryBasesVo bases) {
+//        return basesMapper.fuzzyQueryBases(bases);
+//    }
 
     @Override
     public void delBases(BaseIdVo baseIdVo) {
