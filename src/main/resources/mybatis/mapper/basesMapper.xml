@@ -40,9 +40,8 @@
         where base_id = #{base_id}
     </select>
 
-    <update id="changeBasesById" parameterType="com.pojo.Bases">
+    <update id="changeBasesById" parameterType="com.pojo.vo.BasesVo">
         update bases
-        set
         <set>
             <if test="b_name != null">
                 b_name = #{b_name},
@@ -63,7 +62,7 @@
                 b_mail = #{b_mail},
             </if>
             <if test="b_phone != null">
-                b_phone = #{b_phone}
+                b_phone = #{b_phone},
             </if>
         </set>
         where

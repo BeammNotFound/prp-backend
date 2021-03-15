@@ -8,6 +8,7 @@ import com.pojo.Bases;
 import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.BaseMessageIdVo;
+import com.pojo.vo.BasesVo;
 import com.service.BasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +61,7 @@ public class BasesServiceImpl implements BasesService {
     }
 
     @Override
-    public void changeBasesById(Bases po) {
+    public void changeBasesById(BasesVo po) {
         basesMapper.changeBasesById(po);
         redisUtil.del("allBases");
     }
@@ -92,7 +93,7 @@ public class BasesServiceImpl implements BasesService {
     }
 
     @Override
-    public void changeBasesIconByBaseId(Bases vo) {
+    public void changeBasesIconByBaseId(BasesVo vo) {
         basesMapper.changeBasesById(vo);
         redisUtil.del("allBases");
     }

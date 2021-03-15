@@ -4,10 +4,10 @@ import com.common.api.Action;
 import com.common.api.CommonResult;
 import com.common.utils.UpLoadImages;
 import com.pojo.BaseMessages;
-import com.pojo.Bases;
 import com.pojo.BasesImages;
 import com.pojo.vo.BaseIdVo;
 import com.pojo.vo.BaseMessageIdVo;
+import com.pojo.vo.BasesVo;
 import com.service.BasesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -88,7 +88,7 @@ public class BasesManageController {
     @ApiOperation("根据base_id更改基地信息")
     @Action(description = "根据base_id更改基地信息")
     @PostMapping("changeBasesByBaseId")
-    public CommonResult changeBasesById(@RequestBody Bases po) {
+    public CommonResult changeBasesById(@RequestBody BasesVo po) {
         service.changeBasesById(po);
         return CommonResult.success("修改信息成功！基地id为" + po.getBase_id());
     }
@@ -120,7 +120,7 @@ public class BasesManageController {
         if (base_id == null)
             return CommonResult.validateFailed("base_id不能为空！");
 
-        Bases vo = new Bases();
+        BasesVo vo = new BasesVo();
         if (base_icon != null) {
             try {
                 vo.setB_icon(new UpLoadImages().uploadImage(base_icon));

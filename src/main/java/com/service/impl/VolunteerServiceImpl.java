@@ -133,7 +133,6 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     public void changeVolunteerInfo(VolunteerInfoVo vo) {
         volunteerMapper.changeVolunteerInfoByBase_id(vo);
-        basesMapper.changeBasesById(vo);
         redisUtil.del("allBases");
     }
 
