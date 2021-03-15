@@ -7,6 +7,7 @@ import com.pojo.AdoptionForm;
 import com.pojo.AdoptionPats;
 import com.pojo.PetsInfo;
 import com.pojo.vo.BaseIdVo;
+import com.pojo.vo.PetStarVo;
 import com.pojo.vo.UserIdVo;
 import com.service.PetsService;
 import io.swagger.annotations.Api;
@@ -76,6 +77,13 @@ public class PetsController {
             return CommonResult.validateFailed("您没有领养任何宠物");
         }
         return CommonResult.success(petsInfos);
+    }
+
+    @ApiOperation("根据user_id查看喜欢宠物")
+    @Action(description = "根据user_id查看喜欢宠物")
+    @PostMapping("queryPetStarByUser_id")
+    public CommonResult queryPetStarByUser_id(@RequestBody PetStarVo vo) {
+        return CommonResult.success(service.queryPetStarByUser_id(vo));
     }
 
 }

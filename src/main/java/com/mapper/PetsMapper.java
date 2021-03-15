@@ -49,5 +49,6 @@ public interface PetsMapper {
 
     void changePetInfo(PetInfoVo vo);
 
+    List<PetsInfo> queryPetStarByUser_id(PetStarVo vo);
 
 }

@@ -137,4 +137,9 @@ public class PetsServiceImpl implements PetsService {
         petsMapper.changePetInfo(vo);
         redisUtil.del("allPetsInfo");
     }
+
+    @Override
+    public List<PetsInfo> queryPetStarByUser_id(PetStarVo vo) {
+        return petsMapper.queryPetStarByUser_id(vo);
+    }
 }

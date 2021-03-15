@@ -152,4 +152,14 @@
             pi_id = #{pi_id}
     </update>
 
+    <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.PetStarVo" resultType="com.pojo.PetsInfo">
+        select *
+        from pets_info
+        where pi_id = (
+            select user_star_petId
+            from user_info
+            where user_id = #{user_id}
+            )
+    </select>
+
 </mapper>

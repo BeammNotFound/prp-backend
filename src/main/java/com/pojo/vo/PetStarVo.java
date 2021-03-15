@@ -1,6 +1,5 @@
 package com.pojo.vo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 /**
@@ -10,6 +9,5 @@ import lombok.Data;
 @Data
 public class PetStarVo {
     private Integer user_id;
-    @JsonIgnore
-    private Integer pi_id;
+    private Integer pi_id,user_star_petId;
 }

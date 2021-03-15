@@ -23,4 +23,5 @@ public interface PetsService {
     void insertPetInfo(PetsInfo po);
     void delPetByid(PetIdVo vo);
     void changePetInfo(PetInfoVo vo);
+    List<PetsInfo> queryPetStarByUser_id(PetStarVo vo);
 }
