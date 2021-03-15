@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 public class PetStarVo {
     private Integer user_id;
-    private Integer pi_id,user_star_petId;
+    private Integer pi_id;
 }

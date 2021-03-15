@@ -152,6 +152,6 @@ public class UserController {
     @PostMapping("addStarPet")
     public CommonResult addStarPet(@RequestBody PetStarVo vo) {
         userService.addStarPet(vo);
-        return CommonResult.success("添加喜欢成功");
+        return CommonResult.success("添加喜欢成功！");
     }
 }

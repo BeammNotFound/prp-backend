@@ -82,7 +82,7 @@ public class PetsController {
     @ApiOperation("根据user_id查看喜欢宠物")
     @Action(description = "根据user_id查看喜欢宠物")
     @PostMapping("queryPetStarByUser_id")
-    public CommonResult queryPetStarByUser_id(@RequestBody PetStarVo vo) {
+    public CommonResult queryPetStarByUser_id(@RequestBody UserIdVo vo) {
         return CommonResult.success(service.queryPetStarByUser_id(vo));
     }
 

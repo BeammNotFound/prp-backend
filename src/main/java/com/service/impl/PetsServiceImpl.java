@@ -139,7 +139,7 @@ public class PetsServiceImpl implements PetsService {
     }
 
     @Override
-    public List<PetsInfo> queryPetStarByUser_id(PetStarVo vo) {
+    public List<PetsInfo> queryPetStarByUser_id(UserIdVo vo) {
         return petsMapper.queryPetStarByUser_id(vo);
     }
 }

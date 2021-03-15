@@ -152,7 +152,7 @@
             pi_id = #{pi_id}
     </update>
 
-    <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.PetStarVo" resultType="com.pojo.PetsInfo">
+    <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.UserIdVo" resultType="com.pojo.PetsInfo">
         select *
         from pets_info
         where pi_id = (
