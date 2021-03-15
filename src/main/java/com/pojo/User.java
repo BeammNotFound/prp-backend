@@ -12,7 +12,7 @@ import java.util.Date;
 @ApiModel("用户实体类")
 public class User {
 
-    private Integer user_id;
+    private Integer user_id,user_star_petId;
 
 //    @NotBlank(message = "请输入用户名")
     private String user_name;

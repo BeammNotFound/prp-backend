@@ -17,5 +17,6 @@ public interface UserMapper {
     User queryUserByName(String user_name);
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
     User queryUserById(Integer user_id);
+    void addStarPet(PetStarVo vo);
 }
 

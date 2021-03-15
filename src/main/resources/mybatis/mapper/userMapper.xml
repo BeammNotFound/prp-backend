@@ -89,4 +89,14 @@
         where user_id = #{user_id} and base_id = user_application
     </select>
 
+    <update id="addStarPet" parameterType="com.pojo.vo.PetStarVo">
+        update user_info
+        <set>
+            <if test="user_star_petId != null">
+                user_star_petId = #{pi_id}
+            </if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
 </mapper>

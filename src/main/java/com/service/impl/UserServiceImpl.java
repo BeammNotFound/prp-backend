@@ -77,6 +77,11 @@ public class UserServiceImpl implements UserService {
         return mapper.queryUserById(user_id);
     }
 
+    @Override
+    public void addStarPet(PetStarVo vo) {
+        mapper.addStarPet(vo);
+    }
+
 
     @Override
     public boolean verifyPassword(UpdatePasswordVo updatePasswordVo) {

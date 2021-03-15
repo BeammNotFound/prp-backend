@@ -146,4 +146,12 @@ public class UserController {
         userService.updateUserByUserId(vo);
         return CommonResult.success(vo.getUser_icon());
     }
+
+    @ApiOperation("用户添加宠物喜欢")
+    @Action(description = "用户添加宠物喜欢")
+    @PostMapping("addStarPet")
+    public CommonResult addStarPet(@RequestBody PetStarVo vo) {
+        userService.addStarPet(vo);
+        return CommonResult.success("添加喜欢成功");
+    }
 }

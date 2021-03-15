@@ -9,12 +9,8 @@ public interface UserService{
     Boolean forgetPassword(ForgetPasswordVo user);
     boolean verifyPassword(UpdatePasswordVo updatePasswordVo);
     void updateUserByUserId(UpdateUserInfoVo vo);
-
     void updatePasswordByUserName(UpdatePasswordVo updatePasswordVo);
-
     User queryUserByName(String user_name);
-
     User queryUserById(Integer user_id);
-
-
+    void addStarPet(PetStarVo vo);
 }
