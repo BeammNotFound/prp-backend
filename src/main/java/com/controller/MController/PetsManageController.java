@@ -120,4 +120,11 @@ public class PetsManageController {
         service.changePetInfo(vo);
         return CommonResult.success("更改宠物信息成功！被更改的宠物名为" + vo.getPi_name());
     }
+
+    @ApiOperation("查询宠物喜欢")
+    @Action(description = "查询宠物喜欢")
+    @GetMapping("queryStarredPets")
+    public CommonResult queryStarredPets(){
+        return CommonResult.success(service.queryStarredPets());
+    }
 }

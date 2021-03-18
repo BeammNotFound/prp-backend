@@ -159,4 +159,11 @@
         where user_id = #{user_id}
     </select>
 
+    <select id="queryStarredPets" resultType="com.pojo.vo.StarredPetsVo">
+        select pi_name,pi_age,pi_breed,user_realname,user_sex,user_city,user_age,ps_create_time,ps_id
+        from pet_starred,pets_info,user_info
+        where pet_starred.pi_id = pets_info.pi_id
+        and pet_starred.user_id = user_info.user_id
+    </select>
+
 </mapper>

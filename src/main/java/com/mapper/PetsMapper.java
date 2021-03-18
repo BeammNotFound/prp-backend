@@ -51,4 +51,6 @@ public interface PetsMapper {
 
     List<PetsInfo> queryPetStarByUser_id(UserIdVo vo);
 
+    List<StarredPetsVo> queryStarredPets();
+
 }
