@@ -112,7 +112,6 @@ public class BasesManageController {
         service.changeBasesImageByBiId(po);
         return CommonResult.success(po.getBi_image());
     }
-
     @ApiOperation("根据base_id修改地头像")
     @Action(description = "根据base_id修改地头像")
     @PostMapping("changeBasesIconByBaseId")

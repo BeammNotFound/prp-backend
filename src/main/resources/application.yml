@@ -3,8 +3,8 @@ spring:
     cache: false
   datasource:
     username: root
-    password: root
-    url: jdbc:mysql://47.94.104.224:3306/prp?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://127.0.0.1/prp?useUnicode=true&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
 
     #配置邮箱

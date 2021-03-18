@@ -30,7 +30,6 @@
         from bases left join volunteer_info
         on bases.base_id = volunteer_info.base_id
         where bases.base_id = #{base_id}
-
     </select>
 
 
@@ -62,7 +61,7 @@
                 b_mail = #{b_mail},
             </if>
             <if test="b_phone != null">
-                b_phone = #{b_phone},
+                b_phone = #{b_phone}
             </if>
         </set>
         where
@@ -119,7 +118,7 @@
             bases_images
         set
             bi_image = #{bi_image},
-            bi_createtime = #{bi_createtime},
+            bi_createtime = #{bi_createtime}
         where
             bi_id = #{bi_id}
     </update>

@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 14/03/2021 10:53:26
+ Date: 18/03/2021 17:34:21
 */
 
 SET NAMES utf8mb4;
@@ -136,7 +136,7 @@ CREATE TABLE `base_messages`  (
   `bm_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `bm_createtime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`bm_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of base_messages
@@ -150,6 +150,7 @@ INSERT INTO `base_messages` VALUES (6, 2, '成都爱之家动物救助中心开�
 INSERT INTO `base_messages` VALUES (7, 1, '郑州动物之家', '希望大家能够救助全国各地的宠物！', '李先生', 'https://img.imgdb.cn/item/604d79a95aedab222cb91a7a.jpg', '2020-11-30 16:37:29');
 INSERT INTO `base_messages` VALUES (8, 1, '郑州动物之家2', '希望大家能够救助全国各地的宠物！', '李先生', 'https://img.imgdb.cn/item/604d79a95aedab222cb91a7e.jpg', '2020-11-30 16:37:43');
 INSERT INTO `base_messages` VALUES (9, 1, '郑州动物之家3', '希望大家能够救助全国各地的宠物！', '李先生', 'https://img.imgdb.cn/item/604d79a95aedab222cb91a83.jpg', '2020-11-30 16:37:54');
+INSERT INTO `base_messages` VALUES (10, 1, '测试', '测1111', '测试', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/1b20883c-6fea-4bcd-97e0-c483187720dbCapture001.png', NULL);
 
 -- ----------------------------
 -- Table structure for bases
@@ -159,7 +160,6 @@ CREATE TABLE `bases`  (
   `base_id` int(11) NOT NULL AUTO_INCREMENT,
   `b_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `b_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_contacts` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -167,14 +167,15 @@ CREATE TABLE `bases`  (
   `b_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `b_createtime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`base_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bases
 -- ----------------------------
-INSERT INTO `bases` VALUES (1, '成都爱之家动物救助中心', 'https://img.imgdb.cn/item/604c88da5aedab222c5136b2.jpg', 'https://img.imgdb.cn/item/604c88da5aedab222c5136b2.jpg', '四川省成都市', '成都爱宠之家，有你就好！', '托尼', '123@gmail.com', '12345678888', '2009-03-12 11:35:05');
-INSERT INTO `bases` VALUES (2, '郑州动物之家', 'https://img.imgdb.cn/item/604c884d5aedab222c50f024.jpg', 'https://img.imgdb.cn/item/604c884d5aedab222c50f024.jpg', '上海市', '保护动物，人人有责！', '李先生', '321@qq.com', '12345678911', '2020-11-23 16:45:42');
-INSERT INTO `bases` VALUES (3, 'Beam的猫咖馆', 'https://img.imgdb.cn/item/604c88935aedab222c5110aa.jpg', 'https://img.imgdb.cn/item/604c88935aedab222c5110aa.jpg', '美国', '探索Apple 充满创新的世界,选购各式 iPhone、iPad、Apple Watch 和 Mac,浏览各种配件、娱乐产品,并获得相关产品的专家支持服务。', 'Beam', 'Beamm0613@163.com', '15838365368', '2020-11-03 15:00:33');
+INSERT INTO `bases` VALUES (1, '成都爱之家动物救助中心', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/7ce51cd9-cf72-450b-858b-b484bfde724b下载.jpg', '四川省成都市', '开心快乐就好', 'anni', '123@gmail.com', '12345678881', '2009-03-12 11:35:05');
+INSERT INTO `bases` VALUES (2, '郑州动物之家', 'https://img.imgdb.cn/item/604c884d5aedab222c50f024.jpg', '上海市', '保护动物，人人有责！', '李先生', '321@qq.com', '12345678911', '2020-11-23 16:45:42');
+INSERT INTO `bases` VALUES (3, 'Beam的猫咖馆', 'https://img.imgdb.cn/item/604c88935aedab222c5110aa.jpg', '美国', '探索Apple 充满创新的世界,选购各式 iPhone、iPad、Apple Watch 和 Mac,浏览各种配件、娱乐产品,并获得相关产品的专家支持服务。', 'Beam', 'Beamm0613@163.com', '15838365368', '2020-11-03 15:00:33');
+INSERT INTO `bases` VALUES (4, '344', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/4009534a-7966-43e5-9d79-6862c7b7a59e20170824_103155400_iOS.png', 'string', 'string', 'string', 'string', 'string', NULL);
 
 -- ----------------------------
 -- Table structure for bases_images
@@ -186,7 +187,7 @@ CREATE TABLE `bases_images`  (
   `bi_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `bi_createtime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`bi_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bases_images
@@ -206,6 +207,11 @@ INSERT INTO `bases_images` VALUES (12, 1, 'https://img.imgdb.cn/item/604c89fe5ae
 INSERT INTO `bases_images` VALUES (13, 1, 'https://img.imgdb.cn/item/604c8a145aedab222c51c034.jpg', '2020-11-28 19:21:04');
 INSERT INTO `bases_images` VALUES (14, 1, 'http://pic1.win4000.com/wallpaper/2020-11-03/5fa10f79cbf8c.jpg', '2020-11-28 19:21:22');
 INSERT INTO `bases_images` VALUES (15, 1, 'http://pic1.win4000.com/wallpaper/2020-11-03/5fa10f7bec170.jpg', '2020-11-28 19:21:34');
+INSERT INTO `bases_images` VALUES (16, 4, 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/f0f71252-77ab-4777-a45b-1aa195dcff0c20170824_103410014_iOS.jpg', '2021-03-16 16:46:44');
+INSERT INTO `bases_images` VALUES (17, 4, 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/37ec0122-3396-4ac8-8529-214a0c25cc9720170824_103236315_iOS.png', '2021-03-16 16:52:27');
+INSERT INTO `bases_images` VALUES (18, 4, 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/a2e5c492-34b4-40fd-9607-a1eb128c3ecf20170824_103155400_iOS.png', '2021-03-16 16:52:44');
+INSERT INTO `bases_images` VALUES (19, 4, 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/35c01160-6df8-4ab0-99c7-7631f83dc93720170824_103242089_iOS.png', '2021-03-16 16:53:04');
+INSERT INTO `bases_images` VALUES (20, 4, 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/2b984de5-9191-4bd7-a2cf-35bb3aaf485320170824_103148522_iOS.png', '2021-03-16 16:53:12');
 
 -- ----------------------------
 -- Table structure for contact
@@ -249,6 +255,23 @@ INSERT INTO `messages` VALUES (5, '津城警事｜“爱鸟护飞”、保护野
 INSERT INTO `messages` VALUES (7, 'OWOH x 浦江王阿姨流浪动物公益项目温暖魔都', '随着天气逐渐变冷，流浪动物的吃饱穿暖问题也引起了众多爱宠人士的关注。没有固定的家，没有主人的宠爱，没有足够的食粮，没有御寒的住所，继而引发无数的流浪猫狗很难挺过寒冬的死亡现象。作为国内知名的宠物 APP-OWOH，于 12 月 21 日 -22 日在新天地湖滨路活力街区举办了 ‘ 给毛孩点一份外卖 ’ 的爱心救助公益活动，帮助流浪动物过冬、解决领养问题，此次活动也吸引了上海各个地区数万位爱宠人士到现场捐出自己的一份爱心，把有意向的流浪动物领养回家。', '来源: MY宠物', 'https://www.mychongwu.com/uploads/images/2019/1226/1577328917240074.jpg', 1, '2020-11-24 09:34:31', '2020-11-24 09:34:31');
 
 -- ----------------------------
+-- Table structure for pet_starred
+-- ----------------------------
+DROP TABLE IF EXISTS `pet_starred`;
+CREATE TABLE `pet_starred`  (
+  `ps_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `pi_id` int(11) DEFAULT NULL,
+  `ps_create_time` datetime(0) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
+  PRIMARY KEY (`ps_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pet_starred
+-- ----------------------------
+INSERT INTO `pet_starred` VALUES (1, 1, 2, NULL);
+
+-- ----------------------------
 -- Table structure for pets_info
 -- ----------------------------
 DROP TABLE IF EXISTS `pets_info`;
@@ -264,7 +287,7 @@ CREATE TABLE `pets_info`  (
   `pi_image_3` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `pi_image_4` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `base_id` int(255) DEFAULT NULL,
-  `pi_createtime` datetime(0) DEFAULT NULL,
+  `pi_createtime` datetime(0) DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`pi_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -276,7 +299,7 @@ INSERT INTO `pets_info` VALUES (3, '七七', '一岁', '金毛', '2019年曾有�
 INSERT INTO `pets_info` VALUES (4, '花菜', '三个月', '英短', '无', '超可爱', 'https://p26-tt.byteimg.com/origin/pgc-image/1589d5da383744b4b0fc91a7b20c83ff', 'https://p6-tt-ipv6.byteimg.com/origin/pgc-image/468415c585284a0092929475bb8e3bc7', 'https://p3-tt-ipv6.byteimg.com/origin/pgc-image/e8e67214859d4a79ae911c252530840b', 'https://p9-tt-ipv6.byteimg.com/origin/pgc-image/4502d1a07bca4921a32fbac4ec81f3e3', 1, '2021-03-06 16:21:51');
 INSERT INTO `pets_info` VALUES (5, '小白', '一岁', '阿拉斯加', '无', '懂事', 'https://p1-tt-ipv6.byteimg.com/origin/pgc-image/3103444ff5274034937a6f9023d8e620', 'https://p6-tt-ipv6.byteimg.com/origin/pgc-image/a64f1344765c4a8d902b4c8da4e0bb53', 'https://img.imgdb.cn/item/604c86095aedab222c4fdfcb.jpg', 'https://img.imgdb.cn/item/604c86095aedab222c4fdfcf.jpg', 1, '2021-03-06 16:21:55');
 INSERT INTO `pets_info` VALUES (6, '金毛', '五个月', '波斯猫', '无', '它不爱动、不爱玩耍、安静，主要靠它们的大眼睛来交流。它们不会过多地需要人的关注，能在家中独处，胆子比较小。', 'https://img.imgdb.cn/item/604c87485aedab222c507909.jpg', 'https://img.imgdb.cn/item/604c87485aedab222c50790d.jpg', 'https://img.imgdb.cn/item/604c87485aedab222c50790f.jpg', 'https://img.imgdb.cn/item/604c87485aedab222c507915.jpg', 2, '2020-12-30 16:21:57');
-INSERT INTO `pets_info` VALUES (7, '哈士奇', '五个月', '哈士奇', '无', '憨憨的', 'https://img.imgdb.cn/item/604c86555aedab222c500a72.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a75.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a78.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a7c.jpg', 2, NULL);
+INSERT INTO `pets_info` VALUES (7, '哈士奇', '五个月', '哈士奇', '无', '憨憨的', 'https://img.imgdb.cn/item/604c86555aedab222c500a72.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a75.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a78.jpg', 'https://img.imgdb.cn/item/604c86555aedab222c500a7c.jpg', 2, '2021-03-15 18:05:36');
 
 -- ----------------------------
 -- Table structure for popularizations
@@ -325,8 +348,6 @@ CREATE TABLE `user_info`  (
   `user_intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_city` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `user_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `user_star_petId` int(11) DEFAULT NULL,
-  `user_star_volunteerId` int(11) DEFAULT NULL,
   `user_createtime` datetime(0) DEFAULT NULL,
   `user_updatetime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`user_id`, `user_name`) USING BTREE
@@ -335,9 +356,9 @@ CREATE TABLE `user_info`  (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES (1, 'root', 'Beam', '梁豪', 'https://img.imgdb.cn/item/604c87d55aedab222c50bebc.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', NULL, NULL, '2020-11-06 14:03:37', '2020-12-15 20:09:56');
-INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', 'https://img.imgdb.cn/item/604c87e25aedab222c50c50a.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 21, 1, '110', 'zhangsan110@gmail.com', 'I love code', 'i love code', '重庆', '羊山区', NULL, NULL, '2020-11-06 17:26:54', '2020-11-12 17:54:30');
-INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', '美少女', 'https://img.imgdb.cn/item/604c87ed5aedab222c50c975.jpg', '1bbd886460827015e5d605ed44252251', '女', 20, 1, '18568275991', '1223697311@qq.com', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '北京市', '北京市西城区', NULL, NULL, '2020-11-16 17:52:54', '2020-12-14 15:58:38');
+INSERT INTO `user_info` VALUES (1, 'root', 'Beam', '梁豪', 'https://img.imgdb.cn/item/604c87d55aedab222c50bebc.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', '2020-11-06 14:03:37', '2020-12-15 20:09:56');
+INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', 'https://img.imgdb.cn/item/604c87e25aedab222c50c50a.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 21, 1, '110', 'zhangsan110@gmail.com', 'I love code', 'i love code', '重庆', '羊山区', '2020-11-06 17:26:54', '2020-11-12 17:54:30');
+INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', '美少女', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/f74f7052-47d6-4d59-8143-338fac6a2ed4v2-6e35f200a83b76761f296f6fec0edd74.jpg', '1bbd886460827015e5d605ed44252251', '女', 20, 1, '18568275991', '1223697311@qq.com', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '北京市', '北京市西城区', '2020-11-16 17:52:54', '2021-03-14 14:28:07');
 
 -- ----------------------------
 -- Table structure for volunteer_form
