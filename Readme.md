@@ -1,28 +1,26 @@
-##宠物救助平台（Pet Rescue Platform）
+##National Pet Rescue Platform
+### 	Technology Planning
+Backstage：
+<br> SpringBoot + Mybatis，Swagger2，Redis <br>
+Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Aliyun.OSS <br>
 
-### 	技术规划
+### 	Developer
+<br>
 
-后台：SpringBoot + Mybatis集成Swagger2，Redis，Validated，SpringBootAOP环绕通知，日志审计
+####		Backstage Supporter Developer:
+<br>
 
+| Name | Contact Via Mail |
+| ---- | -------------------- |
+| BeamStark | BeammStark@gmail.com |
 
+#### 		Reception Developer:
+<br>
 
-### 	开发人员
+| Name   | Contact Via Mail  |
+| ------ | ----------------- |
+| Weirdo | 1223697311@qq.com |
+| HaHa   | 604520242@qq.com  |
+<br>
 
-
-
-####		后台开发​：	
-
-| Name | Mail                 | Phone       |
-| ---- | -------------------- | ----------- |
-| Beam | BeammStark@gmail.com | 15838365368 |
-
-#### 		前台开发：
-
-| Name   | Mail              | Phone       |
-| ------ | ----------------- | ----------- |
-| Weirdo | 1223697311@qq.com | 18568275991 |
-| HaHa   | 604520242@qq.com  | 15838310695 |
-
-
-
-> 此项目只展示后台代码，待完善，持续更新~​ :laughing:
+>This project only shows the background code, to be improved, continue to update ~ :laughing:
