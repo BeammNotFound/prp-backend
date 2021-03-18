@@ -75,6 +75,9 @@ public class BasesServiceImpl implements BasesService {
     @Override
     public void insertBasesMessage(BaseMessages po) {
         po.setBm_createtime(TimeUtils.getNowTime());
+        //资讯默认图片
+        if (po.getBm_image().equals(null))
+            po.setBm_image("https://img.imgdb.cn/item/605325bd524f85ce29639e2e.jpg");
         basesMapper.insertBasesMessage(po);
         redisUtil.del("allMessages");
     }

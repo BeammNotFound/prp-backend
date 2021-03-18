@@ -154,4 +154,20 @@ public class BasesManageController {
         return CommonResult.success(po.getBm_image());
     }
 
+    @ApiOperation("上传图片")
+    @Action(description = "上传图片")
+    @PostMapping("uploadImage")
+    public CommonResult uploadImage(MultipartFile image) {
+        String s = "";
+        if (image != null) {
+            try {
+                s = new UpLoadImages().uploadImage(image);
+            } catch (IOException e) {
+                CommonResult.validateFailed("图片上传失败！");
+                e.printStackTrace();
+            }
+        }
+        return CommonResult.success(s);
+    }
+
 }
