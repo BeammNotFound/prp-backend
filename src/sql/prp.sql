@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本机
+ Source Server         : 明军
  Source Server Type    : MySQL
- Source Server Version : 50730
- Source Host           : localhost:3306
+ Source Server Version : 50732
+ Source Host           : 47.94.104.224:3306
  Source Schema         : prp
 
  Target Server Type    : MySQL
- Target Server Version : 50730
+ Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 23/03/2021 21:42:46
+ Date: 29/03/2021 20:06:02
 */
 
 SET NAMES utf8mb4;
@@ -353,14 +353,15 @@ CREATE TABLE `user_info`  (
   `user_createtime` datetime(0) DEFAULT NULL,
   `user_updatetime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`user_id`, `user_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES (1, 'root', 'Beam', '梁豪', 'https://img.imgdb.cn/item/604c87d55aedab222c50bebc.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', '2020-11-06 14:03:37', '2020-12-15 20:09:56');
+INSERT INTO `user_info` VALUES (1, 'root', '管理员', '管理员', 'https://img.imgdb.cn/item/6061c2668322e6675cff7bc6.jpg', '63a9f0ea7bb98050796b649e85481845', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', '2020-11-06 14:03:37', '2020-12-15 20:09:56');
 INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', 'https://img.imgdb.cn/item/604c87e25aedab222c50c50a.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 21, 1, '110', 'zhangsan110@gmail.com', 'I love code', 'i love code', '重庆', '羊山区', '2020-11-06 17:26:54', '2020-11-12 17:54:30');
 INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', '美少女', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/f74f7052-47d6-4d59-8143-338fac6a2ed4v2-6e35f200a83b76761f296f6fec0edd74.jpg', '1bbd886460827015e5d605ed44252251', '女', 20, 1, '18568275991', '1223697311@qq.com', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '北京市', '北京市西城区', '2020-11-16 17:52:54', '2021-03-14 14:28:07');
+INSERT INTO `user_info` VALUES (4, 'lianghao', 'BeamStark', '梁豪', 'https://img.imgdb.cn/item/6061c2838322e6675cff9fee.jpg', 'ee990c1ccfb7af0cbf4c5ac02c2cd636', '男', 22, 1, '15838365368', 'BeammStark@gmail.com', 'i love code ', 'i am ceo', '河南省', '郑州市中原区', '2021-03-29 20:04:04', '2021-03-29 20:04:06');
 
 -- ----------------------------
 -- Table structure for volunteer_form
