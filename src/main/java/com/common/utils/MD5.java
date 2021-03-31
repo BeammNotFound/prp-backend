@@ -7,6 +7,7 @@ import java.util.Scanner;
  * @author BeamStark
  * @Version 0.1 2020/12
  */
+
 public class MD5 {
     public static void main(String[] args) {
         new MD5().md5();
