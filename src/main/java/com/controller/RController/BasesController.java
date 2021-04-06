@@ -30,6 +30,7 @@ public class BasesController {
     @GetMapping("/queryBases")
     public CommonResult queryBases() {
         return CommonResult.success(service.queryBases());
+//        return CommonResult.failed("");
     }
 
 
