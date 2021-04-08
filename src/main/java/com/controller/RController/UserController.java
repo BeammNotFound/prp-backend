@@ -53,6 +53,12 @@ public class UserController {
            return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
 
+        User u = userService.queryUserByName(user.getUser_mail());
+        if (u != null) {
+            if (u.getUser_mail().equals(user.getUser_mail()))
+                return CommonResult.validateFailed("您已经注册过了，请直接登陆");
+        }
+
         if (userService.createUser(user)) {
             return CommonResult.success("添加用户成功,昵称为：" + user.getUser_nickname());
         }
@@ -114,12 +120,6 @@ public class UserController {
 
         if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
-        }
-
-        User u = userService.queryUserByName(user.getUser_mail());
-        if (u != null) {
-            if (u.getUser_mail().equals(user.getUser_mail()))
-                return CommonResult.validateFailed("您已经注册过了，请直接登陆");
         }
 
         setMail.sendMail(user.getUser_mail());

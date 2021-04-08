@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="prp@localhost" uuid="2f730f9c-6ec3-484f-8166-b48f416e12f9">
+    <data-source source="LOCAL" name="PRP-localhost" uuid="2f730f9c-6ec3-484f-8166-b48f416e12f9">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
