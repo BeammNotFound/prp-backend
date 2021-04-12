@@ -5,6 +5,7 @@ import com.common.utils.TimeUtils;
 import com.mapper.BasesMapper;
 import com.mapper.VolunteerMapper;
 import com.pojo.ApplicationVolunteer;
+import com.pojo.BasesImages;
 import com.pojo.VolunteerForm;
 import com.pojo.VolunteerInfo;
 import com.pojo.vo.*;
@@ -98,7 +99,22 @@ public class VolunteerServiceImpl implements VolunteerService {
 //        else
 //            redisUtil.set("allVolunteer", volunteerMapper.queryAllVolunteer(), 30);
 //        return redisUtil.get("allVolunteer");
-        return volunteerMapper.queryAllVolunteer();
+        List<VolunteerInfo> volunteerInfos = volunteerMapper.queryAllVolunteer();
+        for (int i = 0; i < volunteerInfos.size(); i++) {
+            BaseIdVo baseIdVo = new BaseIdVo();
+            List<BasesImages> basesImages;
+            //拿到第一个base_id
+            baseIdVo.setBase_id(volunteerInfos.get(i).getBase_id());
+            basesImages = basesMapper.queryBasesImagesById(baseIdVo);
+
+            volunteerInfos.get(i).setBi_image1(basesImages.get(0).getBi_image());
+            volunteerInfos.get(i).setBi_image2(basesImages.get(1).getBi_image());
+            volunteerInfos.get(i).setBi_image3(basesImages.get(2).getBi_image());
+            volunteerInfos.get(i).setBi_image4(basesImages.get(3).getBi_image());
+            volunteerInfos.get(i).setBi_image5(basesImages.get(4).getBi_image());
+
+        }
+        return volunteerInfos;
     }
 
     @Override

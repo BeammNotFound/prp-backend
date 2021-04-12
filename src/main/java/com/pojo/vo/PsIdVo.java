@@ -8,5 +8,5 @@ import lombok.Data;
  */
 @Data
 public class PsIdVo {
-    private int ps_id;
+    private int user_id, pi_id;
 }

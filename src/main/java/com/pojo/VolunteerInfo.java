@@ -21,6 +21,8 @@ public class VolunteerInfo extends Bases{
     private Integer vi_joinPopulation;
     private Integer vi_population;
 
+    private String bi_image1,bi_image2,bi_image3,bi_image4,bi_image5;
+
     private Date vi_end_time;
     private Date vi_start_time;
     private Date vi_create_time;

@@ -97,9 +97,11 @@
     </insert>
 
     <delete id="delStarPet" parameterType="com.pojo.vo.PsIdVo">
-        delete from
-            pet_starred
-        where ps_id = #{ps_id}
+        delete
+        from pet_starred
+        where user_id = #{user_id}
+          and pi_id = #{pi_id};
+
     </delete>
 
 </mapper>

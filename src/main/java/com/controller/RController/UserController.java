@@ -152,14 +152,14 @@ public class UserController {
     @PostMapping("addStarPet")
     public CommonResult addStarPet(@RequestBody PetStarVo vo) {
         userService.addStarPet(vo);
-        return CommonResult.success("添加喜欢成功！");
+        return CommonResult.success("已添加喜欢");
     }
 
-    @ApiOperation("根据ps_id删除喜欢宠物")
-    @Action(description = "根据ps_id删除喜欢宠物")
+    @ApiOperation("用户取消喜欢宠物")
+    @Action(description = "用户取消喜欢宠物")
     @PostMapping("delStarPet")
     public CommonResult delStarPet(@RequestBody PsIdVo vo) {
         userService.delStarPet(vo);
-        return CommonResult.success("删除喜欢宠物成功");
+        return CommonResult.success("已取消喜欢");
     }
 }
