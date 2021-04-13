@@ -39,6 +39,9 @@ public class UserServiceImpl implements UserService {
             user.setUser_name(mail);
             user.setUser_type(1);
 
+            if (user.getUser_icon().equals(null) || user.getUser_icon().equals("")) {
+                user.setUser_icon("https://img.imgdb.cn/item/6075a03a8322e6675c88a1b5.png");
+            }
             redisUtil.del(mail);
             mapper.createUser(user);
             return true;

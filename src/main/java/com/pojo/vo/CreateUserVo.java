@@ -30,7 +30,7 @@ public class CreateUserVo {
     private String mail_code;
 
     @JsonIgnore
-    private String user_name;
+    private String user_name,user_icon;
     @JsonIgnore
     private Date user_createtime;
     @JsonIgnore
