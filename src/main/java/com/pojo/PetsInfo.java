@@ -16,7 +16,7 @@ public class PetsInfo {
     private Integer pet_id;
     private Integer pi_id;
     private Integer base_id;
-    private String pi_name;
+    private String pi_name,b_icon;
     private String pi_age;
     private String pi_breed;
     @ApiModelProperty("宠物疾病史")

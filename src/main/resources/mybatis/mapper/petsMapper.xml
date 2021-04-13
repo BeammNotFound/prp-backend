@@ -7,13 +7,14 @@
 
     <select id="queryPetsInfoByBaseId" resultType="com.pojo.PetsInfo" parameterType="java.lang.Integer">
         select *
-        from pets_info
-        where base_id = #{base_id}
+        from pets_info left join bases
+        on pets_info.base_id = bases.base_id
+        where pets_info.base_id = #{base_id}
     </select>
 
     <select id="queryAllPetsInfo" resultType="com.pojo.PetsInfo">
         select
-        pi_id,adoption_pets.base_id,pi_name,pi_age,pi_breed,pi_DH,pi_intro,pi_image_1,pi_image_2,pi_image_3,pi_image_4,b_name,ap_status,pi_createtime,ap_pass_time
+            pi_id,adoption_pets.base_id,pi_name,pi_age,pi_breed,pi_DH,pi_intro,pi_image_1,pi_image_2,pi_image_3,pi_image_4,b_name,ap_status,pi_createtime,ap_pass_time,bases.b_icon
         from adoption_pets,pets_info
         left join bases
         on pets_info.base_id = bases.base_id
