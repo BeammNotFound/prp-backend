@@ -25,6 +25,16 @@ public class BasesController {
     @Autowired
     private BasesService service;
 
+    @ApiOperation("根据基地名模糊搜索基地")
+    @Action(description = "根据基地名模糊搜索基地")
+    @PostMapping("/fuzzyQueryBases")
+    public CommonResult fuzzyQueryBases(@RequestBody QueryBasesVo vo){
+        if (vo.getB_name().equals("") || vo.equals(null)) {
+            return CommonResult.success(service.queryBases());
+        }
+        return CommonResult.success(service.fuzzyQueryBases(vo));
+    }
+
     @ApiOperation("查询全部基地资讯")
     @Action(description = "查询全部基地资讯")
     @GetMapping("/queryBases")
