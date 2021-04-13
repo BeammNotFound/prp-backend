@@ -38,9 +38,9 @@
 
     <select id="queryAdoptPet" resultType="com.pojo.PetsInfo" parameterType="java.lang.Integer">
         select *
-        from adoption_pets left join pets_info
+        from bases,adoption_pets left join pets_info
         on pet_id = pi_id
-        where user_id = #{user_id}
+        where bases.base_id = adoption_pets.base_id and user_id = #{user_id}
     </select>
 
     <insert id="createAf" parameterType="com.pojo.AdoptionForm">
@@ -155,9 +155,9 @@
 
     <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.UserIdVo" resultType="com.pojo.PetsInfo">
         select *
-        from pet_starred left join pets_info
+        from bases,pet_starred left join pets_info
         on pet_starred.pi_id = pets_info.pi_id
-        where user_id = #{user_id}
+        where bases.base_id = pets_info.base_id and user_id = #{user_id}
     </select>
 
     <select id="queryStarredPets" resultType="com.pojo.vo.StarredPetsVo">
