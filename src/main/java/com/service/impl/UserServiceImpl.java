@@ -21,11 +21,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Object queryUserList() {
-        if (redisUtil.hasKey("allUsers"))
+        if (redisUtil.hasKey("allUsers")) {
             return redisUtil.get("allUsers");
-        else
+        }
+        else {
             redisUtil.set("allUsers", mapper.queryUserList(), 30);
             return redisUtil.get("allUsers");
+        }
     }
 
     @Override
@@ -39,9 +41,7 @@ public class UserServiceImpl implements UserService {
             user.setUser_name(mail);
             user.setUser_type(1);
 
-            if (user.getUser_icon().equals(null) || user.getUser_icon().equals("")) {
-                user.setUser_icon("https://img.imgdb.cn/item/6075a03a8322e6675c88a1b5.png");
-            }
+            user.setUser_icon("https://img.imgdb.cn/item/6075a03a8322e6675c88a1b5.png");
             redisUtil.del(mail);
             mapper.createUser(user);
             return true;

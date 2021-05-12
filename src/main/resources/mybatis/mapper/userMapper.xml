@@ -12,8 +12,8 @@
 
     <insert id="createUser" parameterType="com.pojo.vo.CreateUserVo">
         insert into
-        user_info(user_name,user_nickname,user_password,user_type,user_mail,user_createtime,user_updatetime)
-        values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime})
+        user_info(user_name,user_nickname,user_password,user_type,user_mail,user_createtime,user_updatetime,user_icon)
+        values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime},#{user_icon})
     </insert>
 
     <update id="updateUserById" parameterType="com.pojo.vo.UpdateUserInfoVo">
