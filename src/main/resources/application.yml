@@ -9,10 +9,12 @@ spring:
 
     #配置邮箱
   mail:
+    protocol: smtps
     default-encoding: UTF-8
     host: smtp.126.com
     username: monsterteam@126.com
     password: UQQAKMELXZCITHRQ
+    port: 465
   redis:
     host: 127.0.0.1
     port: 6379

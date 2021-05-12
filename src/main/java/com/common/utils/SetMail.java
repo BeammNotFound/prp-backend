@@ -38,6 +38,7 @@ public class SetMail {
             javaMailSender.send(message);
             logger.info("邮件发送成功");
         } catch (MailSendException e) {
+            e.printStackTrace();
             logger.error("目标邮箱不存在");
         } catch (Exception e) {
             e.printStackTrace();
