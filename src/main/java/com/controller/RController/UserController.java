@@ -122,6 +122,12 @@ public class UserController {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
 
+        User u = userService.queryUserByName(user.getUser_mail());
+        if (u != null) {
+            if (u.getUser_mail().equals(user.getUser_mail()))
+                return CommonResult.validateFailed("您已经注册过了，请直接登陆");
+        }
+
         setMail.sendMail(user.getUser_mail());
         return CommonResult.success("邮箱发送成功");
     }
