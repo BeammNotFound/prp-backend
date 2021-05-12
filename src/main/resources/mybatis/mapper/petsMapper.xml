@@ -18,7 +18,7 @@
         from adoption_pets,pets_info
         left join bases
         on pets_info.base_id = bases.base_id
-        where pets_info.pi_id = adoption_pets.pet_id
+        where pets_info.pi_id = adoption_pets.pet_id and adoption_pets.ap_status != "审批通过"
     </select>
 
     <select id="queryPetByName" resultType="com.pojo.PetsInfo" parameterType="java.lang.String">
@@ -40,7 +40,7 @@
         select *
         from bases,adoption_pets left join pets_info
         on pet_id = pi_id
-        where bases.base_id = adoption_pets.base_id and user_id = #{user_id}
+        where bases.base_id = adoption_pets.base_id and user_id = #{user_id} and adoption_pets.ap_status != "审批通过"
     </select>
 
     <insert id="createAf" parameterType="com.pojo.AdoptionForm">

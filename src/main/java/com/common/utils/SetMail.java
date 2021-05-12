@@ -30,7 +30,7 @@ public class SetMail {
         SimpleMailMessage message = new SimpleMailMessage();
         try {
             redisUtil.set(mail, checkCode, 30);
-            message.setFrom("742919609@qq.com");
+            message.setFrom("monsterteam@126.com");
             message.setTo(mail);
             message.setSubject("欢迎成为宠物救助平台的用户");
             message.setText("您的注册验证码为：" + checkCode);

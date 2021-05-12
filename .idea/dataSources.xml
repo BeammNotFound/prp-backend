@@ -7,11 +7,12 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/prp</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="MingJun" uuid="44fa2673-5c90-4591-9436-0aeabb868b1b">
+    <data-source source="LOCAL" name="prp@monsterteam.top" uuid="836afba6-0106-49b6-a777-25391e8efad7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://47.94.104.224:3306/prp</jdbc-url>
+      <jdbc-url>jdbc:mysql://monsterteam.top:3306/prp</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

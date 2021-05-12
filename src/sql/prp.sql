@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本机
+ Source Server         : monsterteam.top
  Source Server Type    : MySQL
- Source Server Version : 50730
- Source Host           : localhost:3306
+ Source Server Version : 50562
+ Source Host           : monsterteam.top:3306
  Source Schema         : prp
 
  Target Server Type    : MySQL
- Target Server Version : 50730
+ Target Server Version : 50562
  File Encoding         : 65001
 
- Date: 13/04/2021 20:51:08
+ Date: 10/05/2021 14:17:35
 */
 
 SET NAMES utf8mb4;
@@ -37,7 +37,7 @@ CREATE TABLE `adoption_form`  (
   `af_info6` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `af_create_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`af_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of adoption_form
@@ -48,6 +48,11 @@ INSERT INTO `adoption_form` VALUES (6, 2, 3, 3, '河南省信阳市', 11, '性�
 INSERT INTO `adoption_form` VALUES (7, 3, 5, 1, '河南省郑州市', 11, '乐于沟通', '是', '是', '是', '是', '是', '是', '2020-12-15 17:33:18');
 INSERT INTO `adoption_form` VALUES (8, 1, 5, 1, '111', 12, '11111', '是', '是', '是', '是', '是', '是', '2021-04-13 19:42:52');
 INSERT INTO `adoption_form` VALUES (9, 1, 7, 2, '河南省信阳市', 12, '11111', '是', '是', '是', '是', '是', '是', '2021-04-13 19:45:12');
+INSERT INTO `adoption_form` VALUES (10, 2, 2, 1, 'string', 2, 'string', 'string', 'string', 'string', 'string', 'string', 'string', '2021-04-13 21:19:27');
+INSERT INTO `adoption_form` VALUES (11, 1, 6, 1, '河南省信阳市', 12, '11111', '是', '是', '是', '是', '是', '是', '2021-04-13 21:21:10');
+INSERT INTO `adoption_form` VALUES (12, 6, 3, 1, '测试', 21, '测试', '是', '是', '是', '是', '是', '是', '2021-04-13 21:24:09');
+INSERT INTO `adoption_form` VALUES (13, 6, 2, 3, '111', 12, '乐观可爱', '是', '是', '是', '是', '是', '是', '2021-04-13 21:44:58');
+INSERT INTO `adoption_form` VALUES (14, 4, 7, 2, '测试', 22, '测试', '是', '是', '是', '是', '是', '是', '2021-04-13 21:45:58');
 
 -- ----------------------------
 -- Table structure for adoption_pets
@@ -60,21 +65,26 @@ CREATE TABLE `adoption_pets`  (
   `pet_id` int(11) NULL DEFAULT NULL,
   `ap_status` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `ap_pass_time` datetime NULL DEFAULT NULL,
-  `ap_application_time` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '领养时间',
+  `ap_application_time` datetime NULL DEFAULT NULL COMMENT '领养时间',
   PRIMARY KEY (`ap_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of adoption_pets
 -- ----------------------------
-INSERT INTO `adoption_pets` VALUES (1, 3, 1, 2, '审批通过', '2021-03-06 16:02:41', '2020-12-02 22:00:14');
-INSERT INTO `adoption_pets` VALUES (2, 1, 1, 3, '审批通过', '2021-03-05 09:44:01', '2021-04-13 15:10:23');
-INSERT INTO `adoption_pets` VALUES (3, 1, 1, 4, '审批通过', '2021-03-07 10:53:16', '2021-04-13 15:10:26');
-INSERT INTO `adoption_pets` VALUES (4, 1, 2, 5, '审批通过', '2021-03-07 10:54:40', '2021-04-13 15:10:28');
-INSERT INTO `adoption_pets` VALUES (5, 2, 3, 7, '审批通过', '2021-03-07 11:31:37', '2021-04-13 15:10:50');
-INSERT INTO `adoption_pets` VALUES (6, 1, 3, 6, '审批通过', '2021-03-07 11:33:41', '2021-04-13 15:10:33');
+INSERT INTO `adoption_pets` VALUES (1, 3, 1, 2, '待审批', '2021-03-06 16:02:41', '2021-04-13 21:54:24');
+INSERT INTO `adoption_pets` VALUES (2, 1, 1, 3, '待审批', '2021-03-05 09:44:01', '2021-04-13 21:54:23');
+INSERT INTO `adoption_pets` VALUES (3, 1, 1, 4, '待审批', '2021-03-07 10:53:16', '2021-04-13 21:54:21');
+INSERT INTO `adoption_pets` VALUES (4, 1, 2, 5, '待审批', '2021-03-07 10:54:40', '2021-04-13 21:54:19');
+INSERT INTO `adoption_pets` VALUES (5, 2, 3, 7, '待审批', '2021-03-07 11:31:37', '2021-04-13 21:54:18');
+INSERT INTO `adoption_pets` VALUES (6, 1, 3, 6, '待审批', '2021-03-07 11:33:41', '2021-04-13 21:54:16');
 INSERT INTO `adoption_pets` VALUES (12, 1, 1, 5, '待审批', NULL, '2021-04-13 19:42:52');
 INSERT INTO `adoption_pets` VALUES (13, 2, 1, 7, '待审批', NULL, '2021-04-13 19:45:12');
+INSERT INTO `adoption_pets` VALUES (14, 1, 2, 2, '待审批', NULL, '2021-04-13 21:19:27');
+INSERT INTO `adoption_pets` VALUES (15, 1, 1, 6, '待审批', NULL, '2021-04-13 21:21:10');
+INSERT INTO `adoption_pets` VALUES (16, 1, 6, 3, '待审批', '2021-04-13 21:35:19', '2021-04-13 21:54:15');
+INSERT INTO `adoption_pets` VALUES (17, 3, 6, 2, '待审批', NULL, '2021-04-13 21:44:58');
+INSERT INTO `adoption_pets` VALUES (18, 2, 4, 7, '待审批', NULL, '2021-04-13 21:45:58');
 
 -- ----------------------------
 -- Table structure for application_volunteer
@@ -123,7 +133,7 @@ INSERT INTO `background_images` VALUES (5, 'https://p9-tt-ipv6.byteimg.com/origi
 DROP TABLE IF EXISTS `base_messages`;
 CREATE TABLE `base_messages`  (
   `bm_id` int(11) NOT NULL AUTO_INCREMENT,
-  `base_id` int(255) NULL DEFAULT NULL,
+  `base_id` int(11) NULL DEFAULT NULL,
   `bm_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bm_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bm_author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -175,7 +185,7 @@ INSERT INTO `bases` VALUES (3, 'Beam的猫咖馆', 'https://img.imgdb.cn/item/60
 DROP TABLE IF EXISTS `bases_images`;
 CREATE TABLE `bases_images`  (
   `bi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `base_id` int(255) NULL DEFAULT NULL,
+  `base_id` int(11) NULL DEFAULT NULL,
   `bi_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bi_createtime` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`bi_id`) USING BTREE
@@ -231,9 +241,9 @@ CREATE TABLE `pet_starred`  (
   `ps_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NULL DEFAULT NULL,
   `pi_id` int(11) NULL DEFAULT NULL,
-  `ps_create_time` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `ps_create_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`ps_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of pet_starred
@@ -241,6 +251,12 @@ CREATE TABLE `pet_starred`  (
 INSERT INTO `pet_starred` VALUES (2, 2, 3, '2021-03-10 18:18:34');
 INSERT INTO `pet_starred` VALUES (14, 1, 5, '2021-04-13 15:33:51');
 INSERT INTO `pet_starred` VALUES (17, 3, 7, '2021-04-13 16:10:58');
+INSERT INTO `pet_starred` VALUES (18, 6, NULL, '2021-04-13 21:13:01');
+INSERT INTO `pet_starred` VALUES (19, 1, 2, '2021-05-09 18:07:18');
+INSERT INTO `pet_starred` VALUES (20, 1, 2, '2021-05-09 21:11:21');
+INSERT INTO `pet_starred` VALUES (21, 1, 4, '2021-05-09 21:13:10');
+INSERT INTO `pet_starred` VALUES (22, 1, 2, '2021-05-10 10:52:09');
+INSERT INTO `pet_starred` VALUES (23, 1, 4, '2021-05-10 10:53:38');
 
 -- ----------------------------
 -- Table structure for pets_info
@@ -258,7 +274,7 @@ CREATE TABLE `pets_info`  (
   `pi_image_3` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `pi_image_4` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `base_id` int(255) NULL DEFAULT NULL,
-  `pi_createtime` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `pi_createtime` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pi_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
@@ -278,7 +294,7 @@ INSERT INTO `pets_info` VALUES (7, '哈士奇', '五个月', '哈士奇', '2019�
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info`  (
   `user_id` int(255) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_nickname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_realname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -294,17 +310,18 @@ CREATE TABLE `user_info`  (
   `user_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user_createtime` datetime NULL DEFAULT NULL,
   `user_updatetime` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`, `user_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES (1, 'root', '管理员', '管理员', 'https://img.imgdb.cn/item/6061c2668322e6675cff7bc6.jpg', '63a9f0ea7bb98050796b649e85481845', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', '2020-11-06 14:03:37', '2020-12-15 20:09:56');
+INSERT INTO `user_info` VALUES (1, 'root', '管理员', '管理员', 'https://img.imgdb.cn/item/6061c2668322e6675cff7bc6.jpg', '63a9f0ea7bb98050796b649e85481845', '男', 22, 2, '15838365360', 'Beamm0613@163.com', 'I love code', 'I AM CEO', '河南省', '郑州市中原区', '2020-11-06 14:03:37', '2021-05-08 19:34:59');
 INSERT INTO `user_info` VALUES (2, 'ZhangSan', '张三', '张三', 'https://img.imgdb.cn/item/604c87e25aedab222c50c50a.jpg', '25d55ad283aa400af464c76d713c07ad', '男', 21, 1, '110', 'zhangsan110@gmail.com', 'I love code', 'i love code', '重庆', '羊山区', '2020-11-06 17:26:54', '2020-11-12 17:54:30');
 INSERT INTO `user_info` VALUES (3, '1223697311@qq.com', 'weirdo', '美少女', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/d2f2a574-51a0-4da8-952a-65eddf278c63下载.jpg', 'bae5e3208a3c700e3db642b6631e95b9', '女', 20, 1, '18568275991', '1223697311@qq.com', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '我是你爸爸我是你爸爸我是你爸爸我是你爸爸我是你爸爸', '福建省', '福州市梅城镇', '2020-11-16 17:52:54', '2021-04-08 20:32:14');
 INSERT INTO `user_info` VALUES (4, 'lianghao', 'BeamStark', '梁豪', 'https://img.imgdb.cn/item/6061c2838322e6675cff9fee.jpg', 'ee990c1ccfb7af0cbf4c5ac02c2cd636', '男', 22, 1, '15838365368', 'BeammStark@gmail.com', 'i love code ', 'i am ceo', '河南省', '郑州市中原区', '2021-03-29 20:04:04', '2021-03-29 20:04:06');
 INSERT INTO `user_info` VALUES (5, '1916960257@qq.com', '11111', NULL, NULL, '1bbd886460827015e5d605ed44252251', NULL, NULL, 1, NULL, '1916960257@qq.com', NULL, NULL, NULL, NULL, '2021-04-06 20:56:14', '2021-04-06 20:56:14');
+INSERT INTO `user_info` VALUES (6, '604520242@qq.com', '洋洋', '杜宇洋', 'https://club-2020.oss-cn-beijing.aliyuncs.com/Beam/e780f3f0-6658-4d82-be67-e30af1ea8a68111.jpg', '25d55ad283aa400af464c76d713c07ad', '女', NULL, 1, '15838310695', '604520242@qq.com', '', '我事洋洋', '河南省', '信阳市新县', '2021-04-13 21:11:22', '2021-04-13 21:35:58');
 
 -- ----------------------------
 -- Table structure for volunteer_form
