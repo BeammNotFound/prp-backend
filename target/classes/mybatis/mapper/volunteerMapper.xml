@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.VolunteerMapper">
+
+    <insert id="userApplication" parameterType="com.pojo.ApplicationVolunteer">
+        insert into
+        application_volunteer(user_id,base_id,av_status,av_application_time)
+        values (#{user_id},#{base_id},#{av_status},#{av_application_time})
+    </insert>
+
+    <select id="queryAppVolunteerById" resultType="com.pojo.vo.QueryVolunteerByIdVo"
+            parameterType="java.lang.Integer">
+        select *
+        from application_volunteer left join bases
+        on application_volunteer.base_id = bases.base_id
+        where application_volunteer.user_id = #{user_id}
+    </select>
+
+    <select id="queryVolunteerInfoByBaseId" resultType="com.pojo.VolunteerInfo"
+            parameterType="java.lang.Integer">
+        select *
+        from volunteer_info left join bases
+        on volunteer_info.base_id = bases.base_id
+        where volunteer_info.base_id = #{base_id};
+    </select>
+
+    <update id="updateJoinPopulationByBaseId" parameterType="java.lang.Integer">
+        update volunteer_info
+        set vi_joinPopulation = vi_joinPopulation + 1
+        where base_id = #{base_id}
+    </update>
+
+    <update id="updateStatusByBaseId" parameterType="com.pojo.ApplicationVolunteer">
+        update volunteer_info
+        set vi_status = #{vi_status}
+        where base_id = #{base_id}
+    </update>
+
+
+    <insert id="createVolunteerForm" parameterType="com.pojo.VolunteerForm">
+        insert into
+        volunteer_form(user_id,base_id,vf_age,vf_phone,vf_join_time,vf_family_agree,vf_health,vf_join_work,vf_create_time,vf_had_car,vf_receive_train,vf_had_joined,vf_profession,vf_real_name)
+        values(#{user_id},#{base_id},#{vf_age},#{vf_phone},#{vf_join_time},#{vf_family_agree},#{vf_health},#{vf_join_work},#{vf_create_time},#{vf_had_car},#{vf_receive_train},#{vf_had_joined},#{vf_profession},#{vf_real_name})
+    </insert>
+
+    <select id="queryAllVolunteer" resultType="com.pojo.VolunteerInfo">
+        select *
+        from volunteer_info left join bases
+        on bases.base_id = volunteer_info.base_id
+    </select>
+    
+    <delete id="delApplicatVolunteerByUserId" parameterType="java.lang.Integer">
+        delete from application_volunteer
+        where user_id = #{user_id}
+    </delete>
+
+    <delete id="delApplicatFormByUserId" parameterType="java.lang.Integer">
+        delete from volunteer_form
+        where user_id = #{user_id}
+    </delete>
+
+    <select id="queryVolunteerFormByUserId" resultType="com.pojo.VolunteerForm" parameterType="com.pojo.vo.UserIdVo">
+        select *
+        from volunteer_form
+        where user_id = #{user_id}
+    </select>
+
+    <update id="updateAVStatusByid" parameterType="com.pojo.vo.ApplicationVo">
+        update application_volunteer
+        set av_status = #{av_status}
+        where av_id = #{av_id}
+    </update>
+
+    <update id="updateAVPassTimeByid" parameterType="com.pojo.vo.ApplicationVo">
+        update application_volunteer
+        set av_pass_time = #{av_pass_time}
+        where av_id = #{av_id}
+    </update>
+
+    <select id="queryAvFormByStatus" parameterType="com.pojo.vo.AvStatusVo" resultType="com.pojo.vo.AvFormVo">
+        SELECT
+        av_id,user_realname,user_phone,av_application_time,av_pass_time,av_status,user_age,user_sex,user_info.user_id
+        FROM
+        application_volunteer
+        LEFT JOIN user_info
+        ON application_volunteer.user_id = user_info.user_id
+        WHERE 1 = 1
+            <if test="av_status != null and av_status != ''">
+                and av_status = #{av_status}
+            </if>
+        order by user_info.user_id
+    </select>
+
+    <update id="changeVolunteerInfoByBase_id" parameterType="com.pojo.vo.VolunteerInfoVo">
+        update volunteer_info
+        set
+            vi_requirement = #{vi_requirement},
+            vi_intro = #{vi_intro},
+            vi_population = #{vi_population},
+            vi_start_time = #{vi_start_time},
+            vi_end_time = #{vi_end_time}
+        where base_id = #{base_id}
+    </update>
+
+    <insert id="createVolunteerInfo" parameterType="com.pojo.VolunteerInfo">
+        insert into
+        volunteer_info(base_id,vi_status,vi_requirement,vi_intro,vi_joinPopulation,vi_population,vi_start_time,vi_end_time,vi_create_time)
+        values
+        (#{base_id},#{vi_status},#{vi_requirement},#{vi_intro},#{vi_joinPopulation},#{vi_population},#{vi_start_time},#{vi_end_time},#{vi_create_time})
+    </insert>
+
+    <delete id="delVolunteerInfoByid" parameterType="com.pojo.vo.ViIdVo">
+        delete from volunteer_info
+        where vi_id = #{vi_id}
+    </delete>
+
+    <select id="queryMVolunteerInfoByBaseId" resultType="com.pojo.VolunteerInfo" parameterType="com.pojo.vo.BaseIdVo">
+        select *
+        from volunteer_info
+        left join bases
+        on volunteer_info.base_id = bases.base_id
+        where volunteer_info.base_id = #{base_id}
+    </select>
+
+</mapper>

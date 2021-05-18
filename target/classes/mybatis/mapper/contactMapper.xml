@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.ContactMapper">
+    <insert id="createContact" parameterType="com.pojo.vo.CreateContactVo">
+        insert into
+        contact(user_id,c_words,c_createtime,base_id)
+        values(#{user_id},#{c_words},#{c_createtime},#{base_id});
+    </insert>
+
+    <select id="queryContactByBaseId" resultType="com.pojo.Contact" parameterType="com.pojo.vo.BaseIdVo">
+        select *
+        from contact left join user_info
+        on contact.user_id = user_info.user_id
+        where base_id = #{base_id}
+    </select>
+
+</mapper>

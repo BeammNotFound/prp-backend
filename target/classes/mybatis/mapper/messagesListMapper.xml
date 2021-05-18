@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.MessagesListMapper">
+    <select id="allMessages" resultType="com.pojo.Messages">
+        select *
+        from messages
+        order by m_createtime desc;
+    </select>
+
+    <insert id="createMessage" parameterType="com.pojo.Messages">
+        insert into
+        messages(m_title,m_details,m_author,m_image,m_createtime,m_updatetime,m_pv)
+        values(#{m_title},#{m_details},#{m_author},#{m_image},#{m_createtime},#{m_updatetime},#{m_pv});
+    </insert>
+
+    <select id="fuzzyQueryMessages" resultType="com.pojo.Messages" parameterType="com.pojo.Messages">
+        select *
+        from messages
+        where 1=1
+        <if test="m_title != null and m_title != ''">
+            and m_title like CONCAT('%',#{m_title},'%')
+        </if>
+        <if test="m_details != null and m_details != ''">
+            and m_details like CONCAT('%',#{m_details},'%')
+        </if>
+        order by m_createtime desc;
+    </select>
+
+    <delete id="deleteMessageById" parameterType="com.pojo.Messages">
+		delete
+		from messages
+		where m_id=#{m_id}
+	</delete>
+
+</mapper>

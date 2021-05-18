@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BackgroundMapper">
+
+    <select id="queryImageById" parameterType="java.lang.Integer" resultType="com.pojo.Background" >
+        select *
+        from background_images
+        where i_id = #{i_id}
+    </select>
+
+    <select id="queryAllImages" resultType="com.pojo.Background" >
+        select *
+        from background_images
+    </select>
+
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BasesMapper">
+
+    <select id="queryBases" resultType="com.pojo.Bases">
+        select *
+        from bases left join volunteer_info
+        on bases.base_id = volunteer_info.base_id
+    </select>
+
+    <select id="fuzzyQueryBases" resultType="com.pojo.Bases" parameterType="com.pojo.vo.QueryBasesVo">
+        select *
+        from bases
+        where 1=1
+        <if test="b_name != null and b_name != ''">
+            and b_name like CONCAT('%',#{b_name},'%')
+        </if>
+    </select>
+
+    <delete id="delBases" parameterType="com.pojo.vo.BaseIdVo">
+        delete
+		from bases
+		where base_id = #{base_id}
+    </delete>
+
+    <select id="queryBasesById" resultType="com.pojo.Bases" parameterType="java.lang.Integer">
+        select *
+        from bases left join volunteer_info
+        on bases.base_id = volunteer_info.base_id
+        where bases.base_id = #{base_id}
+    </select>
+
+
+    <select id="queryBasesImagesById" resultType="com.pojo.BasesImages" parameterType="com.pojo.vo.BaseIdVo">
+        select *
+        from bases_images
+        where base_id = #{base_id}
+    </select>
+
+    <update id="changeBasesById" parameterType="com.pojo.vo.BasesVo">
+        update bases
+        <set>
+            <if test="b_name != null">
+                b_name = #{b_name},
+            </if>
+            <if test="b_icon != null">
+                b_icon = #{b_icon},
+            </if>
+            <if test="b_address != null">
+                b_address = #{b_address},
+            </if>
+            <if test="b_intro != null">
+                b_intro = #{b_intro},
+            </if>
+            <if test="b_contacts != null">
+                b_contacts = #{b_contacts},
+            </if>
+            <if test="b_mail != null">
+                b_mail = #{b_mail},
+            </if>
+            <if test="b_phone != null">
+                b_phone = #{b_phone}
+            </if>
+        </set>
+        where
+            base_id = #{base_id}
+    </update>
+
+    <select id="queryBaseMessages" resultType="com.pojo.BaseMessages" parameterType="com.pojo.vo.BaseIdVo">
+        select *
+        from base_messages
+        where base_id = #{base_id}
+    </select>
+
+    <update id="changeBasesMessagesById" parameterType="com.pojo.BaseMessages">
+        update
+            base_messages
+        <set>
+            <if test="base_id != null">
+                base_id = #{base_id},
+            </if>
+            <if test="bm_title != null">
+                bm_title = #{bm_title},
+            </if>
+            <if test="bm_detail != null">
+                bm_detail = #{bm_detail},
+            </if>
+            <if test="bm_author != null">
+                bm_author = #{bm_author},
+            </if>
+            <if test="bm_image != null">
+                bm_image = #{bm_image},
+            </if>
+            <if test="bm_createtime != null">
+                bm_createtime = #{bm_createtime}
+            </if>
+        </set>
+        where bm_id = #{bm_id}
+    </update>
+
+    <insert id="insertBasesMessage" parameterType="com.pojo.BaseMessages">
+        insert into
+            base_messages (base_id,bm_title,bm_detail,bm_author,bm_image,bm_createtime)
+        values (#{base_id},#{bm_title},#{bm_detail},#{bm_author},#{bm_image},#{bm_createtime});
+    </insert>
+
+    <delete id="delBasesMessageByBmId" parameterType="com.pojo.vo.BaseMessageIdVo">
+        delete from
+            base_messages
+        where
+            bm_id = #{bm_id}
+    </delete>
+    
+    <update id="changeBasesImageByBiId" parameterType="com.pojo.BasesImages">
+        update
+            bases_images
+        set
+            bi_image = #{bi_image},
+            bi_createtime = #{bi_createtime}
+        where
+            bi_id = #{bi_id}
+    </update>
+
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.PetsMapper">
+
+    <select id="queryPetsInfoByBaseId" resultType="com.pojo.PetsInfo" parameterType="java.lang.Integer">
+        select *
+        from pets_info left join bases
+        on pets_info.base_id = bases.base_id
+        where pets_info.base_id = #{base_id}
+    </select>
+
+    <select id="queryAllPetsInfo" resultType="com.pojo.PetsInfo">
+        select
+            pi_id,adoption_pets.base_id,pi_name,pi_age,pi_breed,pi_DH,pi_intro,pi_image_1,pi_image_2,pi_image_3,pi_image_4,b_name,ap_status,pi_createtime,ap_pass_time,bases.b_icon
+        from adoption_pets,pets_info
+        left join bases
+        on pets_info.base_id = bases.base_id
+        where pets_info.pi_id = adoption_pets.pet_id and adoption_pets.ap_status != "审批通过"
+    </select>
+
+    <select id="queryPetByName" resultType="com.pojo.PetsInfo" parameterType="java.lang.String">
+        select *
+        from pets_info
+        where 1 = 1
+        <if test="pi_name != null and pi_name != ''">
+            and pi_name like CONCAT('%',#{pi_name},'%')
+        </if>
+    </select>
+
+    <insert id="adoptPet" parameterType="com.pojo.AdoptionPats">
+        insert into
+        adoption_pets(ap_id,base_id,user_id,pet_id,ap_status,ap_application_time,ap_pass_time)
+        values (#{ap_id},#{base_id},#{user_id},#{pet_id},#{ap_status},#{ap_application_time},#{ap_pass_time})
+    </insert>
+
+    <select id="queryAdoptPet" resultType="com.pojo.PetsInfo" parameterType="java.lang.Integer">
+        select *
+        from bases,adoption_pets left join pets_info
+        on pet_id = pi_id
+        where bases.base_id = adoption_pets.base_id and user_id = #{user_id} and adoption_pets.ap_status != "审批通过"
+    </select>
+
+    <insert id="createAf" parameterType="com.pojo.AdoptionForm">
+        insert into
+        adoption_form(af_address,af_age,af_appraise,af_info1,af_info2,af_info3,af_info4,af_info5,af_info6,af_create_time,user_id,base_id,pet_id)
+        values(#{af_address},#{af_age},#{af_appraise},#{af_info1},#{af_info2},#{af_info3},#{af_info4},#{af_info5},#{af_info6},#{af_create_time},#{user_id},#{base_id},#{pet_id})
+    </insert>
+
+    <select id="queryAdoptPetByUserId" resultType="com.pojo.AdoptionPats" parameterType="java.lang.Integer">
+        select *
+        from adoption_pets left join adoption_form
+        on adoption_pets.pet_id = adoption_form.pet_id
+        where adoption_pets.user_id = #{user_id}
+    </select>
+
+    <select id="queryAdoptionFormByUserId" resultType="com.pojo.AdoptionPats" parameterType="com.pojo.vo.UserIdVo">
+        select *
+        from adoption_form
+        where user_id = #{user_id}
+    </select>
+
+    <update id="updateApStatusByid" parameterType="com.pojo.vo.ApStatusVo">
+        update
+            adoption_pets
+        set
+            ap_status = #{ap_status}
+        where
+            ap_id = #{ap_id}
+    </update>
+
+    <update id="updateApPassTimeByid" parameterType="com.pojo.vo.ApStatusVo">
+        update
+            adoption_pets
+        set
+            ap_pass_time = #{ap_pass_time}
+        where
+            ap_id = #{ap_id}
+    </update>
+
+    <select id="queryApFormByStatus" parameterType="com.pojo.vo.ApStatusVo" resultType="com.pojo.vo.ApFormVo">
+        SELECT
+                user_name,bases.b_name,pets_info.pi_name,user_phone,ap_status,ap_pass_time,ap_id,ap_application_time,adoption_pets.user_id
+        FROM
+            adoption_pets,user_info,pets_info,bases
+        WHERE
+            bases.base_id = adoption_pets.base_id
+            AND adoption_pets.user_id = user_info.user_id
+            AND adoption_pets.pet_id = pets_info.pi_id
+            <if test="ap_status != null and ap_status != ''">
+                and ap_status = #{ap_status}
+            </if>
+    </select>
+
+
+    <select id="queryAdoptedPetsInfo" resultType="com.pojo.vo.PetsInfoVo">
+        SELECT
+	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name
+        FROM
+	        adoption_pets,user_info,pets_info,bases
+        WHERE
+	        adoption_pets.user_id = user_info.user_id
+	        and adoption_pets.base_id = bases.base_id
+	        and adoption_pets.pet_id = pets_info.pi_id
+            and ap_status = "审批通过"
+    </select>
+
+    <select id="queryUnAdoptedPetsInfo" resultType="com.pojo.vo.PetsInfoVo">
+        SELECT
+	        pi_name,pi_breed,pi_age,pi_DH,ap_status,ap_pass_time,user_name,user_phone,pi_id,b_name,pi_createtime,pi_intro,adoption_pets.user_id
+        FROM
+	        adoption_pets,user_info,pets_info,bases
+        WHERE
+	        adoption_pets.user_id = user_info.user_id
+	        and adoption_pets.base_id = bases.base_id
+	        and adoption_pets.pet_id = pets_info.pi_id
+            and ap_status = "待领养"
+    </select>
+
+    <insert id="insertPetInfo" parameterType="com.pojo.PetsInfo">
+        insert into
+        pets_info(pi_name,pi_age,pi_breed,pi_DH,pi_intro,pi_image_1,pi_image_2,pi_image_3,pi_image_4,base_id,pi_createtime)
+        values(#{pi_name},#{pi_age},#{pi_breed},#{pi_DH},#{pi_intro},#{pi_image_1},#{pi_image_2},#{pi_image_3},#{pi_image_4},#{base_id},#{pi_createtime})
+    </insert>
+
+    <insert id="insertAdoptionPet" parameterType="com.pojo.PetsInfo">
+        insert into
+        adoption_pets(ap_id,pet_id,base_id,ap_status)
+        values(#{ap_id},#{pet_id},#{base_id},#{ap_status})
+    </insert>
+
+    <delete id="delPetInfoByid" parameterType="com.pojo.vo.PetIdVo">
+        DELETE FROM pets_info
+        where pi_id = #{pi_id}
+    </delete>
+
+    <delete id="delAdopitonPetByid" parameterType="com.pojo.vo.PetIdVo">
+        delete from adoption_pets
+        where pet_id = #{pet_id}
+    </delete>
+
+    <update id="changePetInfo" parameterType="com.pojo.vo.ViIdVo">
+        update pets_info
+        set
+            pi_name = #{pi_name},
+            pi_age = #{pi_age},
+            pi_breed = #{pi_breed},
+            pi_DH = #{pi_DH},
+            pi_intro = #{pi_intro}
+        where
+            pi_id = #{pi_id}
+    </update>
+
+    <select id="queryPetStarByUser_id" parameterType="com.pojo.vo.UserIdVo" resultType="com.pojo.PetsInfo">
+        select *
+        from bases,pet_starred left join pets_info
+        on pet_starred.pi_id = pets_info.pi_id
+        where bases.base_id = pets_info.base_id and user_id = #{user_id}
+    </select>
+
+    <select id="queryStarredPets" resultType="com.pojo.vo.StarredPetsVo">
+        select pi_name,pi_age,pi_breed,user_realname,user_sex,user_city,user_age,ps_create_time,ps_id
+        from pet_starred,pets_info,user_info
+        where pet_starred.pi_id = pets_info.pi_id
+        and pet_starred.user_id = user_info.user_id
+    </select>
+
+</mapper>

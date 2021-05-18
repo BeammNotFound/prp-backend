@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+
+    <select id="queryUserList" resultType="com.pojo.User">
+      select *
+      from user_info
+      order by user_createtime desc;
+    </select>
+
+    <insert id="createUser" parameterType="com.pojo.vo.CreateUserVo">
+        insert into
+        user_info(user_name,user_nickname,user_password,user_type,user_mail,user_createtime,user_updatetime,user_icon)
+        values(#{user_name},#{user_nickname},#{user_password},#{user_type},#{user_mail},#{user_createtime},#{user_updatetime},#{user_icon})
+    </insert>
+
+    <update id="updateUserById" parameterType="com.pojo.vo.UpdateUserInfoVo">
+        update user_info
+        <set>
+            <if test="user_nickname != null">
+                user_nickname = #{user_nickname},
+            </if>
+            <if test="user_phone != null">
+                user_phone = #{user_phone},
+            </if>
+            <if test="user_icon != null">
+                user_icon = #{user_icon},
+            </if>
+            <if test="user_info != null">
+                user_info = #{user_info},
+            </if>
+            <if test="user_city != null">
+                user_city = #{user_city},
+            </if>
+             <if test="user_address != null">
+                 user_address = #{user_address},
+            </if>
+            <if test="user_intro != null">
+                user_intro = #{user_intro},
+            </if>
+            <if test="user_updatetime != null">
+                user_updatetime = #{user_updatetime},
+            </if>
+            <if test="user_sex != null">
+                user_sex = #{user_sex},
+            </if>
+            <if test="user_realname != null">
+                user_realname = #{user_realname},
+            </if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
+    <update id="updatePasswordByUserName" parameterType="com.pojo.vo.UpdatePasswordVo">
+            update user_info
+            <if test="user_password != null">
+                set user_password = #{user_password}
+            </if>
+            where user_name = #{user_name}
+    </update>
+
+    <update id="forgetPassword" parameterType="com.pojo.vo.ForgetPasswordVo">
+        update user_info
+        <if test="user_password != null">
+        set user_password = #{user_password}
+        </if>
+        where user_mail = #{user_mail}
+    </update>
+
+    <select id="queryUserByName" parameterType="java.lang.String" resultType="com.pojo.User">
+        select *
+        from user_info
+        where user_name = #{user_name}
+    </select>
+
+    <select id="queryUserById" parameterType="java.lang.Integer" resultType="com.pojo.User">
+        select *
+        from user_info
+        where user_id = #{user_id}
+    </select>
+
+
+    <select id="queryUserApplication" resultType="com.pojo.vo.QueryVolunteerByIdVo"
+            parameterType="java.lang.Integer">
+        select *
+        from user_info,bases
+        where user_id = #{user_id} and base_id = user_application
+    </select>
+
+    <insert id="addStarPet" parameterType="com.pojo.vo.PetStarVo">
+        insert into
+            pet_starred(user_id,pi_id,ps_create_time)
+        values
+            (#{user_id},#{pi_id},#{ps_create_time})
+    </insert>
+
+    <delete id="delStarPet" parameterType="com.pojo.vo.PsIdVo">
+        delete
+        from pet_starred
+        where user_id = #{user_id}
+          and pi_id = #{pi_id};
+
+    </delete>
+
+</mapper>

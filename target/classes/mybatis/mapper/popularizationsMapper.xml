@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.PopularizationsMapper">
+    <select id="queryPopularizationsList" parameterType="com.pojo.Popularizations" resultType="com.pojo.Popularizations">
+        select *
+        from Popularizations
+        where p_type = #{p_type}
+        order by p_createtime desc;
+    </select>
+
+    <insert id="createPopularization" parameterType="com.pojo.Popularizations">
+        insert into
+        Popularizations(p_title,p_details,p_author,p_pv,p_createtime,p_updatetime,p_image,p_type)
+        values (#{p_title},#{p_details},#{p_author},#{p_pv},#{p_createtime},#{p_updatetime},#{p_image},#{p_type})
+    </insert>
+
+    <select id="fuzzyQueryPopularizations" resultType="com.pojo.Popularizations" parameterType="com.pojo.Popularizations">
+        select *
+        from popularizations
+        where 1=1
+        <if test="p_title != null and p_title != ''">
+            and p_title like CONCAT('%',#{p_title},'%')
+        </if>
+        <if test="p_details != null and p_details != ''">
+            and p_details like CONCAT('%',#{p_details},'%')
+        </if>
+        order by p_createtime desc;
+    </select>
+</mapper>
