@@ -16,9 +16,9 @@ spring:
     password: UQQAKMELXZCITHRQ
     port: 465
   redis:
-    host: localhost
+    host: 172.18.0.3
     port: 6379
-#    password: root
+    password: 123456
 
 #    整合mybatis
 mybatis:

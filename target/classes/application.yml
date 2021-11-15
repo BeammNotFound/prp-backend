@@ -1,30 +1,3 @@
 spring:
-  thymeleaf:
-    cache: false
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://monsterteam.top:3306/prp?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
-
-    #配置邮箱
-  mail:
-    protocol: smtps
-    default-encoding: UTF-8
-    host: smtp.126.com
-    username: monsterteam@126.com
-    password: UQQAKMELXZCITHRQ
-    port: 465
-  redis:
-    host: 127.0.0.1
-#    host: localhost
-    port: 6379
-#    password: root
-
-#    整合mybatis
-mybatis:
-  type-aliases-package: com.pojo
-  mapper-locations: classpath:mybatis/mapper/*.xml
-
-server:
-  port: 8080
+  profiles:
+    active: prod
