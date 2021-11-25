@@ -3,7 +3,7 @@
 ### 	Technology Planning
 Backstage：
 <br> SpringBoot + Mybatis，Swagger2，Redis <br>
-Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Aliyun.OSS <br>
+Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Aliyun.OSS，Docker <br>
 
 ### 	Developer
 <br>
@@ -23,3 +23,5 @@ Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Ali
 | Weirdo | 1223697311@qq.com |
 | HaHa   | 604520242@qq.com  |
 <br>
+
+>This project only shows the background code :laughing:
