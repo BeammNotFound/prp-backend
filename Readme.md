@@ -24,5 +24,5 @@ Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Ali
 | HaHa   | 604520242@qq.com  |
 <br>
 
->This project only shows the background code :laughing:
+>This project only shows the background code :laughing:<br>
 >Front-end is here: https://github.com/BeammNotFound/prp-web
