@@ -36,7 +36,7 @@ Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Ali
 | Weirdo | 1223697311@qq.com |
 | HaHa   | 604520242@qq.com  |
 
->This project only shows the background code.
+>This project only shows the back-end code.
 
 
 Front-end is [here](https://github.com/BeammNotFound/prp-web).
