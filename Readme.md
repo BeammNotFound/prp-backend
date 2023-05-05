@@ -27,14 +27,6 @@ Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Ali
 | --------- | -------------------- |
 | BeamStark | BeammStark@gmail.com |
 
-#### 		Front-end development:
-
-<br>
-
-| Name   | Contact Via Mail  |
-| ------ | ----------------- |
-| Weirdo | 1223697311@qq.com |
-| HaHa   | 604520242@qq.com  |
 
 >This project only shows the back-end code.
 
