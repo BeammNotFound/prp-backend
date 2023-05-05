@@ -31,4 +31,4 @@ Utilize:<br> Mavne，Git，Validated，lettuce pool，lombok,SpringBootAOP，Ali
 >This project only shows the back-end code.
 
 
-Front-end is [here](https://github.com/BeammNotFound/prp-web).
+Front-end is [here](https://github.com/BeammNotFound/prp-front).
